@@ -1,2 +1,5 @@
 
-ZLMediaKit.Autogen/
+ZLMediaKit.Autogen/obj
+ZLMediaKit.Autogen/bin
+ZMLediaKitTest/obj
+ZMLediaKitTest/bin
