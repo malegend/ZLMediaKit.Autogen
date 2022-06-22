@@ -1,7 +1,7 @@
 # 项目简介
  ZMLediaKit 服务端的 C# API 封装。
  
- 感谢 @夏楚 提供了这么好的开源流媒体服务器软件[ZLMediaKit ](https://github.com/ZLMediaKit/ZLMediaKit)
+ 感谢 [@夏楚](https://github.com/xia-chu) 提供了这么好的开源流媒体服务器软件[ZLMediaKit ](https://github.com/ZLMediaKit/ZLMediaKit)
  
  感谢 @Mono 提供了强大的 API 实现器[CppSharp](https://github.com/mono/CppSharp)
  
