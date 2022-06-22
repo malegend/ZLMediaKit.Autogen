@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ZLMediaKitTest/1.0.0": {
+        "dependencies": {
+          "ZLMediaKit.Autogen": "1.0.0"
+        },
+        "runtime": {
+          "ZLMediaKitTest.dll": {}
+        }
+      },
+      "ZLMediaKit.Autogen/1.0.0": {
+        "runtime": {
+          "ZLMediaKit.Autogen.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ZLMediaKitTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ZLMediaKit.Autogen/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

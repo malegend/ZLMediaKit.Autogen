@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.Text;
 
-namespace ZMLediaKitTest
+namespace ZLMediaKitTest
 {
     unsafe class Program
     {

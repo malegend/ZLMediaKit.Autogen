@@ -1,0 +1,17 @@
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.exe
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.deps.json
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.runtimeconfig.json
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.runtimeconfig.dev.json
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.dll
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKitTest.pdb
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKit.Autogen.dll
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\bin\Debug\netcoreapp3.1\ZLMediaKit.Autogen.pdb
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.csproj.AssemblyReference.cache
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.AssemblyInfoInputs.cache
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.AssemblyInfo.cs
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.csproj.CoreCompileInputs.cache
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.csproj.CopyComplete
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.dll
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.pdb
+D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\obj\Debug\netcoreapp3.1\ZLMediaKitTest.genruntimeconfig.cache

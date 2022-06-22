@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZLMediaKit.Autogen", "ZLMediaKit.Autogen\ZLMediaKit.Autogen.csproj", "{010685B6-1D46-4410-85E6-A0FB84A8AEE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMLediaKitTest", "ZMLediaKitTest\ZMLediaKitTest.csproj", "{CDF28EAD-AF38-4C20-9824-E3DAF3641A79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZLMediaKitTest", "ZLMediaKitTest\ZLMediaKitTest.csproj", "{CDF28EAD-AF38-4C20-9824-E3DAF3641A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -852,6 +852,10 @@ namespace ZLMediaKit
         MkTypeWss = 3
     }
 
+    /// <summary>////////////////////////////////////////Buffer::Ptr/////////////////////////////////////////////</summary>
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkBufferFree(IntPtr user_data, IntPtr data);
+
     /// <summary>////////////////////////////////////////SockInfo/////////////////////////////////////////////</summary>
     /// <summary>////////////////////////////////////////TcpSession/////////////////////////////////////////////</summary>
     /// <summary>////////////////////////////////////////自定义tcp服务/////////////////////////////////////////////</summary>
@@ -973,14 +977,13 @@ namespace ZLMediaKit
         /// <summary>收到客户端发过来的数据</summary>
         /// <param name="server_port">服务器端口号</param>
         /// <param name="session">会话处理对象</param>
-        /// <param name="data">数据指针</param>
-        /// <param name="len">数据长度</param>
-        public global::ZLMediaKit.Delegates.Action_ushort___IntPtr_string8_ulong OnMkTcpSessionData
+        /// <param name="buffer">数据</param>
+        public global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr OnMkTcpSessionData
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_session_data;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr_string8_ulong)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr_string8_ulong));
+                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr));
             }
 
             set
@@ -1163,14 +1166,13 @@ namespace ZLMediaKit
 
         /// <summary>收到tcp服务器发来的数据</summary>
         /// <param name="client">tcp客户端</param>
-        /// <param name="data">数据指针</param>
-        /// <param name="len">数据长度</param>
-        public global::ZLMediaKit.Delegates.Action___IntPtr_string8_ulong OnMkTcpClientData
+        /// <param name="buffer">数据</param>
+        public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr OnMkTcpClientData
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_client_data;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_string8_ulong)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_string8_ulong));
+                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr));
             }
 
             set
@@ -1200,6 +1202,21 @@ namespace ZLMediaKit
     {
         public partial struct __Internal
         {
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_buffer_from_char", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkBufferFromChar([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong len, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_buffer_ref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkBufferRef(IntPtr buffer);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_buffer_unref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkBufferUnref(IntPtr buffer);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_buffer_get_data", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkBufferGetData(IntPtr buffer);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_buffer_get_size", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern ulong MkBufferGetSize(IntPtr buffer);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_sock_info_peer_ip", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern IntPtr MkSockInfoPeerIp(IntPtr ctx, sbyte* buf);
 
@@ -1221,8 +1238,23 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_session_send", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpSessionSend(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong len);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_session_send_buffer", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTcpSessionSendBuffer(IntPtr ctx, IntPtr buffer);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_session_send_safe", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpSessionSendSafe(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong len);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_session_send_buffer_safe", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTcpSessionSendBufferSafe(IntPtr ctx, IntPtr buffer);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_session_ref_from", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTcpSessionRefFrom(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_session_ref_release", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTcpSessionRefRelease(IntPtr @ref);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_session_from_ref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTcpSessionFromRef(IntPtr @ref);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_session_set_user_data", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpSessionSetUserData(IntPtr session, IntPtr user_data);
@@ -1251,14 +1283,56 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_client_send", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpClientSend(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, int len);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_client_send_buffer", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTcpClientSendBuffer(IntPtr ctx, IntPtr buffer);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_client_send_safe", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpClientSendSafe(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, int len);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_tcp_client_send_buffer_safe", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTcpClientSendBufferSafe(IntPtr ctx, IntPtr buffer);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_client_set_user_data", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTcpClientSetUserData(IntPtr ctx, IntPtr user_data);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_tcp_client_get_user_data", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern IntPtr MkTcpClientGetUserData(IntPtr ctx);
+        }
+
+        /// <summary>创建buffer对象</summary>
+        /// <param name="data">数据指针</param>
+        /// <param name="len">数据长度</param>
+        /// <param name="cb">数据指针free回调函数，该参数置空时，内部会拷贝数据</param>
+        /// <param name="user_data">数据指针free回调函数on_mk_buffer_free第一个参数</param>
+        /// <returns>buffer对象</returns>
+        public static IntPtr MkBufferFromChar(string data, ulong len, global::ZLMediaKit.OnMkBufferFree cb, IntPtr user_data)
+        {
+            var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __ret = __Internal.MkBufferFromChar(data, len, __arg2, user_data);
+            return __ret;
+        }
+
+        public static IntPtr MkBufferRef(IntPtr buffer)
+        {
+            var __ret = __Internal.MkBufferRef(buffer);
+            return __ret;
+        }
+
+        public static void MkBufferUnref(IntPtr buffer)
+        {
+            __Internal.MkBufferUnref(buffer);
+        }
+
+        public static string MkBufferGetData(IntPtr buffer)
+        {
+            var __ret = __Internal.MkBufferGetData(buffer);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        public static ulong MkBufferGetSize(IntPtr buffer)
+        {
+            var __ret = __Internal.MkBufferGetSize(buffer);
+            return __ret;
         }
 
         public static string MkSockInfoPeerIp(IntPtr ctx, sbyte* buf)
@@ -1301,9 +1375,36 @@ namespace ZLMediaKit
             __Internal.MkTcpSessionSend(ctx, data, len);
         }
 
+        public static void MkTcpSessionSendBuffer(IntPtr ctx, IntPtr buffer)
+        {
+            __Internal.MkTcpSessionSendBuffer(ctx, buffer);
+        }
+
         public static void MkTcpSessionSendSafe(IntPtr ctx, string data, ulong len)
         {
             __Internal.MkTcpSessionSendSafe(ctx, data, len);
+        }
+
+        public static void MkTcpSessionSendBufferSafe(IntPtr ctx, IntPtr buffer)
+        {
+            __Internal.MkTcpSessionSendBufferSafe(ctx, buffer);
+        }
+
+        public static IntPtr MkTcpSessionRefFrom(IntPtr ctx)
+        {
+            var __ret = __Internal.MkTcpSessionRefFrom(ctx);
+            return __ret;
+        }
+
+        public static void MkTcpSessionRefRelease(IntPtr @ref)
+        {
+            __Internal.MkTcpSessionRefRelease(@ref);
+        }
+
+        public static IntPtr MkTcpSessionFromRef(IntPtr @ref)
+        {
+            var __ret = __Internal.MkTcpSessionFromRef(@ref);
+            return __ret;
         }
 
         /// <summary>
@@ -1392,6 +1493,11 @@ namespace ZLMediaKit
             __Internal.MkTcpClientSend(ctx, data, len);
         }
 
+        public static void MkTcpClientSendBuffer(IntPtr ctx, IntPtr buffer)
+        {
+            __Internal.MkTcpClientSendBuffer(ctx, buffer);
+        }
+
         /// <summary>切换到本对象的网络线程后再发送数据</summary>
         /// <param name="ctx">客户端对象</param>
         /// <param name="data">数据指针</param>
@@ -1399,6 +1505,11 @@ namespace ZLMediaKit
         public static void MkTcpClientSendSafe(IntPtr ctx, string data, int len)
         {
             __Internal.MkTcpClientSendSafe(ctx, data, len);
+        }
+
+        public static void MkTcpClientSendBufferSafe(IntPtr ctx, IntPtr buffer)
+        {
+            __Internal.MkTcpClientSendBufferSafe(ctx, buffer);
         }
 
         /// <summary>客户端附着用户数据</summary>
@@ -2065,6 +2176,245 @@ namespace ZLMediaKit
         }
     }
 
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkFrameDataRelease(IntPtr user_data, sbyte* ptr);
+
+    public unsafe partial class mk_frame
+    {
+        public partial struct __Internal
+        {
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFrameCreate(int codec_id, uint dts, uint pts, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong size, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_unref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkFrameUnref(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_ref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFrameRef(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_codec_id", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkFrameCodecId(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_codec_name", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFrameCodecName(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_is_video", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkFrameIsVideo(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_data", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFrameGetData(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_data_size", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern ulong MkFrameGetDataSize(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_data_prefix_size", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern ulong MkFrameGetDataPrefixSize(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_dts", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern uint MkFrameGetDts(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_pts", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern uint MkFrameGetPts(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_get_flags", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern uint MkFrameGetFlags(IntPtr frame);
+        }
+
+        /// <summary>创建frame对象，并返回其引用</summary>
+        /// <param name="codec_id">编解码类型，请参考MKCodecXXX定义</param>
+        /// <param name="dts">解码时间戳，单位毫秒</param>
+        /// <param name="pts">显示时间戳，单位毫秒</param>
+        /// <param name="data">单帧数据</param>
+        /// <param name="size">单帧数据长度</param>
+        /// <param name="cb">data指针free释放回调, 如果为空，内部会拷贝数据</param>
+        /// <param name="user_data">data指针free释放回调用户指针</param>
+        /// <returns>frame对象引用</returns>
+        public static IntPtr MkFrameCreate(int codec_id, uint dts, uint pts, string data, ulong size, global::ZLMediaKit.OnMkFrameDataRelease cb, IntPtr user_data)
+        {
+            var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __ret = __Internal.MkFrameCreate(codec_id, dts, pts, data, size, __arg5, user_data);
+            return __ret;
+        }
+
+        /// <summary>减引用frame对象</summary>
+        /// <param name="frame">帧对象引用</param>
+        public static void MkFrameUnref(IntPtr frame)
+        {
+            __Internal.MkFrameUnref(frame);
+        }
+
+        /// <summary>引用frame对象</summary>
+        /// <param name="frame">被引用的frame对象</param>
+        /// <returns>新的对象引用</returns>
+        public static IntPtr MkFrameRef(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameRef(frame);
+            return __ret;
+        }
+
+        /// <summary>获取frame 编码codec类型，请参考MKCodecXXX定义</summary>
+        public static int MkFrameCodecId(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameCodecId(frame);
+            return __ret;
+        }
+
+        /// <summary>获取帧编码codec名称</summary>
+        public static string MkFrameCodecName(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameCodecName(frame);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        /// <summary>帧是否为视频</summary>
+        public static int MkFrameIsVideo(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameIsVideo(frame);
+            return __ret;
+        }
+
+        /// <summary>获取帧数据指针</summary>
+        public static string MkFrameGetData(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetData(frame);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        /// <summary>获取帧数据指针长度</summary>
+        public static ulong MkFrameGetDataSize(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetDataSize(frame);
+            return __ret;
+        }
+
+        /// <summary>返回帧数据前缀长度，譬如H264/H265前缀一般是0x00 00 00 01,那么本函数返回4</summary>
+        public static ulong MkFrameGetDataPrefixSize(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetDataPrefixSize(frame);
+            return __ret;
+        }
+
+        /// <summary>获取解码时间戳，单位毫秒</summary>
+        public static uint MkFrameGetDts(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetDts(frame);
+            return __ret;
+        }
+
+        /// <summary>获取显示时间戳，单位毫秒</summary>
+        public static uint MkFrameGetPts(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetPts(frame);
+            return __ret;
+        }
+
+        /// <summary>获取帧flag，请参考 MK_FRAME_FLAG</summary>
+        public static uint MkFrameGetFlags(IntPtr frame)
+        {
+            var __ret = __Internal.MkFrameGetFlags(frame);
+            return __ret;
+        }
+
+        public static int MKCodecH264
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecH264;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecH265
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecH265;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecAAC
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecAAC;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecG711A
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecG711A;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecG711U
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecG711U;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecOpus
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecOpus;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecL16
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecL16;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecVP8
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecVP8;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecVP9
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecVP9;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecAV1
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecAV1;
+                return *__ptr;
+            }
+        }
+
+        public static int MKCodecJPEG
+        {
+            get
+            {
+                var __ptr = (int*)global::ZLMediaKit.__Symbols.ZLMediaKit._MKCodecJPEG;
+                return *__ptr;
+            }
+        }
+    }
+
     /// <summary>h264 分帧器输出回调函数</summary>
     /// <param name="user_data">设置回调时的用户数据指针</param>
     /// <param name="splitter">对象</param>
@@ -2373,8 +2723,11 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_release", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkMediaRelease(IntPtr ctx);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_media_init_track", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkMediaInitTrack(IntPtr ctx, IntPtr track);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_init_video", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkMediaInitVideo(IntPtr ctx, int codec_id, int width, int height, float fps);
+            internal static extern int MkMediaInitVideo(IntPtr ctx, int codec_id, int width, int height, float fps, int bit_rate);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_init_audio", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern int MkMediaInitAudio(IntPtr ctx, int codec_id, int sample_rate, int channels, int sample_bit);
@@ -2382,11 +2735,17 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_init_complete", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkMediaInitComplete(IntPtr ctx);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_media_input_frame", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkMediaInputFrame(IntPtr ctx, IntPtr frame);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_input_h264", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern int MkMediaInputH264(IntPtr ctx, IntPtr data, int len, uint dts, uint pts);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_input_h265", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern int MkMediaInputH265(IntPtr ctx, IntPtr data, int len, uint dts, uint pts);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_media_input_yuv", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkMediaInputYuv(IntPtr ctx, [MarshalAs(UnmanagedType.LPArray)] string[] yuv, int[] linesize, uint cts);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_input_aac", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern int MkMediaInputAac(IntPtr ctx, IntPtr data, int len, uint dts, IntPtr adts);
@@ -2443,20 +2802,32 @@ namespace ZLMediaKit
             __Internal.MkMediaRelease(ctx);
         }
 
-        /// <summary>添加视频轨道</summary>
+        /// <summary>添加音视频track</summary>
+        /// <param name="ctx">mk_media对象</param>
+        /// <param name="track">mk_track对象，音视频轨道</param>
+        public static void MkMediaInitTrack(IntPtr ctx, IntPtr track)
+        {
+            __Internal.MkMediaInitTrack(ctx, track);
+        }
+
+        /// <summary>添加视频轨道，请改用mk_media_init_track方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="codec_id">0:CodecH264/1:CodecH265</param>
+        /// <param name="width">视频宽度; 在编码时才有效</param>
+        /// <param name="height">视频高度; 在编码时才有效</param>
+        /// <param name="fps">视频fps; 在编码时才有效</param>
+        /// <param name="bit_rate">视频比特率,单位bps; 在编码时才有效</param>
         /// <param name="width">视频宽度</param>
         /// <param name="height">视频高度</param>
         /// <param name="fps">视频fps</param>
         /// <returns>1代表成功，0失败</returns>
-        public static int MkMediaInitVideo(IntPtr ctx, int codec_id, int width, int height, float fps)
+        public static int MkMediaInitVideo(IntPtr ctx, int codec_id, int width, int height, float fps, int bit_rate)
         {
-            var __ret = __Internal.MkMediaInitVideo(ctx, codec_id, width, height, fps);
+            var __ret = __Internal.MkMediaInitVideo(ctx, codec_id, width, height, fps, bit_rate);
             return __ret;
         }
 
-        /// <summary>添加音频轨道</summary>
+        /// <summary>添加音频轨道，请改用mk_media_init_track方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="codec_id">2:CodecAAC/3:CodecG711A/4:CodecG711U/5:OPUS</param>
         /// <param name="channel">通道数</param>
@@ -2480,7 +2851,17 @@ namespace ZLMediaKit
             __Internal.MkMediaInitComplete(ctx);
         }
 
-        /// <summary>输入单帧H264视频，帧起始字节00 00 01,00 00 00 01均可</summary>
+        /// <summary>输入frame对象</summary>
+        /// <param name="ctx">mk_media对象</param>
+        /// <param name="frame">帧对象</param>
+        /// <returns>1代表成功，0失败</returns>
+        public static int MkMediaInputFrame(IntPtr ctx, IntPtr frame)
+        {
+            var __ret = __Internal.MkMediaInputFrame(ctx, frame);
+            return __ret;
+        }
+
+        /// <summary>输入单帧H264视频，帧起始字节00 00 01,00 00 00 01均可，请改用mk_media_input_frame方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="data">单帧H264数据</param>
         /// <param name="len">单帧H264数据字节数</param>
@@ -2493,7 +2874,7 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>输入单帧H265视频，帧起始字节00 00 01,00 00 00 01均可</summary>
+        /// <summary>输入单帧H265视频，帧起始字节00 00 01,00 00 00 01均可，请改用mk_media_input_frame方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="data">单帧H265数据</param>
         /// <param name="len">单帧H265数据字节数</param>
@@ -2506,7 +2887,21 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>输入单帧AAC音频(单独指定adts头)</summary>
+        /// <summary>输入YUV视频数据</summary>
+        /// <param name="ctx">对象指针</param>
+        /// <param name="yuv">yuv420p数据</param>
+        /// <param name="linesize">yuv420p linesize</param>
+        /// <param name="cts">视频采集时间戳，单位毫秒</param>
+        public static void MkMediaInputYuv(IntPtr ctx, string[] yuv, int[] linesize, uint cts)
+        {
+            if (yuv == null || yuv.Length != 3)
+                throw new ArgumentOutOfRangeException("yuv", "The dimensions of the provided array don't match the required size.");
+            if (linesize == null || linesize.Length != 3)
+                throw new ArgumentOutOfRangeException("linesize", "The dimensions of the provided array don't match the required size.");
+            __Internal.MkMediaInputYuv(ctx, yuv, linesize, cts);
+        }
+
+        /// <summary>输入单帧AAC音频(单独指定adts头)，请改用mk_media_input_frame方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="data">不包含adts头的单帧AAC数据，adts头7个字节</param>
         /// <param name="len">单帧AAC数据字节数</param>
@@ -2531,7 +2926,7 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>输入单帧OPUS/G711音频帧</summary>
+        /// <summary>输入单帧OPUS/G711音频帧，请改用mk_media_input_frame方法</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="data">单帧音频数据</param>
         /// <param name="len">单帧音频数据字节数</param>
@@ -2631,6 +3026,523 @@ namespace ZLMediaKit
         }
     }
 
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkFrameOut(IntPtr user_data, IntPtr frame);
+
+    public unsafe partial struct CodecArgs
+    {
+        [StructLayout(LayoutKind.Explicit, Size = 12)]
+        public partial struct __Internal
+        {
+            [FieldOffset(0)]
+            internal global::ZLMediaKit.CodecArgs.Video.__Internal video;
+
+            [FieldOffset(0)]
+            internal global::ZLMediaKit.CodecArgs.Audio.__Internal audio;
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "??0codec_args@@QEAA@AEBT0@@Z", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr __instance, IntPtr __0);
+        }
+
+        public unsafe partial class Video : IDisposable
+        {
+            [StructLayout(LayoutKind.Sequential, Size = 12)]
+            public partial struct __Internal
+            {
+                internal int width;
+                internal int height;
+                internal int fps;
+
+                [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "??0<unnamed-type-video>@codec_args@@QEAA@AEBU01@@Z", CallingConvention = __CallingConvention.Cdecl)]
+                internal static extern IntPtr cctor(IntPtr __instance, IntPtr __0);
+            }
+
+            public IntPtr __Instance { get; protected set; }
+
+            internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.CodecArgs.Video> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.CodecArgs.Video>();
+
+            protected bool __ownsNativeInstance;
+
+            internal static Video __CreateInstance(IntPtr native, bool skipVTables = false)
+            {
+                return new Video(native.ToPointer(), skipVTables);
+            }
+
+            internal static Video __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+            {
+                if (native == IntPtr.Zero)
+                    return null;
+                if (NativeToManagedMap.TryGetValue(native, out var managed))
+                    return (Video)managed;
+                var result = __CreateInstance(native, skipVTables);
+                if (saveInstance)
+                    NativeToManagedMap[native] = result;
+                return result;
+            }
+
+            internal static Video __CreateInstance(__Internal native, bool skipVTables = false)
+            {
+                return new Video(native, skipVTables);
+            }
+
+            private static void* __CopyValue(__Internal native)
+            {
+                var ret = Marshal.AllocHGlobal(sizeof(__Internal));
+                *(__Internal*)ret = native;
+                return ret.ToPointer();
+            }
+
+            private Video(__Internal native, bool skipVTables = false)
+                : this(__CopyValue(native), skipVTables)
+            {
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+            }
+
+            protected Video(void* native, bool skipVTables = false)
+            {
+                if (native == null)
+                    return;
+                __Instance = new IntPtr(native);
+            }
+
+            public Video()
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Video.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+            }
+
+            public Video(global::ZLMediaKit.CodecArgs.Video __0)
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Video.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+                *((global::ZLMediaKit.CodecArgs.Video.__Internal*)__Instance) = *((global::ZLMediaKit.CodecArgs.Video.__Internal*)__0.__Instance);
+            }
+
+            public void Dispose()
+            {
+                Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            }
+
+            partial void DisposePartial(bool disposing);
+
+            internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+            {
+                if (__Instance == IntPtr.Zero)
+                    return;
+                NativeToManagedMap.TryRemove(__Instance, out _);
+                DisposePartial(disposing);
+                if (__ownsNativeInstance)
+                    Marshal.FreeHGlobal(__Instance);
+                __Instance = IntPtr.Zero;
+            }
+
+            public int Width
+            {
+                get
+                {
+                    return ((__Internal*)__Instance)->width;
+                }
+
+                set
+                {
+                    ((__Internal*)__Instance)->width = value;
+                }
+            }
+
+            public int Height
+            {
+                get
+                {
+                    return ((__Internal*)__Instance)->height;
+                }
+
+                set
+                {
+                    ((__Internal*)__Instance)->height = value;
+                }
+            }
+
+            public int Fps
+            {
+                get
+                {
+                    return ((__Internal*)__Instance)->fps;
+                }
+
+                set
+                {
+                    ((__Internal*)__Instance)->fps = value;
+                }
+            }
+        }
+
+        public unsafe partial class Audio : IDisposable
+        {
+            [StructLayout(LayoutKind.Sequential, Size = 8)]
+            public partial struct __Internal
+            {
+                internal int channels;
+                internal int sample_rate;
+
+                [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "??0<unnamed-type-audio>@codec_args@@QEAA@AEBU01@@Z", CallingConvention = __CallingConvention.Cdecl)]
+                internal static extern IntPtr cctor(IntPtr __instance, IntPtr __0);
+            }
+
+            public IntPtr __Instance { get; protected set; }
+
+            internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.CodecArgs.Audio> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.CodecArgs.Audio>();
+
+            protected bool __ownsNativeInstance;
+
+            internal static Audio __CreateInstance(IntPtr native, bool skipVTables = false)
+            {
+                return new Audio(native.ToPointer(), skipVTables);
+            }
+
+            internal static Audio __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+            {
+                if (native == IntPtr.Zero)
+                    return null;
+                if (NativeToManagedMap.TryGetValue(native, out var managed))
+                    return (Audio)managed;
+                var result = __CreateInstance(native, skipVTables);
+                if (saveInstance)
+                    NativeToManagedMap[native] = result;
+                return result;
+            }
+
+            internal static Audio __CreateInstance(__Internal native, bool skipVTables = false)
+            {
+                return new Audio(native, skipVTables);
+            }
+
+            private static void* __CopyValue(__Internal native)
+            {
+                var ret = Marshal.AllocHGlobal(sizeof(__Internal));
+                *(__Internal*)ret = native;
+                return ret.ToPointer();
+            }
+
+            private Audio(__Internal native, bool skipVTables = false)
+                : this(__CopyValue(native), skipVTables)
+            {
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+            }
+
+            protected Audio(void* native, bool skipVTables = false)
+            {
+                if (native == null)
+                    return;
+                __Instance = new IntPtr(native);
+            }
+
+            public Audio()
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Audio.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+            }
+
+            public Audio(global::ZLMediaKit.CodecArgs.Audio __0)
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Audio.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+                *((global::ZLMediaKit.CodecArgs.Audio.__Internal*)__Instance) = *((global::ZLMediaKit.CodecArgs.Audio.__Internal*)__0.__Instance);
+            }
+
+            public void Dispose()
+            {
+                Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            }
+
+            partial void DisposePartial(bool disposing);
+
+            internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+            {
+                if (__Instance == IntPtr.Zero)
+                    return;
+                NativeToManagedMap.TryRemove(__Instance, out _);
+                DisposePartial(disposing);
+                if (__ownsNativeInstance)
+                    Marshal.FreeHGlobal(__Instance);
+                __Instance = IntPtr.Zero;
+            }
+
+            public int Channels
+            {
+                get
+                {
+                    return ((__Internal*)__Instance)->channels;
+                }
+
+                set
+                {
+                    ((__Internal*)__Instance)->channels = value;
+                }
+            }
+
+            public int SampleRate
+            {
+                get
+                {
+                    return ((__Internal*)__Instance)->sample_rate;
+                }
+
+                set
+                {
+                    ((__Internal*)__Instance)->sample_rate = value;
+                }
+            }
+        }
+
+        private CodecArgs.__Internal __instance;
+        internal CodecArgs.__Internal __Instance { get { return __instance; } }
+
+        internal static CodecArgs __CreateInstance(IntPtr native, bool skipVTables = false)
+        {
+            return new CodecArgs(native.ToPointer(), skipVTables);
+        }
+
+        internal static CodecArgs __CreateInstance(__Internal native, bool skipVTables = false)
+        {
+            return new CodecArgs(native, skipVTables);
+        }
+
+        private CodecArgs(__Internal native, bool skipVTables = false)
+            : this()
+        {
+            __instance = native;
+        }
+
+        private CodecArgs(void* native, bool skipVTables = false) : this()
+        {
+            __instance = *(global::ZLMediaKit.CodecArgs.__Internal*)native;
+        }
+
+        public CodecArgs(global::ZLMediaKit.CodecArgs __0)
+            : this()
+        {
+            var ____arg0 = __0.__Instance;
+            var __arg0 = new IntPtr(&____arg0);
+            fixed (__Internal* __instancePtr = &__instance)
+            {
+                __Internal.cctor(new IntPtr(__instancePtr), __arg0);
+            }
+        }
+
+        public global::ZLMediaKit.CodecArgs.Video video
+        {
+            get
+            {
+                return global::ZLMediaKit.CodecArgs.Video.__CreateInstance(__instance.video);
+            }
+
+            set
+            {
+                if (ReferenceEquals(value, null))
+                    throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
+                __instance.video = *(global::ZLMediaKit.CodecArgs.Video.__Internal*)value.__Instance;
+            }
+        }
+
+        public global::ZLMediaKit.CodecArgs.Audio audio
+        {
+            get
+            {
+                return global::ZLMediaKit.CodecArgs.Audio.__CreateInstance(__instance.audio);
+            }
+
+            set
+            {
+                if (ReferenceEquals(value, null))
+                    throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
+                __instance.audio = *(global::ZLMediaKit.CodecArgs.Audio.__Internal*)value.__Instance;
+            }
+        }
+    }
+
+    public unsafe partial class mk_track
+    {
+        public partial struct __Internal
+        {
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTrackCreate(int codec_id, IntPtr args);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_unref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTrackUnref(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_ref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTrackRef(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_codec_id", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackCodecId(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_codec_name", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTrackCodecName(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_bit_rate", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackBitRate(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_add_delegate", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkTrackAddDelegate(IntPtr track, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_del_delegate", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTrackDelDelegate(IntPtr track, IntPtr tag);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_input_frame", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkTrackInputFrame(IntPtr track, IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_is_video", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackIsVideo(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_video_width", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackVideoWidth(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_video_height", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackVideoHeight(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_video_fps", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackVideoFps(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_audio_sample_rate", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackAudioSampleRate(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_audio_channel", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackAudioChannel(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_track_audio_sample_bit", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkTrackAudioSampleBit(IntPtr track);
+        }
+
+        /// <summary>创建track对象引用</summary>
+        /// <param name="codec_id">请参考MKCodecXXX 常量定义</param>
+        /// <param name="args">视频或音频参数</param>
+        /// <returns>track对象引用</returns>
+        public static IntPtr MkTrackCreate(int codec_id, global::ZLMediaKit.CodecArgs args)
+        {
+            var ____arg1 = args.__Instance;
+            var __arg1 = new IntPtr(&____arg1);
+            var __ret = __Internal.MkTrackCreate(codec_id, __arg1);
+            return __ret;
+        }
+
+        /// <summary>减引用track对象</summary>
+        /// <param name="track">track对象</param>
+        public static void MkTrackUnref(IntPtr track)
+        {
+            __Internal.MkTrackUnref(track);
+        }
+
+        /// <summary>引用track对象</summary>
+        /// <param name="track">track对象</param>
+        /// <returns>新的track引用对象</returns>
+        public static IntPtr MkTrackRef(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackRef(track);
+            return __ret;
+        }
+
+        /// <summary>获取track 编码codec类型，请参考MKCodecXXX定义</summary>
+        public static int MkTrackCodecId(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackCodecId(track);
+            return __ret;
+        }
+
+        /// <summary>获取编码codec名称</summary>
+        public static string MkTrackCodecName(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackCodecName(track);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        /// <summary>获取比特率信息</summary>
+        public static int MkTrackBitRate(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackBitRate(track);
+            return __ret;
+        }
+
+        /// <summary>监听frame输出事件</summary>
+        /// <param name="track">track对象</param>
+        /// <param name="cb">frame输出回调</param>
+        /// <param name="user_data">frame输出回调用户指针参数</param>
+        public static IntPtr MkTrackAddDelegate(IntPtr track, global::ZLMediaKit.OnMkFrameOut cb, IntPtr user_data)
+        {
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __ret = __Internal.MkTrackAddDelegate(track, __arg1, user_data);
+            return __ret;
+        }
+
+        /// <summary>取消frame输出事件监听</summary>
+        /// <param name="track">track对象</param>
+        /// <param name="tag">mk_track_add_delegate返回值</param>
+        public static void MkTrackDelDelegate(IntPtr track, IntPtr tag)
+        {
+            __Internal.MkTrackDelDelegate(track, tag);
+        }
+
+        /// <summary>输入frame到track，通常你不需要调用此api</summary>
+        public static void MkTrackInputFrame(IntPtr track, IntPtr frame)
+        {
+            __Internal.MkTrackInputFrame(track, frame);
+        }
+
+        /// <summary>track是否为视频</summary>
+        public static int MkTrackIsVideo(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackIsVideo(track);
+            return __ret;
+        }
+
+        /// <summary>获取视频宽度</summary>
+        public static int MkTrackVideoWidth(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackVideoWidth(track);
+            return __ret;
+        }
+
+        /// <summary>获取视频高度</summary>
+        public static int MkTrackVideoHeight(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackVideoHeight(track);
+            return __ret;
+        }
+
+        /// <summary>获取视频帧率</summary>
+        public static int MkTrackVideoFps(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackVideoFps(track);
+            return __ret;
+        }
+
+        /// <summary>获取音频采样率</summary>
+        public static int MkTrackAudioSampleRate(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackAudioSampleRate(track);
+            return __ret;
+        }
+
+        /// <summary>获取音频通道数</summary>
+        public static int MkTrackAudioChannel(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackAudioChannel(track);
+            return __ret;
+        }
+
+        /// <summary>获取音频位数，一般为16bit</summary>
+        public static int MkTrackAudioSampleBit(IntPtr track)
+        {
+            var __ret = __Internal.MkTrackAudioSampleBit(track);
+            return __ret;
+        }
+    }
+
     /// <summary>
     /// <para>MediaSource.close()回调事件</para>
     /// <para>在选择关闭一个关联的MediaSource时，将会最终触发到该回调</para>
@@ -2687,7 +3599,7 @@ namespace ZLMediaKit
 
         /// <summary>设置代理播放器配置选项</summary>
         /// <param name="ctx">代理播放器指针</param>
-        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/max_analysis_ms</param>
+        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms</param>
         /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
         public static void MkProxyPlayerSetOption(IntPtr ctx, string key, string val)
         {
@@ -2819,19 +3731,10 @@ namespace ZLMediaKit
     /// <param name="user_data">用户数据指针</param>
     /// <param name="err_code">错误代码，0为成功</param>
     /// <param name="err_msg">错误提示</param>
+    /// <param name="tracks">track列表</param>
+    /// <param name="track_count">track个数</param>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
-    public unsafe delegate void OnMkPlayEvent(IntPtr user_data, int err_code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg);
-
-    /// <summary>收到音视频数据回调</summary>
-    /// <param name="user_data">用户数据指针</param>
-    /// <param name="track_type">0：视频，1：音频</param>
-    /// <param name="codec_id">0：H264，1：H265，2：AAC 3.G711A 4.G711U 5.OPUS</param>
-    /// <param name="data">数据指针</param>
-    /// <param name="len">数据长度</param>
-    /// <param name="dts">解码时间戳，单位毫秒</param>
-    /// <param name="pts">显示时间戳，单位毫秒</param>
-    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
-    public unsafe delegate void OnMkPlayData(IntPtr user_data, int track_type, int codec_id, IntPtr data, ulong len, uint dts, uint pts);
+    public unsafe delegate void OnMkPlayEvent(IntPtr user_data, int err_code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg, IntPtr[] tracks, int track_count);
 
     public unsafe partial class mk_player
     {
@@ -2867,36 +3770,6 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_set_on_shutdown", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkPlayerSetOnShutdown(IntPtr ctx, IntPtr cb, IntPtr user_data);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_set_on_data", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern void MkPlayerSetOnData(IntPtr ctx, IntPtr cb, IntPtr user_data);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_video_codec_id", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerVideoCodecId(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_video_codec_id_vendor_head", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerVideoCodecIdVendorHead(IntPtr ctx, sbyte* vendor, sbyte* head, int* headLen);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_video_width", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerVideoWidth(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_video_height", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerVideoHeight(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_video_fps", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern float MkPlayerVideoFps(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_audio_codec_id", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerAudioCodecId(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_audio_samplerate", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerAudioSamplerate(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_audio_bit", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerAudioBit(IntPtr ctx);
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_audio_channel", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern int MkPlayerAudioChannel(IntPtr ctx);
-
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_player_duration", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern float MkPlayerDuration(IntPtr ctx);
 
@@ -2927,7 +3800,7 @@ namespace ZLMediaKit
 
         /// <summary>设置播放器配置选项</summary>
         /// <param name="ctx">播放器指针</param>
-        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/max_analysis_ms</param>
+        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/wait_track_ready</param>
         /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
         public static void MkPlayerSetOption(IntPtr ctx, string key, string val)
         {
@@ -2992,89 +3865,6 @@ namespace ZLMediaKit
         {
             var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             __Internal.MkPlayerSetOnShutdown(ctx, __arg1, user_data);
-        }
-
-        /// <summary>设置音视频数据回调函数</summary>
-        /// <param name="ctx">播放器指针</param>
-        /// <param name="cb">回调函数指针,设置null立即取消回调</param>
-        /// <param name="user_data">用户数据指针</param>
-        public static void MkPlayerSetOnData(IntPtr ctx, global::ZLMediaKit.OnMkPlayData cb, IntPtr user_data)
-        {
-            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
-            __Internal.MkPlayerSetOnData(ctx, __arg1, user_data);
-        }
-
-        /// <summary>获取视频codec_id -1：不存在 0：H264，1：H265，2：AAC 3.G711A 4.G711U</summary>
-        /// <param name="ctx">播放器指针</param>
-        public static int MkPlayerVideoCodecId(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerVideoCodecId(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取视频codec_id, vendor类型, 私有头数据  codec_id -1：不存在 0：H264，1：H265，2：AAC 3.G711A 4.G711U</summary>
-        /// <param name="ctx">播放器指针</param>
-        /// <param name="vendor">输出厂家类型 如果是私有流 应该是H264另外还有厂家类型</param>
-        /// <param name="head">厂家SDK头数据</param>
-        /// <param name="head">厂家SDK头数据长度</param>
-        public static int MkPlayerVideoCodecIdVendorHead(IntPtr ctx, sbyte* vendor, sbyte* head, ref int headLen)
-        {
-            fixed (int* __headLen3 = &headLen)
-            {
-                var __arg3 = __headLen3;
-                var __ret = __Internal.MkPlayerVideoCodecIdVendorHead(ctx, vendor, head, __arg3);
-                return __ret;
-            }
-        }
-
-        /// <summary>获取视频宽度</summary>
-        public static int MkPlayerVideoWidth(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerVideoWidth(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取视频高度</summary>
-        public static int MkPlayerVideoHeight(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerVideoHeight(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取视频帧率</summary>
-        public static float MkPlayerVideoFps(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerVideoFps(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取音频codec_id -1：不存在 0：H264，1：H265，2：AAC 3.G711A 4.G711U</summary>
-        /// <param name="ctx">播放器指针</param>
-        public static int MkPlayerAudioCodecId(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerAudioCodecId(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取音频采样率</summary>
-        public static int MkPlayerAudioSamplerate(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerAudioSamplerate(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取音频采样位数，一般为16</summary>
-        public static int MkPlayerAudioBit(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerAudioBit(ctx);
-            return __ret;
-        }
-
-        /// <summary>获取音频通道数</summary>
-        public static int MkPlayerAudioChannel(IntPtr ctx)
-        {
-            var __ret = __Internal.MkPlayerAudioChannel(ctx);
-            return __ret;
         }
 
         /// <summary>获取点播节目时长，如果是直播返回0，否则返回秒数</summary>
@@ -3179,7 +3969,7 @@ namespace ZLMediaKit
 
         /// <summary>设置推流器配置选项</summary>
         /// <param name="ctx">推流器指针</param>
-        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/max_analysis_ms</param>
+        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms</param>
         /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
         public static void MkPusherSetOption(IntPtr ctx, string key, string val)
         {
@@ -3235,30 +4025,7 @@ namespace ZLMediaKit
             internal static extern sbyte* MkUtilHexDump(IntPtr buf, int len);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_log_printf", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern void MkLogPrintf(
-                int level,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string file,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string function,
-                int line,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string fmt,
-                IntPtr args
-                );
-
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_log_printf", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern void MkLogPrintf(
-                int level,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string file,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string function,
-                int line,
-                [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))]
-                string fmt,
-                VariableArgumentBuffer args
-    );
+            internal static extern void MkLogPrintf(int level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string function, int line, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string fmt);
         }
 
         /// <summary>获取本程序可执行文件路径</summary>
@@ -3312,85 +4079,9 @@ namespace ZLMediaKit
         /// <param name="line">__LINE__</param>
         /// <param name="fmt">printf类型的格式控制字符串</param>
         /// <param name="...">不定长参数</param>
-        public static void MkLogPrintf(int level, string file, string function, int line, string fmt, params object[] args)
+        public static void MkLogPrintf(int level, string file, string function, int line, string fmt)
         {
-            MkLogPrintfImpl(level, file, function, line, fmt, __arglist(args));
-            //MkLogPrintfImpl(level, file, function, line, fmt, VariableArgumentBuffer.Create(args));
-        }
-        private static void MkLogPrintfImpl(int level, string file, string function, int line, string fmt, __arglist)
-        {
-            RuntimeArgumentHandle runtimeArgumentHandle = __arglist;
-            var ptr = new IntPtr(&runtimeArgumentHandle);
-            ptr = IntPtr.Zero;
-            __Internal.MkLogPrintf(level, file, function, line, fmt, ptr);
-        }
-        private static void MkLogPrintfImpl(int level, string file, string function, int line, string fmt, VariableArgumentBuffer args)
-        {
-            __Internal.MkLogPrintf(level, file, function, line, fmt, args);
-        }
-
-        internal unsafe struct VariableArgumentBuffer
-        {
-            public const int BufferLength = 64; // you can increase it if needed
-
-            public fixed byte Buffer[BufferLength];
-
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public static VariableArgumentBuffer Create(params object[] args)
-            {
-                VariableArgumentBuffer buffer = new VariableArgumentBuffer();
-                Write(ref buffer, args);
-                return buffer;
-            }
-
-            public static void Write(ref VariableArgumentBuffer buffer, params object[] args)
-            {
-                if (args == null)
-                    return;
-
-                fixed (byte* ptr = buffer.Buffer)
-                {
-                    int offset = 0;
-
-                    for (int i = 0; i < args.Length; i++)
-                    {
-                        var arg = args[i];
-
-                        if (offset + Marshal.SizeOf(arg) > BufferLength)
-                            throw new ArgumentOutOfRangeException();
-
-                        switch (arg)
-                        {
-                            case byte value:
-                                *(ptr + offset++) = value;
-                                break;
-
-                            case short value:
-                                *(short*)(ptr + offset) = value;
-                                offset += sizeof(short);
-                                break;
-
-                            case int value:
-                                *(int*)(ptr + offset) = value;
-                                offset += sizeof(int);
-                                break;
-
-                            case long value:
-                                *(long*)(ptr + offset) = value;
-                                offset += sizeof(long);
-                                break;
-
-                            case IntPtr value:
-                                *(IntPtr*)(ptr + offset) = value;
-                                offset += IntPtr.Size;
-                                break;
-
-                            default: // TODO: Add more types
-                                throw new NotImplementedException();
-                        }
-                    }
-                }
-            }
+            __Internal.MkLogPrintf(level, file, function, line, fmt);
         }
     }
 
@@ -3405,6 +4096,7 @@ namespace ZLMediaKit
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
     public unsafe delegate ulong OnMkTimer(IntPtr user_data);
 
+    /// <summary>////////////////////////////////////////信号量/////////////////////////////////////////////</summary>
     public unsafe partial class mk_thread
     {
         public partial struct __Internal
@@ -3421,8 +4113,20 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_thread_from_pool_work", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern IntPtr MkThreadFromPoolWork();
 
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_thread_pool_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkThreadPoolCreate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string name, ulong n_thread, int priority);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_thread_pool_release", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkThreadPoolRelease(IntPtr pool);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_thread_from_thread_pool", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkThreadFromThreadPool(IntPtr pool);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_async_do", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkAsyncDo(IntPtr ctx, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_async_do_delay", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkAsyncDoDelay(IntPtr ctx, ulong ms, IntPtr cb, IntPtr user_data);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_sync_do", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkSyncDo(IntPtr ctx, IntPtr cb, IntPtr user_data);
@@ -3432,6 +4136,18 @@ namespace ZLMediaKit
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_timer_release", CallingConvention = __CallingConvention.Cdecl)]
             internal static extern void MkTimerRelease(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_sem_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkSemCreate();
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_sem_release", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkSemRelease(IntPtr sem);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_sem_post", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkSemPost(IntPtr sem, ulong n);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_sem_wait", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkSemWait(IntPtr sem);
         }
 
         /// <summary>获取tcp会话对象所在事件线程</summary>
@@ -3476,6 +4192,35 @@ namespace ZLMediaKit
             return __ret;
         }
 
+        /// <summary>创建线程池</summary>
+        /// <param name="name">线程池名称，方便调试</param>
+        /// <param name="n_thread">线程个数，0时为cpu个数</param>
+        /// <param name="priority">线程优先级，分为PRIORITY_LOWEST = 0,PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_HIGH, PRIORITY_HIGHEST</param>
+        /// <returns>线程池</returns>
+        public static IntPtr MkThreadPoolCreate(string name, ulong n_thread, int priority)
+        {
+            var __ret = __Internal.MkThreadPoolCreate(name, n_thread, priority);
+            return __ret;
+        }
+
+        /// <summary>销毁线程池</summary>
+        /// <param name="pool">线程池</param>
+        /// <returns>0:成功</returns>
+        public static int MkThreadPoolRelease(IntPtr pool)
+        {
+            var __ret = __Internal.MkThreadPoolRelease(pool);
+            return __ret;
+        }
+
+        /// <summary>从线程池获取一个线程</summary>
+        /// <param name="pool">线程池</param>
+        /// <returns>线程</returns>
+        public static IntPtr MkThreadFromThreadPool(IntPtr pool)
+        {
+            var __ret = __Internal.MkThreadFromThreadPool(pool);
+            return __ret;
+        }
+
         /// <summary>切换到事件线程并异步执行</summary>
         /// <param name="ctx">事件线程</param>
         /// <param name="cb">回调函数</param>
@@ -3484,6 +4229,17 @@ namespace ZLMediaKit
         {
             var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             __Internal.MkAsyncDo(ctx, __arg1, user_data);
+        }
+
+        /// <summary>切换到事件线程并延时执行</summary>
+        /// <param name="ctx">事件线程</param>
+        /// <param name="ms">延时时间，单位毫秒</param>
+        /// <param name="cb">回调函数</param>
+        /// <param name="user_data">用户数据指针</param>
+        public static void MkAsyncDoDelay(IntPtr ctx, ulong ms, global::ZLMediaKit.OnMkAsync cb, IntPtr user_data)
+        {
+            var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkAsyncDoDelay(ctx, ms, __arg2, user_data);
         }
 
         /// <summary>切换到事件线程并同步执行</summary>
@@ -3514,6 +4270,31 @@ namespace ZLMediaKit
         public static void MkTimerRelease(IntPtr ctx)
         {
             __Internal.MkTimerRelease(ctx);
+        }
+
+        /// <summary>创建信号量</summary>
+        public static IntPtr MkSemCreate()
+        {
+            var __ret = __Internal.MkSemCreate();
+            return __ret;
+        }
+
+        /// <summary>销毁信号量</summary>
+        public static void MkSemRelease(IntPtr sem)
+        {
+            __Internal.MkSemRelease(sem);
+        }
+
+        /// <summary>信号量加n</summary>
+        public static void MkSemPost(IntPtr sem, ulong n)
+        {
+            __Internal.MkSemPost(sem, n);
+        }
+
+        /// <summary>信号量减1</summary>
+        public static void MkSemWait(IntPtr sem)
+        {
+            __Internal.MkSemWait(sem);
         }
     }
 
@@ -3576,6 +4357,368 @@ namespace ZLMediaKit
         }
     }
 
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkDecode(IntPtr user_data, IntPtr frame);
+
+    public unsafe partial class AVFrame
+    {
+        public partial struct __Internal
+        {
+        }
+
+        public IntPtr __Instance { get; protected set; }
+
+        internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.AVFrame> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.AVFrame>();
+
+        protected bool __ownsNativeInstance;
+
+        internal static AVFrame __CreateInstance(IntPtr native, bool skipVTables = false)
+        {
+            return new AVFrame(native.ToPointer(), skipVTables);
+        }
+
+        internal static AVFrame __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        {
+            if (native == IntPtr.Zero)
+                return null;
+            if (NativeToManagedMap.TryGetValue(native, out var managed))
+                return (AVFrame)managed;
+            var result = __CreateInstance(native, skipVTables);
+            if (saveInstance)
+                NativeToManagedMap[native] = result;
+            return result;
+        }
+
+        internal static AVFrame __CreateInstance(__Internal native, bool skipVTables = false)
+        {
+            return new AVFrame(native, skipVTables);
+        }
+
+        private static void* __CopyValue(__Internal native)
+        {
+            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
+            *(__Internal*)ret = native;
+            return ret.ToPointer();
+        }
+
+        private AVFrame(__Internal native, bool skipVTables = false)
+            : this(__CopyValue(native), skipVTables)
+        {
+            __ownsNativeInstance = true;
+            NativeToManagedMap[__Instance] = this;
+        }
+
+        protected AVFrame(void* native, bool skipVTables = false)
+        {
+            if (native == null)
+                return;
+            __Instance = new IntPtr(native);
+        }
+    }
+
+    public unsafe partial class AVCodecContext
+    {
+        public partial struct __Internal
+        {
+        }
+
+        public IntPtr __Instance { get; protected set; }
+
+        internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.AVCodecContext> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.AVCodecContext>();
+
+        protected bool __ownsNativeInstance;
+
+        internal static AVCodecContext __CreateInstance(IntPtr native, bool skipVTables = false)
+        {
+            return new AVCodecContext(native.ToPointer(), skipVTables);
+        }
+
+        internal static AVCodecContext __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        {
+            if (native == IntPtr.Zero)
+                return null;
+            if (NativeToManagedMap.TryGetValue(native, out var managed))
+                return (AVCodecContext)managed;
+            var result = __CreateInstance(native, skipVTables);
+            if (saveInstance)
+                NativeToManagedMap[native] = result;
+            return result;
+        }
+
+        internal static AVCodecContext __CreateInstance(__Internal native, bool skipVTables = false)
+        {
+            return new AVCodecContext(native, skipVTables);
+        }
+
+        private static void* __CopyValue(__Internal native)
+        {
+            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
+            *(__Internal*)ret = native;
+            return ret.ToPointer();
+        }
+
+        private AVCodecContext(__Internal native, bool skipVTables = false)
+            : this(__CopyValue(native), skipVTables)
+        {
+            __ownsNativeInstance = true;
+            NativeToManagedMap[__Instance] = this;
+        }
+
+        protected AVCodecContext(void* native, bool skipVTables = false)
+        {
+            if (native == null)
+                return;
+            __Instance = new IntPtr(native);
+        }
+    }
+
+    public unsafe partial class mk_transcode
+    {
+        public partial struct __Internal
+        {
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkDecoderCreate(IntPtr track, int thread_num);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_release", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkDecoderRelease(IntPtr ctx, int flush_frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_decode", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkDecoderDecode(IntPtr ctx, IntPtr frame, int async, int enable_merge);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_set_max_async_frame_size", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkDecoderSetMaxAsyncFrameSize(IntPtr ctx, ulong size);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_set_cb", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkDecoderSetCb(IntPtr ctx, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_decoder_get_context", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkDecoderGetContext(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_pix_ref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFramePixRef(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_pix_unref", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkFramePixUnref(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_pix_from_av_frame", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFramePixFromAvFrame(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_frame_pix_get_av_frame", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkFramePixGetAvFrame(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_swscale_create", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkSwscaleCreate(int output, int width, int height);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_swscale_release", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern void MkSwscaleRelease(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_swscale_input_frame", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkSwscaleInputFrame(IntPtr ctx, IntPtr frame, byte* @out);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_swscale_input_frame2", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern IntPtr MkSwscaleInputFrame2(IntPtr ctx, IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_data", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern byte** MkGetAvFrameData(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_line_size", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int* MkGetAvFrameLineSize(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_dts", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern long MkGetAvFrameDts(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_pts", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern long MkGetAvFramePts(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_width", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkGetAvFrameWidth(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_height", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkGetAvFrameHeight(IntPtr frame);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_get_av_frame_format", CallingConvention = __CallingConvention.Cdecl)]
+            internal static extern int MkGetAvFrameFormat(IntPtr frame);
+        }
+
+        /// <summary>创建解码器</summary>
+        /// <param name="track">track对象</param>
+        /// <param name="thread_num">解码线程数，0时为自动</param>
+        /// <returns>返回解码器对象，NULL代表失败</returns>
+        public static IntPtr MkDecoderCreate(IntPtr track, int thread_num)
+        {
+            var __ret = __Internal.MkDecoderCreate(track, thread_num);
+            return __ret;
+        }
+
+        /// <summary>销毁解码器</summary>
+        /// <param name="ctx">解码器对象</param>
+        /// <param name="flush_frame">是否等待所有帧解码成功</param>
+        public static void MkDecoderRelease(IntPtr ctx, int flush_frame)
+        {
+            __Internal.MkDecoderRelease(ctx, flush_frame);
+        }
+
+        /// <summary>解码音视频帧</summary>
+        /// <param name="ctx">解码器</param>
+        /// <param name="frame">帧对象</param>
+        /// <param name="async">是否异步解码</param>
+        /// <param name="enable_merge">是否合并帧解码，有些情况下，需要把时间戳相同的slice合并输入到解码器才能解码</param>
+        public static void MkDecoderDecode(IntPtr ctx, IntPtr frame, int async, int enable_merge)
+        {
+            __Internal.MkDecoderDecode(ctx, frame, async, enable_merge);
+        }
+
+        /// <summary>设置异步解码最大帧缓存积压数限制</summary>
+        public static void MkDecoderSetMaxAsyncFrameSize(IntPtr ctx, ulong size)
+        {
+            __Internal.MkDecoderSetMaxAsyncFrameSize(ctx, size);
+        }
+
+        /// <summary>设置解码输出回调</summary>
+        /// <param name="ctx">解码器</param>
+        /// <param name="cb">回调函数</param>
+        /// <param name="user_data">回调函数用户指针参数</param>
+        public static void MkDecoderSetCb(IntPtr ctx, global::ZLMediaKit.OnMkDecode cb, IntPtr user_data)
+        {
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkDecoderSetCb(ctx, __arg1, user_data);
+        }
+
+        /// <summary>获取FFmpeg原始AVCodecContext对象</summary>
+        /// <param name="ctx">解码器</param>
+        public static global::ZLMediaKit.AVCodecContext MkDecoderGetContext(IntPtr ctx)
+        {
+            var __ret = __Internal.MkDecoderGetContext(ctx);
+            var __result0 = global::ZLMediaKit.AVCodecContext.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
+        /// <summary>创建解码帧mk_frame_pix新引用</summary>
+        /// <param name="frame">原始引用</param>
+        /// <returns>新引用</returns>
+        public static IntPtr MkFramePixRef(IntPtr frame)
+        {
+            var __ret = __Internal.MkFramePixRef(frame);
+            return __ret;
+        }
+
+        /// <summary>解码帧mk_frame_pix减引用</summary>
+        /// <param name="frame">原始引用</param>
+        public static void MkFramePixUnref(IntPtr frame)
+        {
+            __Internal.MkFramePixUnref(frame);
+        }
+
+        /// <summary>从FFmpeg AVFrame转换为mk_frame_pix</summary>
+        /// <param name="frame">FFmpeg AVFrame</param>
+        /// <returns>mk_frame_pix对象</returns>
+        public static IntPtr MkFramePixFromAvFrame(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkFramePixFromAvFrame(__arg0);
+            return __ret;
+        }
+
+        /// <summary>获取FFmpeg AVFrame对象</summary>
+        /// <param name="frame">解码帧mk_frame_pix</param>
+        /// <returns>FFmpeg AVFrame对象</returns>
+        public static global::ZLMediaKit.AVFrame MkFramePixGetAvFrame(IntPtr frame)
+        {
+            var __ret = __Internal.MkFramePixGetAvFrame(frame);
+            var __result0 = global::ZLMediaKit.AVFrame.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
+        /// <summary>创建ffmpeg SwsContext wrapper实例</summary>
+        /// <param name="output">AVPixelFormat类型，AV_PIX_FMT_BGR24==3</param>
+        /// <param name="width">目标宽度，置0时，则与输入时一致</param>
+        /// <param name="height">目标高度，置0时，则与输入时一致</param>
+        /// <returns>SwsContext wrapper 实例</returns>
+        public static IntPtr MkSwscaleCreate(int output, int width, int height)
+        {
+            var __ret = __Internal.MkSwscaleCreate(output, width, height);
+            return __ret;
+        }
+
+        /// <summary>释放ffmpeg SwsContext wrapper实例</summary>
+        /// <param name="ctx">SwsContext wrapper实例</param>
+        public static void MkSwscaleRelease(IntPtr ctx)
+        {
+            __Internal.MkSwscaleRelease(ctx);
+        }
+
+        /// <summary>使用SwsContext转换pix format</summary>
+        /// <param name="ctx">SwsContext wrapper实例</param>
+        /// <param name="frame">pix frame</param>
+        /// <param name="out">转换后存放的数据指针，用户需要确保提前申请并大小足够</param>
+        /// <returns>sws_scale()返回值：the height of the output slice</returns>
+        public static int MkSwscaleInputFrame(IntPtr ctx, IntPtr frame, byte* @out)
+        {
+            var __ret = __Internal.MkSwscaleInputFrame(ctx, frame, @out);
+            return __ret;
+        }
+
+        /// <summary>使用SwsContext转换pix format</summary>
+        /// <param name="ctx">SwsContext wrapper实例</param>
+        /// <param name="frame">pix frame</param>
+        /// <returns>新的pix frame对象，需要使用mk_frame_pix_unref销毁</returns>
+        public static IntPtr MkSwscaleInputFrame2(IntPtr ctx, IntPtr frame)
+        {
+            var __ret = __Internal.MkSwscaleInputFrame2(ctx, frame);
+            return __ret;
+        }
+
+        /// <summary>//////////////////////////////////////////////////////////////////////////////////////////</summary>
+        public static byte** MkGetAvFrameData(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameData(__arg0);
+            return __ret;
+        }
+
+        public static int* MkGetAvFrameLineSize(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameLineSize(__arg0);
+            return __ret;
+        }
+
+        public static long MkGetAvFrameDts(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameDts(__arg0);
+            return __ret;
+        }
+
+        public static long MkGetAvFramePts(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFramePts(__arg0);
+            return __ret;
+        }
+
+        public static int MkGetAvFrameWidth(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameWidth(__arg0);
+            return __ret;
+        }
+
+        public static int MkGetAvFrameHeight(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameHeight(__arg0);
+            return __ret;
+        }
+
+        public static int MkGetAvFrameFormat(global::ZLMediaKit.AVFrame frame)
+        {
+            var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
+            var __ret = __Internal.MkGetAvFrameFormat(__arg0);
+            return __ret;
+        }
+    }
+
     namespace Delegates
     {
         [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
@@ -3615,15 +4758,47 @@ namespace ZLMediaKit
         public unsafe delegate void Action_ushort___IntPtr(ushort server_port, IntPtr session);
 
         [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
-        public unsafe delegate void Action_ushort___IntPtr_string8_ulong(ushort server_port, IntPtr session, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong len);
+        public unsafe delegate void Action_ushort___IntPtr___IntPtr(ushort server_port, IntPtr session, IntPtr buffer);
 
         [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
         public unsafe delegate void Action_ushort___IntPtr_int_string8(ushort server_port, IntPtr session, int code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string msg);
 
         [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
         public unsafe delegate void Action___IntPtr_int_string8(IntPtr client, int code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string msg);
-
-        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
-        public unsafe delegate void Action___IntPtr_string8_ulong(IntPtr client, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data, ulong len);
     }
 }
+namespace ZLMediaKit.__Symbols
+{
+    internal class ZLMediaKit
+    {
+        public static IntPtr _MKCodecH264 { get; }
+        public static IntPtr _MKCodecH265 { get; }
+        public static IntPtr _MKCodecAAC { get; }
+        public static IntPtr _MKCodecG711A { get; }
+        public static IntPtr _MKCodecG711U { get; }
+        public static IntPtr _MKCodecOpus { get; }
+        public static IntPtr _MKCodecL16 { get; }
+        public static IntPtr _MKCodecVP8 { get; }
+        public static IntPtr _MKCodecVP9 { get; }
+        public static IntPtr _MKCodecAV1 { get; }
+        public static IntPtr _MKCodecJPEG { get; }
+        static ZLMediaKit()
+        {
+            var path = "ZLMediaKit";
+            var image = CppSharp.SymbolResolver.LoadImage(ref path);
+            if (image == IntPtr.Zero) throw new global::System.DllNotFoundException(path);
+            _MKCodecH264 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecH264");
+            _MKCodecH265 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecH265");
+            _MKCodecAAC = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecAAC");
+            _MKCodecG711A = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecG711A");
+            _MKCodecG711U = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecG711U");
+            _MKCodecOpus = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecOpus");
+            _MKCodecL16 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecL16");
+            _MKCodecVP8 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecVP8");
+            _MKCodecVP9 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecVP9");
+            _MKCodecAV1 = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecAV1");
+            _MKCodecJPEG = CppSharp.SymbolResolver.ResolveSymbol(image, "MKCodecJPEG");
+        }
+    }
+}
+
