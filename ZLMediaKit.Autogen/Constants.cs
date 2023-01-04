@@ -20,4 +20,9 @@ namespace ZLMediaKit
         /// </summary>
         Callback = 1 << 2
     }
+
+    internal static class Constants
+    {
+        public const string ApiDll = "mk_api";
+    }
 }

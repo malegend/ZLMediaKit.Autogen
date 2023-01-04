@@ -96,7 +96,7 @@ namespace ZLMediaKitTest
          * @param url_info 播放url相关信息
          * @param sender 播放客户端相关信息
          */
-        static void On_mk_media_not_found(IntPtr url_info,
+        static int On_mk_media_not_found(IntPtr url_info,
                                             IntPtr sender)
         {
             sbyte[] vs = new sbyte[64];
@@ -113,6 +113,7 @@ namespace ZLMediaKitTest
                        mk_events_objects.MkMediaInfoGetApp(url_info),
                        mk_events_objects.MkMediaInfoGetStream(url_info),
                        mk_events_objects.MkMediaInfoGetParams(url_info));
+            return 0;
         }
 
         /**
@@ -192,7 +193,7 @@ namespace ZLMediaKitTest
             //拦截api: /index/api/webrtc
             else if (string.Compare(url, "/index/api/webrtc") == 0)
             {
-                mk_events_objects.MkWebrtcHttpResponseInvokerDo(invoker, parser, sender);
+                //mk_events_objects.MkWebrtcHttpResponseInvokerDo(invoker, parser, sender);
             }
             else
             {
@@ -452,7 +453,7 @@ namespace ZLMediaKitTest
             mk_media.MkMediaInputH264((IntPtr)user_data, frame, size, 0, 0);
         }
 
-        static void Main()
+        static void TheMain()
         {
             var init_path = mk_util.MkUtilGetExeDir("c_api.ini");
             var ssl_path = mk_util.MkUtilGetExeDir("ssl.pl2");
@@ -495,9 +496,86 @@ namespace ZLMediaKitTest
             };
             MkEvents.MkEventsListen(events);
 
+            var rtsp = "rtsp://10.10.10.222/user=remote&password=miaodun2022&channel=1&stream=0.sdp?real_stream";
+
+            //rtsp://10.10.10.222/user=remote&password=miaodun2022&channel=1&stream=0.sdp?real_stream
+            //var mediaSource = mk_media.MkMediaCreate("_defaultVhost_", "live", "0", 2, 0, 0);
+            //using (var video = new CodecArgs.Video())
+            //using (var audio = new CodecArgs.Audio())
+            //{
+            //    var codec = new CodecArgs() { audio = audio, video = video };
+            //    var mediaTrack = mk_track.MkTrackCreate(mk_frame.MKCodecH264 | mk_frame.MKCodecAAC, codec);
+
+            //    mk_media.MkMediaInitTrack(mediaSource, mediaTrack);
+            //    //mk_track.MkTrackAddDelegate(mediaTrack, )
+            //    mk_media.MkMediaRelease(mediaTrack);
+            //    mk_media.MkMediaRelease(mediaSource);
+            //}
+
+            var apc = new Api();
+            apc.ServerAddress = "http://127.0.0.1:7880";
+            var smk = apc.AddStreamProxy("rtsp", "defaultHost", "live", "test", rtsp, enableRtmp: true);
+            if (smk.Code == ApiCode.Success)
+            {
+                Log_printf(2, $"拉流代理创建成功。");
+
+            }
+            else
+            {
+                Log_printf(2, $"无法创建拉流代理:{smk.Message}");
+            }
+
+
             Log_printf(2, "media server started!\r\nPress Enter to exit.\r\n");
             Console.ReadLine();
+            if (smk.Code == ApiCode.Success)
+            {
+                apc.DelStreamProxy(smk.Data.Key);
+            }
             mk_common.MkStopAllServer();
+
+        }
+
+
+        static void Main()
+        {
+
+            var rtsp = "rtsp://10.10.10.222/user=remote&password=miaodun2022&channel=1&stream=1.sdp?real_stream";
+
+
+            var apc = new Api();
+            apc.ServerAddress = "http://127.0.0.1:7880";
+            var smk = apc.AddStreamProxy("rtsp", "defaultHost", "live", "test", rtsp,
+                enableHls: false,
+                enableRtmp: true,
+                enableAudio: true);
+            if (smk.Code == ApiCode.Success)
+            {
+                Log_printf(2, $"拉流代理创建成功。");
+                while (true)
+                {
+                    var ms = Console.ReadLine();
+                    if (ms == "exit")
+                        break;
+                    else
+                    {
+                        var capt = apc.GetSnap("rtmp://127.0.0.1:1935/live/test");
+                        if (capt.Code == ApiCode.Success)
+                        {
+                            if (System.IO.File.Exists(@"D:\ttt.jpg"))
+                                System.IO.File.Delete(@"D:\ttt.jpg");
+                            System.IO.File.WriteAllBytes(@"D:\ttt.jpg", capt.Raw);
+                            Console.WriteLine(capt);
+                        }
+                    }
+                }
+                apc.DelStreamProxy(smk.Data.Key);
+            }
+            else
+            {
+                Log_printf(2, $"无法创建拉流代理:{smk.Message}");
+            }
+
         }
     }
 }
