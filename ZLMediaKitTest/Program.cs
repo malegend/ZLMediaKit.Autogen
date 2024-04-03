@@ -16,8 +16,9 @@ namespace ZLMediaKitTest
          * @param regist 注册为1，注销为0
          * @param sender 该MediaSource对象
          */
-        static void On_mk_media_changed(int regist, IntPtr sender)
+        static void On_mk_media_changed(int regist, IntPtr senderPtr)
         {
+            var sender = (MkMediaSourceT)senderPtr;
             Log_printf(
                 LOG_LEV,
                 "{0} {1}/{2}/{3}/{4}",
@@ -37,10 +38,12 @@ namespace ZLMediaKitTest
          * @param invoker 执行invoker返回鉴权结果
          * @param sender 该tcp客户端相关信息
          */
-        static void On_mk_media_publish(IntPtr url_info,
+        static void On_mk_media_publish(IntPtr url,
                                   IntPtr invoker,
-                                  IntPtr sender)
+                                  IntPtr sock)
         {
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -57,7 +60,7 @@ namespace ZLMediaKitTest
                        mk_events_objects.MkMediaInfoGetParams(url_info));
 
             //允许推流，并且允许转hls/mp4
-            mk_events_objects.MkPublishAuthInvokerDo(invoker, null, 1, 1);
+            mk_events_objects.MkPublishAuthInvokerDo((MkPublishAuthInvokerT)invoker, null, 1, 1);
         }
 
         /**
@@ -67,11 +70,12 @@ namespace ZLMediaKitTest
          * @param invoker 执行invoker返回鉴权结果
          * @param sender 播放客户端相关信息
          */
-        static void On_mk_media_play(IntPtr url_info,
+        static void On_mk_media_play(IntPtr url,
                                        IntPtr invoker,
-                                       IntPtr sender)
+                                       IntPtr sock)
         {
-
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -88,7 +92,7 @@ namespace ZLMediaKitTest
                        mk_events_objects.MkMediaInfoGetParams(url_info));
 
             //允许播放
-            mk_events_objects.MkAuthInvokerDo(invoker, null);
+            mk_events_objects.MkAuthInvokerDo((MkAuthInvokerT)invoker, null);
         }
 
         /**
@@ -96,9 +100,11 @@ namespace ZLMediaKitTest
          * @param url_info 播放url相关信息
          * @param sender 播放客户端相关信息
          */
-        static int On_mk_media_not_found(IntPtr url_info,
-                                            IntPtr sender)
+        static int On_mk_media_not_found(IntPtr url,
+                                        IntPtr sock)
         {
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -120,8 +126,9 @@ namespace ZLMediaKitTest
          * 某个流无人消费时触发，目的为了实现无人观看时主动断开拉流等业务逻辑
          * @param sender 该MediaSource对象
          */
-        static void On_mk_media_no_reader(IntPtr sender)
+        static void On_mk_media_no_reader(IntPtr senderPtr)
         {
+            var sender = (MkMediaSourceT)senderPtr;
             Log_printf(LOG_LEV,
                        "{0}/{1}/{2}/{3}",
                        //"%s/%s/%s/%s",
@@ -139,11 +146,13 @@ namespace ZLMediaKitTest
          * @param sender http客户端相关信息
          */
         //测试url : http://127.0.0.1/api/test
-        private static void On_mk_http_request(IntPtr parser,
+        private static void On_mk_http_request(IntPtr parserPtr,
                                          IntPtr invoker,
                                          int* consumed,
-                                         IntPtr sender)
+                                         IntPtr sock)
         {
+            var parser = (MkParserT)parserPtr;
+            var sender = (MkSockInfoT)sock;
             ulong tmp = 0;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
@@ -186,7 +195,7 @@ namespace ZLMediaKitTest
                                       "</body>\n" +
                                       "</html>";
                     var body = mk_events_objects.MkHttpBodyFromString(content, 0);
-                    mk_events_objects.MkHttpResponseInvokerDo(invoker, 200, &response_header, body);
+                    mk_events_objects.MkHttpResponseInvokerDo((MkHttpResponseInvokerT)invoker, 200, &response_header, body);
                     mk_events_objects.MkHttpBodyRelease(body);
                 }
             }
@@ -210,12 +219,14 @@ namespace ZLMediaKitTest
          * @param invoker 执行invoker返回本次访问文件的结果
          * @param sender http客户端相关信息
          */
-        static void On_mk_http_access(IntPtr parser,
+        static void On_mk_http_access(IntPtr parserPtr,
                                         string path,
                                         int is_dir,
                                         IntPtr invoker,
-                                        IntPtr sender)
+                                        IntPtr sock)
         {
+            var parser = (MkParserT)parserPtr;
+            var sender = (MkSockInfoT)sock;
             ulong tmp = 0;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
@@ -235,7 +246,7 @@ namespace ZLMediaKitTest
                        mk_events_objects.MkParserGetContent(parser, ref tmp));
 
             //有访问权限,每次访问文件都需要鉴权
-            mk_events_objects.MkHttpAccessPathInvokerDo(invoker, null, null, 0);
+            mk_events_objects.MkHttpAccessPathInvokerDo((MkHttpAccessPathInvokerT)invoker, null, null, 0);
         }
 
         /**
@@ -245,11 +256,12 @@ namespace ZLMediaKitTest
          * @param path 文件绝对路径,覆盖之可以重定向到其他文件
          * @param sender http客户端相关信息
          */
-        static void On_mk_http_before_access(IntPtr parser,
+        static void On_mk_http_before_access(IntPtr parserPtr,
                                                sbyte* path,
-                                               IntPtr sender)
+                                               IntPtr sock)
         {
-
+            var parser = (MkParserT)parserPtr;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             ulong tmp = 0;
             fixed (sbyte* ip = &vs[0])
@@ -276,10 +288,12 @@ namespace ZLMediaKitTest
          * @param invoker 执行invoker返回是否需要rtsp专属认证
          * @param sender rtsp客户端相关信息
          */
-        static void On_mk_rtsp_get_realm(IntPtr url_info,
+        static void On_mk_rtsp_get_realm(IntPtr url,
                                            IntPtr invoker,
-                                           IntPtr sender)
+                                           IntPtr sock)
         {
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -296,7 +310,7 @@ namespace ZLMediaKitTest
                        mk_events_objects.MkMediaInfoGetParams(url_info));
 
             //rtsp播放默认鉴权
-            mk_events_objects.MkRtspGetRealmInvokerDo(invoker, "zlmediakit");
+            mk_events_objects.MkRtspGetRealmInvokerDo((MkRtspGetRealmInvokerT)invoker, "zlmediakit");
         }
 
         /**
@@ -309,13 +323,15 @@ namespace ZLMediaKitTest
          * @param invoker  执行invoker返回rtsp专属认证的密码
          * @param sender rtsp客户端信息
          */
-        static void On_mk_rtsp_auth(IntPtr url_info,
+        static void On_mk_rtsp_auth(IntPtr url,
                                       string realm,
                                       string user_name,
                                       int must_no_encrypt,
                                       IntPtr invoker,
-                                      IntPtr sender)
+                                      IntPtr sock)
         {
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
 
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
@@ -334,14 +350,15 @@ namespace ZLMediaKitTest
                        realm, user_name, (int)must_no_encrypt);
 
             //rtsp播放用户名跟密码一致
-            mk_events_objects.MkRtspAuthInvokerDo(invoker, 0, user_name);
+            mk_events_objects.MkRtspAuthInvokerDo((MkRtspAuthInvokerT)invoker, 0, user_name);
         }
 
         /**
          * 录制mp4分片文件成功后广播
          */
-        static void On_mk_record_mp4(IntPtr mp4)
+        static void On_mk_record_mp4(IntPtr mp4Ptr)
         {
+            var mp4 = (MkMp4InfoT)mp4Ptr;
             Log_printf(LOG_LEV,
                        "start_time: {0}\ntime_len: {1}\nfile_size: {2}\nfile_path: {3}\nfile_name: {4}\nfolder: {5}\nurl: {6}\nvhost: {7}\napp: {8}\nstream: {9}\n",
                        //"\nstart_time: %d\ntime_len: %d\nfile_size: %d\nfile_path: %s\nfile_name: %s\nfolder: %s\nurl: %s\nvhost: %s\napp: %s\nstream: %s\n",
@@ -363,9 +380,9 @@ namespace ZLMediaKitTest
         static void On_mk_shell_login(string user_name,
                                         string passwd,
                                         IntPtr invoker,
-                                        IntPtr sender)
+                                        IntPtr sock)
         {
-
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -377,7 +394,7 @@ namespace ZLMediaKitTest
                       mk_tcp.MkSockInfoPeerPort(sender),
                       user_name, passwd);
             //允许登录shell
-            mk_events_objects.MkAuthInvokerDo(invoker, null);
+            mk_events_objects.MkAuthInvokerDo((MkAuthInvokerT)invoker, null);
         }
 
         /**
@@ -389,12 +406,14 @@ namespace ZLMediaKitTest
          * @param peer_ip 客户端ip
          * @param peer_port 客户端端口号
          */
-        static void On_mk_flow_report(IntPtr url_info,
+        static void On_mk_flow_report(IntPtr url,
                                         ulong total_bytes,
                                         ulong total_seconds,
                                         int is_player,
-                                        IntPtr sender)
+                                        IntPtr sock)
         {
+            var url_info = (MkMediaInfoT)url;
+            var sender = (MkSockInfoT)sock;
             sbyte[] vs = new sbyte[64];
             fixed (sbyte* ip = &vs[0])
                 Log_printf(LOG_LEV,
@@ -450,7 +469,7 @@ namespace ZLMediaKitTest
         static void On_h264_frame(void* user_data, mk_h264_splitter splitter, IntPtr frame, int size)
         {
             Thread.Sleep(40);
-            mk_media.MkMediaInputH264((IntPtr)user_data, frame, size, 0, 0);
+            mk_media.MkMediaInputH264((MkMediaT)user_data, frame, size, 0, 0);
         }
 
         static void TheMain()
