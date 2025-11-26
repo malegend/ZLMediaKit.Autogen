@@ -26,3 +26,12 @@
  
  ## 2024-04-03
  更新至2024年4月2日拉取版本。
+
+
+## 2025-11-26
+更新至2025-11-25日发布版本。
+
+mk_api.dll 版本：8.0.0.1
+
+[ZLMediakit api 2025-11-25 commit, git hash:7b2bd22](https://github.com/ZLMediaKit/ZLMediaKit/commit/7b2bd221eac4086358d081f4f0bfeb2a95b050f2)
+
