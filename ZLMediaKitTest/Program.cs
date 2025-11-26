@@ -358,20 +358,20 @@ namespace ZLMediaKitTest
          */
         static void On_mk_record_mp4(IntPtr mp4Ptr)
         {
-            var mp4 = (MkMp4InfoT)mp4Ptr;
+            var mp4 = (MkRecordInfoT)mp4Ptr;
             Log_printf(LOG_LEV,
                        "start_time: {0}\ntime_len: {1}\nfile_size: {2}\nfile_path: {3}\nfile_name: {4}\nfolder: {5}\nurl: {6}\nvhost: {7}\napp: {8}\nstream: {9}\n",
                        //"\nstart_time: %d\ntime_len: %d\nfile_size: %d\nfile_path: %s\nfile_name: %s\nfolder: %s\nurl: %s\nvhost: %s\napp: %s\nstream: %s\n",
-                       mk_events_objects.MkMp4InfoGetStartTime(mp4),
-                       mk_events_objects.MkMp4InfoGetTimeLen(mp4),
-                       mk_events_objects.MkMp4InfoGetFileSize(mp4),
-                       mk_events_objects.MkMp4InfoGetFilePath(mp4),
-                       mk_events_objects.MkMp4InfoGetFileName(mp4),
-                       mk_events_objects.MkMp4InfoGetFolder(mp4),
-                       mk_events_objects.MkMp4InfoGetUrl(mp4),
-                       mk_events_objects.MkMp4InfoGetVhost(mp4),
-                       mk_events_objects.MkMp4InfoGetApp(mp4),
-                       mk_events_objects.MkMp4InfoGetStream(mp4));
+                       mk_events_objects.MkRecordInfoGetStartTime(mp4),
+                       mk_events_objects.MkRecordInfoGetTimeLen(mp4),
+                       mk_events_objects.MkRecordInfoGetFileSize(mp4),
+                       mk_events_objects.MkRecordInfoGetFilePath(mp4),
+                       mk_events_objects.MkRecordInfoGetFileName(mp4),
+                       mk_events_objects.MkRecordInfoGetFolder(mp4),
+                       mk_events_objects.MkRecordInfoGetUrl(mp4),
+                       mk_events_objects.MkRecordInfoGetVhost(mp4),
+                       mk_events_objects.MkRecordInfoGetApp(mp4),
+                       mk_events_objects.MkRecordInfoGetStream(mp4));
         }
 
         /**

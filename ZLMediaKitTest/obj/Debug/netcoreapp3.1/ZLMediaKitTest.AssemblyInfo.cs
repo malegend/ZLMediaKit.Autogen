@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZLMediaKitTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f35c25fbd6037352df4ac4c6e6012e7743e4eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZLMediaKitTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZLMediaKitTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

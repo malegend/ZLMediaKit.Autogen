@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{010685B6-1D46-4410-85E6-A0FB84A8AEE6}|ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj|d:\\github\\zlmediakitrelease\\20240402\\zlmediakit.autogen\\zlmediakit.autogen\\zlmediakit.operator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{010685B6-1D46-4410-85E6-A0FB84A8AEE6}|ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj|solutionrelative:zlmediakit.autogen\\zlmediakit.operator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{010685B6-1D46-4410-85E6-A0FB84A8AEE6}|ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj|d:\\github\\zlmediakitrelease\\20240402\\zlmediakit.autogen\\zlmediakit.autogen\\zlmediakit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{010685B6-1D46-4410-85E6-A0FB84A8AEE6}|ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj|solutionrelative:zlmediakit.autogen\\zlmediakit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDF28EAD-AF38-4C20-9824-E3DAF3641A79}|ZLMediaKitTest\\ZLMediaKitTest.csproj|d:\\github\\zlmediakitrelease\\20240402\\zlmediakit.autogen\\zlmediakittest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDF28EAD-AF38-4C20-9824-E3DAF3641A79}|ZLMediaKitTest\\ZLMediaKitTest.csproj|solutionrelative:zlmediakittest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ZLMediaKit.Operator.cs",
+              "DocumentMoniker": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Operator.cs",
+              "RelativeDocumentMoniker": "ZLMediaKit.Autogen\\ZLMediaKit.Operator.cs",
+              "ToolTip": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Operator.cs",
+              "RelativeToolTip": "ZLMediaKit.Autogen\\ZLMediaKit.Operator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T08:31:27.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ZLMediaKit.cs",
+              "DocumentMoniker": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.cs",
+              "RelativeDocumentMoniker": "ZLMediaKit.Autogen\\ZLMediaKit.cs",
+              "ToolTip": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.cs",
+              "RelativeToolTip": "ZLMediaKit.Autogen\\ZLMediaKit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T08:08:50.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKitTest\\Program.cs",
+              "RelativeDocumentMoniker": "ZLMediaKitTest\\Program.cs",
+              "ToolTip": "D:\\GitHub\\ZLMediaKitRelease\\20240402\\ZLMediaKit.Autogen\\ZLMediaKitTest\\Program.cs",
+              "RelativeToolTip": "ZLMediaKitTest\\Program.cs",
+              "ViewState": "AQIAAFcBAAAAAAAAAIAzwGQBAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T05:53:12.015Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

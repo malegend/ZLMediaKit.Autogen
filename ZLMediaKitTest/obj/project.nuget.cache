@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "b2crTpFs2jTT3gLo8Rbr8v9+3F+MyMyZ3bS2S3zSC/TG6h8od7+ZTGvOKneXCdT0UiBDVFQUltxR5908KxefAw==",
+  "dgSpecHash": "SexIq2ZN5v0=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

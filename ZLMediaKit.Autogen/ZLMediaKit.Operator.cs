@@ -133,16 +133,16 @@ namespace ZLMediaKit
 
 
     }
-    public unsafe partial class MkMp4InfoT
+    public unsafe partial class MkRecordInfoT
     {
 
-        public static implicit operator void*(MkMp4InfoT value) => value.__Instance.ToPointer();
+        public static implicit operator void*(MkRecordInfoT value) => value.__Instance.ToPointer();
 
-        public static implicit operator IntPtr(MkMp4InfoT value) => value.__Instance;
+        public static implicit operator IntPtr(MkRecordInfoT value) => value.__Instance;
 
-        public static explicit operator MkMp4InfoT(void* value) => new MkMp4InfoT(value);
+        public static explicit operator MkRecordInfoT(void* value) => new MkRecordInfoT(value);
 
-        public static explicit operator MkMp4InfoT(IntPtr value) => __CreateInstance(value);
+        public static explicit operator MkRecordInfoT(IntPtr value) => __CreateInstance(value);
 
 
     }

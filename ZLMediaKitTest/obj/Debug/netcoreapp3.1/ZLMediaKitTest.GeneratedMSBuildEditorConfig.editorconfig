@@ -1,3 +1,8 @@
 is_global = true
 build_property.RootNamespace = ZLMediaKitTest
-build_property.ProjectDir = D:\GitHub\ZLMediaKit.Autogen\ZLMediaKitTest\
+build_property.ProjectDir = D:\GitHub\ZLMediaKitRelease\20251125\ZLMediaKit.Autogen\ZLMediaKitTest\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

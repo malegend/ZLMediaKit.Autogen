@@ -5,19 +5,13 @@
 // </auto-generated>
 // ----------------------------------------------------------------------------
 using System;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
-using CallingConvention = global::System.Runtime.InteropServices.CallingConvention;
-using IntPtr = global::System.IntPtr;
 
 namespace ZLMediaKit
 {
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnUserDataFree(IntPtr user_data);
-
-    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public unsafe delegate void OnMkWebrtcGetAnswerSdp(IntPtr user_data, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string answer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err);
 
     public unsafe partial class MkConfig : IDisposable
     {
@@ -74,7 +68,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -104,7 +98,7 @@ namespace ZLMediaKit
             __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.MkConfig.__Internal));
             __ownsNativeInstance = true;
             NativeToManagedMap[__Instance] = this;
-            *((global::ZLMediaKit.MkConfig.__Internal*)__Instance) = *((global::ZLMediaKit.MkConfig.__Internal*)__0.__Instance);
+            *((global::ZLMediaKit.MkConfig.__Internal*) __Instance) = *((global::ZLMediaKit.MkConfig.__Internal*) __0.__Instance);
             if (__0.__log_file_path_OwnsNativeMemory)
                 this.LogFilePath = __0.LogFilePath;
             if (__0.__ini_OwnsNativeMemory)
@@ -117,12 +111,12 @@ namespace ZLMediaKit
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
         }
 
         partial void DisposePartial(bool disposing);
 
-        internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+        internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
         {
             if (__Instance == IntPtr.Zero)
                 return;
@@ -201,7 +195,7 @@ namespace ZLMediaKit
                 var __bytePtr0 = Marshal.AllocHGlobal(__bytes0.Length + 1);
                 Marshal.Copy(__bytes0, 0, __bytePtr0, __bytes0.Length);
                 Marshal.WriteByte(__bytePtr0 + __bytes0.Length, 0);
-                ((__Internal*)__Instance)->log_file_path = (IntPtr)__bytePtr0;
+                ((__Internal*)__Instance)->log_file_path = (IntPtr) __bytePtr0;
             }
         }
 
@@ -252,7 +246,7 @@ namespace ZLMediaKit
                 var __bytePtr0 = Marshal.AllocHGlobal(__bytes0.Length + 1);
                 Marshal.Copy(__bytes0, 0, __bytePtr0, __bytes0.Length);
                 Marshal.WriteByte(__bytePtr0 + __bytes0.Length, 0);
-                ((__Internal*)__Instance)->ini = (IntPtr)__bytePtr0;
+                ((__Internal*)__Instance)->ini = (IntPtr) __bytePtr0;
             }
         }
 
@@ -290,7 +284,7 @@ namespace ZLMediaKit
                 var __bytePtr0 = Marshal.AllocHGlobal(__bytes0.Length + 1);
                 Marshal.Copy(__bytes0, 0, __bytePtr0, __bytes0.Length);
                 Marshal.WriteByte(__bytePtr0 + __bytes0.Length, 0);
-                ((__Internal*)__Instance)->ssl = (IntPtr)__bytePtr0;
+                ((__Internal*)__Instance)->ssl = (IntPtr) __bytePtr0;
             }
         }
 
@@ -315,7 +309,7 @@ namespace ZLMediaKit
                 var __bytePtr0 = Marshal.AllocHGlobal(__bytes0.Length + 1);
                 Marshal.Copy(__bytes0, 0, __bytePtr0, __bytes0.Length);
                 Marshal.WriteByte(__bytePtr0 + __bytes0.Length, 0);
-                ((__Internal*)__Instance)->ssl_pwd = (IntPtr)__bytePtr0;
+                ((__Internal*)__Instance)->ssl_pwd = (IntPtr) __bytePtr0;
             }
         }
     }
@@ -330,8 +324,8 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_stop_all_server", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkStopAllServer();
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_env_init1", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkEnvInit1(int thread_num, int log_level, int log_mask, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string log_file_path, int log_file_days, int ini_is_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ini, int ssl_is_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssl, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssl_pwd);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_env_init2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkEnvInit2(int thread_num, int log_level, int log_mask, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string log_file_path, int log_file_days, int ini_is_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ini, int ssl_is_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssl, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssl_pwd);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_set_log", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkSetLog(int file_max_size, int file_max_count);
@@ -357,11 +351,11 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtc_server_start", CallingConvention = CallingConvention.Cdecl)]
             internal static extern ushort MkRtcServerStart(ushort port);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_get_answer_sdp", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkWebrtcGetAnswerSdp(IntPtr user_data, IntPtr cb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string offer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string url);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_signaling_server_start", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ushort MkSignalingServerStart(ushort port, int ssl);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_get_answer_sdp2", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkWebrtcGetAnswerSdp2(IntPtr user_data, IntPtr user_data_free, IntPtr cb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string offer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string url);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_ice_server_start", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ushort MkIceServerStart(ushort port);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_srt_server_start", CallingConvention = CallingConvention.Cdecl)]
             internal static extern ushort MkSrtServerStart(ushort port);
@@ -371,38 +365,67 @@ namespace ZLMediaKit
         }
 
         /// <summary>初始化环境，调用该库前需要先调用此函数</summary>
-        /// <param name="cfg">库运行相关参数</param>
+        /// <param name="cfg">
+        /// <para>库运行相关参数</para>
+        /// <para>Initialize the environment, you need to call this function before calling this library</para>
+        /// </param>
+        /// <param name="cfg">Library running related parameters</param>
+        /// <remarks>[AUTO-TRANSLATED:58d6d220]</remarks>
         public static void MkEnvInit(global::ZLMediaKit.MkConfig cfg)
         {
             var __arg0 = cfg is null ? IntPtr.Zero : cfg.__Instance;
             __Internal.MkEnvInit(__arg0);
         }
 
-        /// <summary>关闭所有服务器，请在main函数退出时调用</summary>
+        /// <summary>
+        /// <para>关闭所有服务器，请在main函数退出时调用</para>
+        /// <para>Close all servers, please call this function when exiting the main function</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:f1148928]</remarks>
         public static void MkStopAllServer()
         {
             __Internal.MkStopAllServer();
         }
 
         /// <summary>基础类型参数版本的mk_env_init，为了方便其他语言调用</summary>
-        /// <param name="thread_num">线程数</param>
-        /// <param name="log_level">日志级别,支持0~4</param>
-        /// <param name="log_mask">日志输出方式掩模，请查看LOG_CONSOLE、LOG_FILE、LOG_CALLBACK等宏</param>
-        /// <param name="log_file_path">文件日志保存路径,路径可以不存在(内部可以创建文件夹)，设置为NULL关闭日志输出至文件</param>
-        /// <param name="log_file_days">文件日志保存天数,设置为0关闭日志文件</param>
-        /// <param name="ini_is_path">配置文件是内容还是路径</param>
-        /// <param name="ini">配置文件内容或路径，可以为NULL,如果该文件不存在，那么将导出默认配置至该文件</param>
+        /// <param name="ssl">ssl certificate content or path, can be NULL</param>
+        /// <param name="ssl_is_path">Is the ssl certificate content or path</param>
+        /// <param name="ini">Configuration file content or path, can be NULL, if the file does not exist, then the default configuration will be exported to the file</param>
+        /// <param name="ini_is_path">Is the configuration file content or path</param>
+        /// <param name="log_file_days">File log save days, set to 0 to disable log file</param>
+        /// <param name="log_file_path">File log save path, the path can be non-existent (folders can be created internally), set to NULL to disable log output to file</param>
+        /// <param name="log_mask">Log output mode mask, please refer to LOG_CONSOLE, LOG_FILE, LOG_CALLBACK macros</param>
+        /// <param name="log_level">Log level, supports 0~4</param>
+        /// <param name="thread_num">Number of threads</param>
+        /// <param name="ssl_pwd">Certificate password, can be NULL</param>
+        /// <param name="ssl_pwd">
+        /// <para>证书密码，可以为NULL</para>
+        /// <para>mk_env_init version of basic type parameters, for easy calling by other languages</para>
+        /// </param>
         /// <param name="ssl_is_path">ssl证书是内容还是路径</param>
+        /// <param name="ini">配置文件内容或路径，可以为NULL,如果该文件不存在，那么将导出默认配置至该文件</param>
+        /// <param name="ini_is_path">配置文件是内容还是路径</param>
+        /// <param name="log_file_days">文件日志保存天数,设置为0关闭日志文件</param>
+        /// <param name="log_file_path">文件日志保存路径,路径可以不存在(内部可以创建文件夹)，设置为NULL关闭日志输出至文件</param>
+        /// <param name="log_mask">日志输出方式掩模，请查看LOG_CONSOLE、LOG_FILE、LOG_CALLBACK等宏</param>
+        /// <param name="log_level">日志级别,支持0~4</param>
+        /// <param name="thread_num">线程数</param>
         /// <param name="ssl">ssl证书内容或路径，可以为NULL</param>
-        /// <param name="ssl_pwd">证书密码，可以为NULL</param>
-        public static void MkEnvInit1(int thread_num, int log_level, int log_mask, string log_file_path, int log_file_days, int ini_is_path, string ini, int ssl_is_path, string ssl, string ssl_pwd)
+        /// <remarks>[AUTO-TRANSLATED:12901102]</remarks>
+        public static void MkEnvInit2(int thread_num, int log_level, int log_mask, string log_file_path, int log_file_days, int ini_is_path, string ini, int ssl_is_path, string ssl, string ssl_pwd)
         {
-            __Internal.MkEnvInit1(thread_num, log_level, log_mask, log_file_path, log_file_days, ini_is_path, ini, ssl_is_path, ssl, ssl_pwd);
+            __Internal.MkEnvInit2(thread_num, log_level, log_mask, log_file_path, log_file_days, ini_is_path, ini, ssl_is_path, ssl, ssl_pwd);
         }
 
         /// <summary>设置日志文件</summary>
         /// <param name="file_max_size">单个切片文件大小(MB)</param>
-        /// <param name="file_max_count">切片文件个数</param>
+        /// <param name="file_max_count">
+        /// <para>切片文件个数</para>
+        /// <para>Set the log file</para>
+        /// </param>
+        /// <param name="file_max_size">Single slice file size (MB)</param>
+        /// <param name="file_max_count">Number of slice files</param>
+        /// <remarks>[AUTO-TRANSLATED:59204140]</remarks>
         public static void MkSetLog(int file_max_size, int file_max_count)
         {
             __Internal.MkSetLog(file_max_size, file_max_count);
@@ -410,16 +433,33 @@ namespace ZLMediaKit
 
         /// <summary>设置配置项</summary>
         /// <param name="key">配置项名</param>
-        /// <param name="val">配置项值</param>
-        /// <remarks>请使用mk_ini_set_option替代</remarks>
+        /// <param name="val">
+        /// <para>配置项值</para>
+        /// <para>Set the configuration item</para>
+        /// </param>
+        /// <param name="key">Configuration item name</param>
+        /// <param name="val">Configuration item value</param>
+        /// <remarks>
+        /// <para>请使用mk_ini_set_option替代</para>
+        /// <para>Please use mk_ini_set_option instead</para>
+        /// <para>[AUTO-TRANSLATED:93d02c07]</para>
+        /// </remarks>
         public static void MkSetOption(string key, string val)
         {
             __Internal.MkSetOption(key, val);
         }
 
         /// <summary>获取配置项的值</summary>
-        /// <param name="key">配置项名</param>
-        /// <remarks>请使用mk_ini_get_option替代</remarks>
+        /// <param name="key">
+        /// <para>配置项名</para>
+        /// <para>Get the value of the configuration item</para>
+        /// </param>
+        /// <param name="key">Configuration item name</param>
+        /// <remarks>
+        /// <para>请使用mk_ini_get_option替代</para>
+        /// <para>Please use mk_ini_get_option instead</para>
+        /// <para>[AUTO-TRANSLATED:6222a231]</para>
+        /// </remarks>
         public static string MkGetOption(string key)
         {
             var __ret = __Internal.MkGetOption(key);
@@ -429,7 +469,16 @@ namespace ZLMediaKit
         /// <summary>创建http[s]服务器</summary>
         /// <param name="port">htt监听端口，推荐80，传入0则随机分配</param>
         /// <param name="ssl">是否为ssl类型服务器</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">htt listening port, recommended 80, pass in 0 to randomly allocate</param>
+        /// <param name="ssl">Whether it is an ssl type server</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create http[s] server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:4ca78101]</para>
+        /// </returns>
         public static ushort MkHttpServerStart(ushort port, int ssl)
         {
             var __ret = __Internal.MkHttpServerStart(port, ssl);
@@ -439,7 +488,16 @@ namespace ZLMediaKit
         /// <summary>创建rtsp[s]服务器</summary>
         /// <param name="port">rtsp监听端口，推荐554，传入0则随机分配</param>
         /// <param name="ssl">是否为ssl类型服务器</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">rtsp listening port, recommended 554, pass in 0 to randomly allocate</param>
+        /// <param name="ssl">Whether it is an ssl type server</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create rtsp[s] server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:3d984d90]</para>
+        /// </returns>
         public static ushort MkRtspServerStart(ushort port, int ssl)
         {
             var __ret = __Internal.MkRtspServerStart(port, ssl);
@@ -449,7 +507,16 @@ namespace ZLMediaKit
         /// <summary>创建rtmp[s]服务器</summary>
         /// <param name="port">rtmp监听端口，推荐1935，传入0则随机分配</param>
         /// <param name="ssl">是否为ssl类型服务器</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">rtmp listening port, recommended 1935, pass in 0 to randomly allocate</param>
+        /// <param name="ssl">Whether it is an ssl type server</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create rtmp[s] server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:ed841271]</para>
+        /// </returns>
         public static ushort MkRtmpServerStart(ushort port, int ssl)
         {
             var __ret = __Internal.MkRtmpServerStart(port, ssl);
@@ -458,7 +525,15 @@ namespace ZLMediaKit
 
         /// <summary>创建rtp服务器</summary>
         /// <param name="port">rtp监听端口(包括udp/tcp)</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">rtp listening port (including udp/tcp)</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create rtp server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:f49af495]</para>
+        /// </returns>
         public static ushort MkRtpServerStart(ushort port)
         {
             var __ret = __Internal.MkRtpServerStart(port);
@@ -467,35 +542,51 @@ namespace ZLMediaKit
 
         /// <summary>创建rtc服务器</summary>
         /// <param name="port">rtc监听端口</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">rtc listening port</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create rtc server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:df151854]</para>
+        /// </returns>
         public static ushort MkRtcServerStart(ushort port)
         {
             var __ret = __Internal.MkRtcServerStart(port);
             return __ret;
         }
 
-        /// <summary>webrtc交换sdp，根据offer sdp生成answer sdp</summary>
-        /// <param name="user_data">回调用户指针</param>
-        /// <param name="cb">回调函数</param>
-        /// <param name="type">webrtc插件类型，支持echo,play,push</param>
-        /// <param name="offer">webrtc offer sdp</param>
-        /// <param name="url">rtc url, 例如 rtc://__defaultVhost/app/stream?key1=val1&amp;key2=val2</param>
-        public static void MkWebrtcGetAnswerSdp(IntPtr user_data, global::ZLMediaKit.OnMkWebrtcGetAnswerSdp cb, string type, string offer, string url)
+        /// <summary>创建websocket[s]信令服务器</summary>
+        /// <param name="port">websocket监听端口</param>
+        /// <param name="ssl">是否为ssl类型服务器</param>
+        /// <returns>0:失败,非0:端口号</returns>
+        public static ushort MkSignalingServerStart(ushort port, int ssl)
         {
-            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
-            __Internal.MkWebrtcGetAnswerSdp(user_data, __arg1, type, offer, url);
+            var __ret = __Internal.MkSignalingServerStart(port, ssl);
+            return __ret;
         }
 
-        public static void MkWebrtcGetAnswerSdp2(IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free, global::ZLMediaKit.OnMkWebrtcGetAnswerSdp cb, string type, string offer, string url)
+        /// <summary>创建webrtc-ice[s]服务器</summary>
+        /// <param name="port">websocket监听端口</param>
+        /// <returns>0:失败,非0:端口号</returns>
+        public static ushort MkIceServerStart(ushort port)
         {
-            var __arg1 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
-            var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
-            __Internal.MkWebrtcGetAnswerSdp2(user_data, __arg1, __arg2, type, offer, url);
+            var __ret = __Internal.MkIceServerStart(port);
+            return __ret;
         }
 
         /// <summary>创建srt服务器</summary>
         /// <param name="port">srt监听端口</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">srt listening port</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create srt server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para>[AUTO-TRANSLATED:250984c0]</para>
+        /// </returns>
         public static ushort MkSrtServerStart(ushort port)
         {
             var __ret = __Internal.MkSrtServerStart(port);
@@ -504,7 +595,16 @@ namespace ZLMediaKit
 
         /// <summary>创建shell服务器</summary>
         /// <param name="port">shell监听端口</param>
-        /// <returns>0:失败,非0:端口号</returns>
+        /// <param name="port">shell listening port</param>
+        /// <returns>
+        /// <para>0:失败,非0:端口号</para>
+        /// <para>Create shell server</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: failure, non-0: port number</para>
+        /// <para></para>
+        /// <para>[AUTO-TRANSLATED:66ec9a2a]</para>
+        /// </returns>
         public static ushort MkShellServerStart(ushort port)
         {
             var __ret = __Internal.MkShellServerStart(port);
@@ -514,7 +614,7 @@ namespace ZLMediaKit
 
     public unsafe partial class MkEvents : IDisposable
     {
-        [StructLayout(LayoutKind.Sequential, Size = 168)]
+        [StructLayout(LayoutKind.Sequential, Size = 176)]
         public partial struct __Internal
         {
             internal IntPtr on_mk_media_changed;
@@ -528,6 +628,7 @@ namespace ZLMediaKit
             internal IntPtr on_mk_rtsp_get_realm;
             internal IntPtr on_mk_rtsp_auth;
             internal IntPtr on_mk_record_mp4;
+            internal IntPtr on_mk_record_ts;
             internal IntPtr on_mk_shell_login;
             internal IntPtr on_mk_flow_report;
             internal IntPtr on_mk_log;
@@ -577,7 +678,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -607,17 +708,17 @@ namespace ZLMediaKit
             __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.MkEvents.__Internal));
             __ownsNativeInstance = true;
             NativeToManagedMap[__Instance] = this;
-            *((global::ZLMediaKit.MkEvents.__Internal*)__Instance) = *((global::ZLMediaKit.MkEvents.__Internal*)__0.__Instance);
+            *((global::ZLMediaKit.MkEvents.__Internal*) __Instance) = *((global::ZLMediaKit.MkEvents.__Internal*) __0.__Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
         }
 
         partial void DisposePartial(bool disposing);
 
-        internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+        internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
         {
             if (__Instance == IntPtr.Zero)
                 return;
@@ -629,7 +730,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>监听ZLMediaKit里面的事件</summary>
-        /// <param name="events">各个事件的结构体,这个对象在内部会再拷贝一次，可以设置为null以便取消监听</param>
+        /// <param name="events">
+        /// <para>各个事件的结构体,这个对象在内部会再拷贝一次，可以设置为null以便取消监听</para>
+        /// <para>Listen to events in ZLMediaKit</para>
+        /// </param>
+        /// <param name="events">The structure of each event, this object will be copied again internally, it can be set to null to cancel listening</param>
+        /// <remarks>[AUTO-TRANSLATED:d3418bc6]</remarks>
         public static void MkEventsListen(global::ZLMediaKit.MkEvents events)
         {
             var __arg0 = events is null ? IntPtr.Zero : events.__Instance;
@@ -638,13 +744,19 @@ namespace ZLMediaKit
 
         /// <summary>注册或反注册MediaSource事件广播</summary>
         /// <param name="regist">注册为1，注销为0</param>
-        /// <param name="sender">该MediaSource对象</param>
+        /// <param name="sender">
+        /// <para>该MediaSource对象</para>
+        /// <para>Register or unregister MediaSource event broadcast</para>
+        /// </param>
+        /// <param name="regist">Register as 1, unregister as 0</param>
+        /// <param name="sender">The MediaSource object</param>
+        /// <remarks>[AUTO-TRANSLATED:d440a47c]</remarks>
         public global::ZLMediaKit.Delegates.Action_int___IntPtr OnMkMediaChanged
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_changed;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_int___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_int___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_int___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_int___IntPtr));
             }
 
             set
@@ -656,14 +768,24 @@ namespace ZLMediaKit
         /// <summary>收到rtsp/rtmp推流事件广播，通过该事件控制推流鉴权</summary>
         /// <param name="url_info">推流url相关信息</param>
         /// <param name="invoker">执行invoker返回鉴权结果</param>
-        /// <param name="sender">该tcp客户端相关信息</param>
-        /// <remarks>mk_publish_auth_invoker_do</remarks>
+        /// <param name="sender">
+        /// <para>该tcp客户端相关信息</para>
+        /// <para>Receive rtsp/rtmp push stream event broadcast, control push stream authentication through this event</para>
+        /// </param>
+        /// <param name="url_info">Push stream url related information</param>
+        /// <param name="invoker">Execute invoker to return authentication result</param>
+        /// <param name="sender">The tcp client related information</param>
+        /// <remarks>
+        /// <para>mk_publish_auth_invoker_do</para>
+        /// <para>mk_publish_auth_invoker_do</para>
+        /// <para>[AUTO-TRANSLATED:2a607577]</para>
+        /// </remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr OnMkMediaPublish
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_publish;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
             }
 
             set
@@ -675,14 +797,24 @@ namespace ZLMediaKit
         /// <summary>播放rtsp/rtmp/http-flv/hls事件广播，通过该事件控制播放鉴权</summary>
         /// <param name="url_info">播放url相关信息</param>
         /// <param name="invoker">执行invoker返回鉴权结果</param>
-        /// <param name="sender">播放客户端相关信息</param>
-        /// <remarks>mk_auth_invoker_do</remarks>
+        /// <param name="sender">
+        /// <para>播放客户端相关信息</para>
+        /// <para>Play rtsp/rtmp/http-flv/hls event broadcast, control playback authentication through this event</para>
+        /// </param>
+        /// <param name="url_info">Play url related information</param>
+        /// <param name="invoker">Execute invoker to return authentication result</param>
+        /// <param name="sender">Play client related information</param>
+        /// <remarks>
+        /// <para>mk_auth_invoker_do</para>
+        /// <para>mk_auth_invoker_do</para>
+        /// <para>[AUTO-TRANSLATED:817c964d]</para>
+        /// </remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr OnMkMediaPlay
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_play;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
             }
 
             set
@@ -694,16 +826,24 @@ namespace ZLMediaKit
         /// <summary>未找到流后会广播该事件，请在监听该事件后去拉流或其他方式产生流，这样就能按需拉流了</summary>
         /// <param name="url_info">播放url相关信息</param>
         /// <param name="sender">播放客户端相关信息</param>
+        /// <param name="url_info">Play url related information</param>
+        /// <param name="sender">Play client related information</param>
         /// <returns>
         /// <para>1 直接关闭</para>
         /// <para>0 等待流注册</para>
+        /// <para>This event will be broadcast after the stream is not found. Please pull the stream or other methods to generate the stream after listening to this event, so that you can pull the stream on demand.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 Close directly</para>
+        /// <para>0 Wait for stream registration</para>
+        /// <para>[AUTO-TRANSLATED:468e7356]</para>
         /// </returns>
         public global::ZLMediaKit.Delegates.Func_int___IntPtr___IntPtr OnMkMediaNotFound
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_not_found;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Func_int___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Func_int___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Func_int___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Func_int___IntPtr___IntPtr));
             }
 
             set
@@ -713,13 +853,18 @@ namespace ZLMediaKit
         }
 
         /// <summary>某个流无人消费时触发，目的为了实现无人观看时主动断开拉流等业务逻辑</summary>
-        /// <param name="sender">该MediaSource对象</param>
+        /// <param name="sender">
+        /// <para>该MediaSource对象</para>
+        /// <para>Triggered when a stream is not consumed by anyone, the purpose is to achieve business logic such as actively disconnecting the pull stream when no one is watching</para>
+        /// </param>
+        /// <param name="sender">The MediaSource object</param>
+        /// <remarks>[AUTO-TRANSLATED:348078cb]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr OnMkMediaNoReader
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_no_reader;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -732,13 +877,21 @@ namespace ZLMediaKit
         /// <param name="parser">http请求内容对象</param>
         /// <param name="invoker">执行该invoker返回http回复</param>
         /// <param name="consumed">置1则说明我们要处理该事件</param>
-        /// <param name="sender">http客户端相关信息</param>
+        /// <param name="sender">
+        /// <para>http客户端相关信息</para>
+        /// <para>Receive http api request broadcast (including GET/POST)</para>
+        /// </param>
+        /// <param name="parser">Http request content object</param>
+        /// <param name="invoker">Execute this invoker to return http reply</param>
+        /// <param name="consumed">Set to 1 if we want to handle this event</param>
+        /// <param name="sender">Http client related information</param>
+        /// <remarks>[AUTO-TRANSLATED:eb15bc74]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr_intPtr___IntPtr OnMkHttpRequest
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_http_request;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr_intPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr_intPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr_intPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr_intPtr___IntPtr));
             }
 
             set
@@ -752,13 +905,22 @@ namespace ZLMediaKit
         /// <param name="path">文件绝对路径</param>
         /// <param name="is_dir">path是否为文件夹</param>
         /// <param name="invoker">执行invoker返回本次访问文件的结果</param>
-        /// <param name="sender">http客户端相关信息</param>
+        /// <param name="sender">
+        /// <para>http客户端相关信息</para>
+        /// <para>In the http file server, receive the broadcast of http access to files or directories, control the access permission of the http directory through this event</para>
+        /// </param>
+        /// <param name="parser">Http request content object</param>
+        /// <param name="path">File absolute path</param>
+        /// <param name="is_dir">Whether path is a folder</param>
+        /// <param name="invoker">Execute invoker to return the result of accessing the file this time</param>
+        /// <param name="sender">Http client related information</param>
+        /// <remarks>[AUTO-TRANSLATED:c49b1702]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_string8_int___IntPtr___IntPtr OnMkHttpAccess
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_http_access;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_string8_int___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_string8_int___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_string8_int___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_string8_int___IntPtr___IntPtr));
             }
 
             set
@@ -773,13 +935,21 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="parser">http请求内容对象</param>
         /// <param name="path">文件绝对路径,覆盖之可以重定向到其他文件</param>
-        /// <param name="sender">http客户端相关信息</param>
+        /// <param name="sender">
+        /// <para>http客户端相关信息</para>
+        /// <para>In the http file server, receive the broadcast before http access to files or directories, you can control the mapping of http url to file path through this event</para>
+        /// <para>By overriding the path parameter in this event, you can achieve the purpose of selecting different http root directories according to virtual hosts or apps</para>
+        /// </param>
+        /// <param name="parser">Http request content object</param>
+        /// <param name="path">File absolute path, overriding it can redirect to other files</param>
+        /// <param name="sender">Http client related information</param>
+        /// <remarks>[AUTO-TRANSLATED:8b167279]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_sbytePtr___IntPtr OnMkHttpBeforeAccess
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_http_before_access;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_sbytePtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_sbytePtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_sbytePtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_sbytePtr___IntPtr));
             }
 
             set
@@ -791,13 +961,20 @@ namespace ZLMediaKit
         /// <summary>该rtsp流是否需要认证？是的话调用invoker并传入realm,否则传入空的realm</summary>
         /// <param name="url_info">请求rtsp url相关信息</param>
         /// <param name="invoker">执行invoker返回是否需要rtsp专属认证</param>
-        /// <param name="sender">rtsp客户端相关信息</param>
+        /// <param name="sender">
+        /// <para>rtsp客户端相关信息</para>
+        /// <para>Does this rtsp stream need authentication? If so, call invoker and pass in realm, otherwise pass in empty realm</para>
+        /// </param>
+        /// <param name="url_info">Request rtsp url related information</param>
+        /// <param name="invoker">Execute invoker to return whether rtsp exclusive authentication is required</param>
+        /// <param name="sender">Rtsp client related information</param>
+        /// <remarks>[AUTO-TRANSLATED:9bd81de9]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr OnMkRtspGetRealm
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtsp_get_realm;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr___IntPtr));
             }
 
             set
@@ -815,13 +992,24 @@ namespace ZLMediaKit
         /// <param name="user_name">rtsp认证用户名</param>
         /// <param name="must_no_encrypt">如果为true，则必须提供明文密码(因为此时是base64认证方式),否则会导致认证失败</param>
         /// <param name="invoker">执行invoker返回rtsp专属认证的密码</param>
-        /// <param name="sender">rtsp客户端信息</param>
+        /// <param name="sender">
+        /// <para>rtsp客户端信息</para>
+        /// <para>Request authentication user password event, user_name is the username, must_no_encrypt if true, then you must provide plain text password (because it is base64 authentication method at this time), otherwise it will lead to authentication failure</para>
+        /// <para>After getting the password, please call invoker and input the corresponding type of password and password type, invoker will match the password when executing</para>
+        /// </param>
+        /// <param name="url_info">Request rtsp url related information</param>
+        /// <param name="realm">Rtsp authentication realm</param>
+        /// <param name="user_name">Rtsp authentication username</param>
+        /// <param name="must_no_encrypt">If true, then you must provide plain text password (because it is base64 authentication method at this time), otherwise it will lead to authentication failure</param>
+        /// <param name="invoker">Execute invoker to return the password of rtsp exclusive authentication</param>
+        /// <param name="sender">Rtsp client information</param>
+        /// <remarks>[AUTO-TRANSLATED:833da340]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_string8_string8_int___IntPtr___IntPtr OnMkRtspAuth
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtsp_auth;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_string8_string8_int___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_string8_string8_int___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_string8_string8_int___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_string8_string8_int___IntPtr___IntPtr));
             }
 
             set
@@ -830,13 +1018,17 @@ namespace ZLMediaKit
             }
         }
 
-        /// <summary>录制mp4分片文件成功后广播</summary>
+        /// <summary>
+        /// <para>录制mp4分片文件成功后广播</para>
+        /// <para>Broadcast after recording mp4 fragment file successfully</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:eef1d414]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr OnMkRecordMp4
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_record_mp4;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -845,13 +1037,36 @@ namespace ZLMediaKit
             }
         }
 
-        /// <summary>shell登录鉴权</summary>
+        /// <summary>
+        /// <para>录制ts分片文件成功后广播</para>
+        /// <para>Broadcast after recording ts fragment file successfully</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:b91dc9fa]</remarks>
+        public global::ZLMediaKit.Delegates.Action___IntPtr OnMkRecordTs
+        {
+            get
+            {
+                var __ptr0 = ((__Internal*)__Instance)->on_mk_record_ts;
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+            }
+
+            set
+            {
+                ((__Internal*)__Instance)->on_mk_record_ts = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+            }
+        }
+
+        /// <summary>
+        /// <para>shell登录鉴权</para>
+        /// <para>Shell login authentication</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:95784c94]</remarks>
         public global::ZLMediaKit.Delegates.Action_string8_string8___IntPtr___IntPtr OnMkShellLogin
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_shell_login;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_string8_string8___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_string8_string8___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_string8_string8___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_string8_string8___IntPtr___IntPtr));
             }
 
             set
@@ -864,13 +1079,21 @@ namespace ZLMediaKit
         /// <param name="url_info">播放url相关信息</param>
         /// <param name="total_bytes">耗费上下行总流量，单位字节数</param>
         /// <param name="total_seconds">本次tcp会话时长，单位秒</param>
-        /// <param name="is_player">客户端是否为播放器</param>
+        /// <param name="is_player">
+        /// <para>客户端是否为播放器</para>
+        /// <para>Stop rtsp/rtmp/http-flv session after traffic reporting event broadcast</para>
+        /// </param>
+        /// <param name="url_info">Play url related information</param>
+        /// <param name="total_bytes">Total traffic consumed up and down, unit bytes</param>
+        /// <param name="total_seconds">The duration of this tcp session, unit seconds</param>
+        /// <param name="is_player">Whether the client is a player</param>
+        /// <remarks>[AUTO-TRANSLATED:d81d1fc3]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_ulong_ulong_int___IntPtr OnMkFlowReport
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_flow_report;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_ulong_ulong_int___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_ulong_ulong_int___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_ulong_ulong_int___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_ulong_ulong_int___IntPtr));
             }
 
             set
@@ -884,13 +1107,22 @@ namespace ZLMediaKit
         /// <param name="file">源文件名</param>
         /// <param name="line">源文件行</param>
         /// <param name="function">源文件函数名</param>
-        /// <param name="message">日志内容</param>
+        /// <param name="message">
+        /// <para>日志内容</para>
+        /// <para>Log output broadcast</para>
+        /// </param>
+        /// <param name="level">Log level</param>
+        /// <param name="file">Source file name</param>
+        /// <param name="line">Source file line</param>
+        /// <param name="function">Source file function name</param>
+        /// <param name="message">Log content</param>
+        /// <remarks>[AUTO-TRANSLATED:5aa5cb8f]</remarks>
         public global::ZLMediaKit.Delegates.Action_int_string8_int_string8_string8 OnMkLog
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_log;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_int_string8_int_string8_string8)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_int_string8_int_string8_string8));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_int_string8_int_string8_string8) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_int_string8_int_string8_string8));
             }
 
             set
@@ -905,13 +1137,23 @@ namespace ZLMediaKit
         /// <param name="stream">流id</param>
         /// <param name="ssrc">ssrc的10进制打印，通过atoi转换为整型</param>
         /// <param name="err">错误代码</param>
-        /// <param name="msg">错误提示</param>
+        /// <param name="msg">
+        /// <para>错误提示</para>
+        /// <para>Send rtp stream failure callback, applicable to rtp sending triggered by mk_media_source_start_send_rtp/mk_media_start_send_rtp interface</para>
+        /// </param>
+        /// <param name="vhost">Virtual host</param>
+        /// <param name="app">Application name</param>
+        /// <param name="stream">Stream id</param>
+        /// <param name="ssrc">Ssrc's decimal print, convert to integer through atoi</param>
+        /// <param name="err">Error code</param>
+        /// <param name="msg">Error message</param>
+        /// <remarks>[AUTO-TRANSLATED:c956e89b]</remarks>
         public global::ZLMediaKit.Delegates.Action_string8_string8_string8_string8_int_string8 OnMkMediaSendRtpStop
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_media_send_rtp_stop;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_string8_string8_string8_string8_int_string8)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_string8_string8_string8_string8_int_string8));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_string8_string8_string8_string8_int_string8) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_string8_string8_string8_string8_int_string8));
             }
 
             set
@@ -921,13 +1163,18 @@ namespace ZLMediaKit
         }
 
         /// <summary>rtc sctp连接中/完成/失败/关闭回调</summary>
-        /// <param name="rtc_transport">数据通道对象</param>
+        /// <param name="rtc_transport">
+        /// <para>数据通道对象</para>
+        /// <para>Rtc sctp connection in/complete/failure/close callback</para>
+        /// </param>
+        /// <param name="rtc_transport">Data channel object</param>
+        /// <remarks>[AUTO-TRANSLATED:5455fb76]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr OnMkRtcSctpConnecting
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_connecting;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -941,7 +1188,7 @@ namespace ZLMediaKit
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_connected;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -955,7 +1202,7 @@ namespace ZLMediaKit
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_failed;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -969,7 +1216,7 @@ namespace ZLMediaKit
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_closed;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -981,13 +1228,20 @@ namespace ZLMediaKit
         /// <summary>rtc数据通道发送数据回调</summary>
         /// <param name="rtc_transport">数据通道对象</param>
         /// <param name="msg">数据</param>
-        /// <param name="len">数据长度</param>
+        /// <param name="len">
+        /// <para>数据长度</para>
+        /// <para>Rtc data channel send data callback</para>
+        /// </param>
+        /// <param name="rtc_transport">Data channel object</param>
+        /// <param name="msg">Data</param>
+        /// <param name="len">Data length</param>
+        /// <remarks>[AUTO-TRANSLATED:42f75e55]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_bytePtr_ulong OnMkRtcSctpSend
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_send;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_bytePtr_ulong)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_bytePtr_ulong));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_bytePtr_ulong) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_bytePtr_ulong));
             }
 
             set
@@ -1001,13 +1255,22 @@ namespace ZLMediaKit
         /// <param name="streamId">流id</param>
         /// <param name="ppid">协议id</param>
         /// <param name="msg">数据</param>
-        /// <param name="len">数据长度</param>
+        /// <param name="len">
+        /// <para>数据长度</para>
+        /// <para>Rtc data channel receive data callback</para>
+        /// </param>
+        /// <param name="rtc_transport">Data channel object</param>
+        /// <param name="streamId">Stream id</param>
+        /// <param name="ppid">Protocol id</param>
+        /// <param name="msg">Data</param>
+        /// <param name="len">Data length</param>
+        /// <remarks>[AUTO-TRANSLATED:3abda838]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_ushort_uint_bytePtr_ulong OnMkRtcSctpReceived
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_rtc_sctp_received;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_ushort_uint_bytePtr_ulong)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_ushort_uint_bytePtr_ulong));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_ushort_uint_bytePtr_ulong) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_ushort_uint_bytePtr_ulong));
             }
 
             set
@@ -1025,14 +1288,12 @@ namespace ZLMediaKit
         MkTypeWss = 3
     }
 
-    /// <summary>Buffer::Ptr</summary>
+    /// <summary>////////////////////////////////////////Buffer::Ptr/////////////////////////////////////////////</summary>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkBufferFree(IntPtr user_data, IntPtr data);
 
-    
-    
-    
-    
+    /// <summary>////////////////////////////////////////SockInfo/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////TcpSession/////////////////////////////////////////////</summary>
     public unsafe partial class MkBufferT
     {
         public partial struct __Internal
@@ -1070,7 +1331,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1088,7 +1349,7 @@ namespace ZLMediaKit
             __Instance = new IntPtr(native);
         }
     }
-    /// <summary>SockInfo</summary>
+
     public unsafe partial class MkSockInfoT
     {
         public partial struct __Internal
@@ -1126,7 +1387,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1144,7 +1405,7 @@ namespace ZLMediaKit
             __Instance = new IntPtr(native);
         }
     }
-    /// <summary>TcpSession</summary>
+
     public unsafe partial class MkTcpSessionT
     {
         public partial struct __Internal
@@ -1182,7 +1443,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1200,7 +1461,7 @@ namespace ZLMediaKit
             __Instance = new IntPtr(native);
         }
     }
-    /// <summary>自定义tcp服务</summary>
+
     public unsafe partial class MkTcpSessionRefT
     {
         public partial struct __Internal
@@ -1238,7 +1499,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1256,7 +1517,7 @@ namespace ZLMediaKit
             __Instance = new IntPtr(native);
         }
     }
-    /// <summary>自定义tcp客户端</summary>
+
     public unsafe partial class MkTcpClientT
     {
         public partial struct __Internal
@@ -1294,7 +1555,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1358,7 +1619,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1388,17 +1649,17 @@ namespace ZLMediaKit
             __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.MkTcpSessionEvents.__Internal));
             __ownsNativeInstance = true;
             NativeToManagedMap[__Instance] = this;
-            *((global::ZLMediaKit.MkTcpSessionEvents.__Internal*)__Instance) = *((global::ZLMediaKit.MkTcpSessionEvents.__Internal*)__0.__Instance);
+            *((global::ZLMediaKit.MkTcpSessionEvents.__Internal*) __Instance) = *((global::ZLMediaKit.MkTcpSessionEvents.__Internal*) __0.__Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
         }
 
         partial void DisposePartial(bool disposing);
 
-        internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+        internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
         {
             if (__Instance == IntPtr.Zero)
                 return;
@@ -1411,13 +1672,19 @@ namespace ZLMediaKit
 
         /// <summary>收到mk_tcp_session创建对象</summary>
         /// <param name="server_port">服务器端口号</param>
-        /// <param name="session">会话处理对象</param>
+        /// <param name="session">
+        /// <para>会话处理对象</para>
+        /// <para>Receive mk_tcp_session create object</para>
+        /// </param>
+        /// <param name="server_port">Server port number</param>
+        /// <param name="session">Session processing object</param>
+        /// <remarks>[AUTO-TRANSLATED:58183e28]</remarks>
         public global::ZLMediaKit.Delegates.Action_ushort___IntPtr OnMkTcpSessionCreate
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_session_create;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr));
             }
 
             set
@@ -1429,13 +1696,20 @@ namespace ZLMediaKit
         /// <summary>收到客户端发过来的数据</summary>
         /// <param name="server_port">服务器端口号</param>
         /// <param name="session">会话处理对象</param>
-        /// <param name="buffer">数据</param>
+        /// <param name="buffer">
+        /// <para>数据</para>
+        /// <para>Receive data sent by the client</para>
+        /// </param>
+        /// <param name="server_port">Server port number</param>
+        /// <param name="session">Session processing object</param>
+        /// <param name="buffer">Data</param>
+        /// <remarks>[AUTO-TRANSLATED:ff2132fa]</remarks>
         public global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr OnMkTcpSessionData
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_session_data;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr___IntPtr));
             }
 
             set
@@ -1446,13 +1720,19 @@ namespace ZLMediaKit
 
         /// <summary>每隔2秒的定时器，用于管理超时等任务</summary>
         /// <param name="server_port">服务器端口号</param>
-        /// <param name="session">会话处理对象</param>
+        /// <param name="session">
+        /// <para>会话处理对象</para>
+        /// <para>Timer every 2 seconds, used to manage timeout tasks</para>
+        /// </param>
+        /// <param name="server_port">Server port number</param>
+        /// <param name="session">Session processing object</param>
+        /// <remarks>[AUTO-TRANSLATED:5d36ea59]</remarks>
         public global::ZLMediaKit.Delegates.Action_ushort___IntPtr OnMkTcpSessionManager
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_session_manager;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr));
             }
 
             set
@@ -1465,13 +1745,21 @@ namespace ZLMediaKit
         /// <param name="server_port">服务器端口号</param>
         /// <param name="session">会话处理对象</param>
         /// <param name="code">错误代码</param>
-        /// <param name="msg">错误提示</param>
+        /// <param name="msg">
+        /// <para>错误提示</para>
+        /// <para>Generally triggered by client disconnecting tcp</para>
+        /// </param>
+        /// <param name="server_port">Server port number</param>
+        /// <param name="session">Session processing object</param>
+        /// <param name="code">Error code</param>
+        /// <param name="msg">Error message</param>
+        /// <remarks>[AUTO-TRANSLATED:a2e6ce8b]</remarks>
         public global::ZLMediaKit.Delegates.Action_ushort___IntPtr_int_string8 OnMkTcpSessionDisconnect
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_session_disconnect;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr_int_string8)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr_int_string8));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action_ushort___IntPtr_int_string8) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action_ushort___IntPtr_int_string8));
             }
 
             set
@@ -1526,7 +1814,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -1556,17 +1844,17 @@ namespace ZLMediaKit
             __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.MkTcpClientEvents.__Internal));
             __ownsNativeInstance = true;
             NativeToManagedMap[__Instance] = this;
-            *((global::ZLMediaKit.MkTcpClientEvents.__Internal*)__Instance) = *((global::ZLMediaKit.MkTcpClientEvents.__Internal*)__0.__Instance);
+            *((global::ZLMediaKit.MkTcpClientEvents.__Internal*) __Instance) = *((global::ZLMediaKit.MkTcpClientEvents.__Internal*) __0.__Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
         }
 
         partial void DisposePartial(bool disposing);
 
-        internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+        internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
         {
             if (__Instance == IntPtr.Zero)
                 return;
@@ -1580,13 +1868,20 @@ namespace ZLMediaKit
         /// <summary>tcp客户端连接服务器成功或失败回调</summary>
         /// <param name="client">tcp客户端</param>
         /// <param name="code">0为连接成功，否则为失败原因</param>
-        /// <param name="msg">连接失败错误提示</param>
+        /// <param name="msg">
+        /// <para>连接失败错误提示</para>
+        /// <para>Tcp client connects to server successfully or fails callback</para>
+        /// </param>
+        /// <param name="client">Tcp client</param>
+        /// <param name="code">0 for successful connection, otherwise for failure reason</param>
+        /// <param name="msg">Connection failure error message</param>
+        /// <remarks>[AUTO-TRANSLATED:2b38e72a]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_int_string8 OnMkTcpClientConnect
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_client_connect;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_int_string8)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_int_string8));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_int_string8) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_int_string8));
             }
 
             set
@@ -1601,13 +1896,21 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="client">tcp客户端</param>
         /// <param name="code">错误代码</param>
-        /// <param name="msg">错误提示</param>
+        /// <param name="msg">
+        /// <para>错误提示</para>
+        /// <para>Tcp client disconnects from tcp server callback</para>
+        /// <para>Generally caused by eof event</para>
+        /// </param>
+        /// <param name="client">Tcp client</param>
+        /// <param name="code">Error code</param>
+        /// <param name="msg">Error message</param>
+        /// <remarks>[AUTO-TRANSLATED:5658c1c5]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr_int_string8 OnMkTcpClientDisconnect
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_client_disconnect;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr_int_string8)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_int_string8));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr_int_string8) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr_int_string8));
             }
 
             set
@@ -1618,13 +1921,19 @@ namespace ZLMediaKit
 
         /// <summary>收到tcp服务器发来的数据</summary>
         /// <param name="client">tcp客户端</param>
-        /// <param name="buffer">数据</param>
+        /// <param name="buffer">
+        /// <para>数据</para>
+        /// <para>Receive data sent by the tcp server</para>
+        /// </param>
+        /// <param name="client">Tcp client</param>
+        /// <param name="buffer">Data</param>
+        /// <remarks>[AUTO-TRANSLATED:4a225334]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr OnMkTcpClientData
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_client_data;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr___IntPtr));
             }
 
             set
@@ -1634,13 +1943,18 @@ namespace ZLMediaKit
         }
 
         /// <summary>每隔2秒的定时器，用于管理超时等任务</summary>
-        /// <param name="client">tcp客户端</param>
+        /// <param name="client">
+        /// <para>tcp客户端</para>
+        /// <para>Timer every 2 seconds, used to manage timeout tasks</para>
+        /// </param>
+        /// <param name="client">Tcp client</param>
+        /// <remarks>[AUTO-TRANSLATED:05f637ef]</remarks>
         public global::ZLMediaKit.Delegates.Action___IntPtr OnMkTcpClientManager
         {
             get
             {
                 var __ptr0 = ((__Internal*)__Instance)->on_mk_tcp_client_manager;
-                return __ptr0 == IntPtr.Zero ? null : (global::ZLMediaKit.Delegates.Action___IntPtr)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
+                return __ptr0 == IntPtr.Zero? null : (global::ZLMediaKit.Delegates.Action___IntPtr) Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::ZLMediaKit.Delegates.Action___IntPtr));
             }
 
             set
@@ -1765,7 +2079,18 @@ namespace ZLMediaKit
         /// <param name="len">数据长度</param>
         /// <param name="cb">数据指针free回调函数，该参数置空时，内部会拷贝数据</param>
         /// <param name="user_data">数据指针free回调函数on_mk_buffer_free第一个参数</param>
-        /// <returns>buffer对象</returns>
+        /// <param name="data">Data pointer</param>
+        /// <param name="len">Data length</param>
+        /// <param name="cb">Data pointer free callback function. This parameter is set to null, the data will be copied internally</param>
+        /// <param name="user_data">The first parameter of the data pointer free callback function on_mk_buffer_free</param>
+        /// <returns>
+        /// <para>buffer对象</para>
+        /// <para>Create a buffer object</para>
+        /// </returns>
+        /// <returns>
+        /// <para>buffer object</para>
+        /// <para>[AUTO-TRANSLATED:933f9ad8]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkBufferT MkBufferFromChar(string data, ulong len, global::ZLMediaKit.OnMkBufferFree cb, IntPtr user_data)
         {
             var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
@@ -1906,7 +2231,14 @@ namespace ZLMediaKit
         /// <para>该函数只对mk_tcp_server_server_start启动的服务类型有效</para>
         /// </summary>
         /// <param name="session">会话对象</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Attach user data to the tcp session object</para>
+        /// <para>This function is only valid for services started by mk_tcp_server_server_start</para>
+        /// </param>
+        /// <param name="session">Session object</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:272bd460]</remarks>
         public static void MkTcpSessionSetUserData(global::ZLMediaKit.MkTcpSessionT session, IntPtr user_data)
         {
             var __arg0 = session is null ? IntPtr.Zero : session.__Instance;
@@ -1925,7 +2257,16 @@ namespace ZLMediaKit
         /// <para>该函数只对mk_tcp_server_server_start启动的服务类型有效</para>
         /// </summary>
         /// <param name="session">tcp会话对象</param>
-        /// <returns>用户数据指针</returns>
+        /// <param name="session">Tcp session object</param>
+        /// <returns>
+        /// <para>用户数据指针</para>
+        /// <para>Get the user data attached to the tcp session object</para>
+        /// <para>This function is only valid for services started by mk_tcp_server_server_start</para>
+        /// </returns>
+        /// <returns>
+        /// <para>User data pointer</para>
+        /// <para>[AUTO-TRANSLATED:8047a5a4]</para>
+        /// </returns>
         public static IntPtr MkTcpSessionGetUserData(global::ZLMediaKit.MkTcpSessionT session)
         {
             var __arg0 = session is null ? IntPtr.Zero : session.__Instance;
@@ -1935,14 +2276,24 @@ namespace ZLMediaKit
 
         /// <summary>开启tcp服务器</summary>
         /// <param name="port">监听端口号，0则为随机</param>
-        /// <param name="type">服务器类型</param>
+        /// <param name="type">
+        /// <para>服务器类型</para>
+        /// <para>Start tcp server</para>
+        /// </param>
+        /// <param name="port">Listening port number, 0 is random</param>
+        /// <param name="type">Server type</param>
+        /// <remarks>[AUTO-TRANSLATED:ad27f0ed]</remarks>
         public static ushort MkTcpServerStart(ushort port, global::ZLMediaKit.MkTcpType type)
         {
             var __ret = __Internal.MkTcpServerStart(port, type);
             return __ret;
         }
 
-        /// <summary>监听tcp服务器事件</summary>
+        /// <summary>
+        /// <para>监听tcp服务器事件</para>
+        /// <para>Listen for tcp server events</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:7ca82a56]</remarks>
         public static void MkTcpServerEventsListen(global::ZLMediaKit.MkTcpSessionEvents events)
         {
             var __arg0 = events is null ? IntPtr.Zero : events.__Instance;
@@ -1961,7 +2312,17 @@ namespace ZLMediaKit
         /// <param name="events">回调函数结构体</param>
         /// <param name="user_data">用户数据指针</param>
         /// <param name="type">客户端类型</param>
-        /// <returns>客户端对象</returns>
+        /// <param name="events">Callback function structure</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <param name="type">Client type</param>
+        /// <returns>
+        /// <para>客户端对象</para>
+        /// <para>Create tcp client</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Client object</para>
+        /// <para>[AUTO-TRANSLATED:01191226]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkTcpClientT MkTcpClientCreate(global::ZLMediaKit.MkTcpClientEvents events, global::ZLMediaKit.MkTcpType type)
         {
             var __arg0 = events is null ? IntPtr.Zero : events.__Instance;
@@ -1971,7 +2332,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>释放tcp客户端</summary>
-        /// <param name="ctx">客户端对象</param>
+        /// <param name="ctx">
+        /// <para>客户端对象</para>
+        /// <para>Release the tcp client</para>
+        /// </param>
+        /// <param name="ctx">Client object</param>
+        /// <remarks>[AUTO-TRANSLATED:b3a75d23]</remarks>
         public static void MkTcpClientRelease(global::ZLMediaKit.MkTcpClientT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -1982,7 +2348,15 @@ namespace ZLMediaKit
         /// <param name="ctx">客户端对象</param>
         /// <param name="host">服务器ip或域名</param>
         /// <param name="port">服务器端口号</param>
-        /// <param name="time_out_sec">超时时间</param>
+        /// <param name="time_out_sec">
+        /// <para>超时时间</para>
+        /// <para>Initiate connection</para>
+        /// </param>
+        /// <param name="ctx">Client object</param>
+        /// <param name="host">Server ip or domain name</param>
+        /// <param name="port">Server port number</param>
+        /// <param name="time_out_sec">Timeout time</param>
+        /// <remarks>[AUTO-TRANSLATED:dd45e0fa]</remarks>
         public static void MkTcpClientConnect(global::ZLMediaKit.MkTcpClientT ctx, string host, ushort port, float time_out_sec)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -1995,7 +2369,15 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="ctx">客户端对象</param>
         /// <param name="data">数据指针</param>
-        /// <param name="len">数据长度，等于0时，内部通过strlen获取</param>
+        /// <param name="len">
+        /// <para>数据长度，等于0时，内部通过strlen获取</para>
+        /// <para>Non-thread-safe data sending</para>
+        /// <para>Developers can call this function if they can ensure that it is within the network thread of this object</para>
+        /// </param>
+        /// <param name="ctx">Client object</param>
+        /// <param name="data">Data pointer</param>
+        /// <param name="len">Data length, 0 means get it by strlen internally</param>
+        /// <remarks>[AUTO-TRANSLATED:a5e2ac86]</remarks>
         public static void MkTcpClientSend(global::ZLMediaKit.MkTcpClientT ctx, string data, int len)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2012,7 +2394,14 @@ namespace ZLMediaKit
         /// <summary>切换到本对象的网络线程后再发送数据</summary>
         /// <param name="ctx">客户端对象</param>
         /// <param name="data">数据指针</param>
-        /// <param name="len">数据长度，等于0时，内部通过strlen获取</param>
+        /// <param name="len">
+        /// <para>数据长度，等于0时，内部通过strlen获取</para>
+        /// <para>Send data after switching to the network thread of this object</para>
+        /// </param>
+        /// <param name="ctx">Client object</param>
+        /// <param name="data">Data pointer</param>
+        /// <param name="len">Data length, 0 means get it by strlen internally</param>
+        /// <remarks>[AUTO-TRANSLATED:95dc75f8]</remarks>
         public static void MkTcpClientSendSafe(global::ZLMediaKit.MkTcpClientT ctx, string data, int len)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2028,7 +2417,13 @@ namespace ZLMediaKit
 
         /// <summary>客户端附着用户数据</summary>
         /// <param name="ctx">客户端对象</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Client attaches user data</para>
+        /// </param>
+        /// <param name="ctx">Client object</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:a9d4840b]</remarks>
         public static void MkTcpClientSetUserData(global::ZLMediaKit.MkTcpClientT ctx, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2044,7 +2439,16 @@ namespace ZLMediaKit
 
         /// <summary>获取客户端对象上附着的用户数据</summary>
         /// <param name="ctx">客户端对象</param>
-        /// <returns>用户数据指针</returns>
+        /// <param name="ctx">Client object</param>
+        /// <returns>
+        /// <para>用户数据指针</para>
+        /// <para>Get the user data attached to the client object</para>
+        /// </returns>
+        /// <returns>
+        /// <para>User data pointer</para>
+        /// <para></para>
+        /// <para>[AUTO-TRANSLATED:7f74985b]</para>
+        /// </returns>
         public static IntPtr MkTcpClientGetUserData(global::ZLMediaKit.MkTcpClientT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2056,24 +2460,43 @@ namespace ZLMediaKit
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkFrameDataRelease(IntPtr user_data, sbyte* ptr);
 
-    /// <summary>Buffer::Ptr</summary>
+    /// <summary>////////////////////////////////////////Buffer::Ptr/////////////////////////////////////////////</summary>
     /// <summary>合并帧回调函数</summary>
     /// <param name="user_data">用户数据指针</param>
     /// <param name="dts">解码时间戳</param>
     /// <param name="pts">显示时间戳</param>
     /// <param name="buffer">合并后数据buffer对象</param>
-    /// <param name="have_key_frame">合并后数据中是否包含关键帧</param>
+    /// <param name="have_key_frame">
+    /// <para>合并后数据中是否包含关键帧</para>
+    /// <para>Frame merging callback function.</para>
+    /// </param>
+    /// <param name="user_data">User data pointer.</param>
+    /// <param name="dts">Decoding timestamp.</param>
+    /// <param name="pts">Display timestamp.</param>
+    /// <param name="buffer">Merged data buffer object.</param>
+    /// <param name="have_key_frame">Whether the merged data contains a key frame.</param>
+    /// <remarks>[AUTO-TRANSLATED:ff78df4f]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkFrameMerger(IntPtr user_data, ulong dts, ulong pts, IntPtr buffer, int have_key_frame);
 
-    /// <summary></summary>
+    /// <summary>///////////////////////////////////////////////////////////////////</summary>
     /// <summary>mpeg-ps/ts 打包器输出回调函数</summary>
     /// <param name="user_data">设置回调时的用户数据指针</param>
     /// <param name="muxer">对象</param>
     /// <param name="frame">帧数据</param>
     /// <param name="size">帧数据长度</param>
     /// <param name="timestamp">时间戳</param>
-    /// <param name="key_pos">是否关键帧</param>
+    /// <param name="key_pos">
+    /// <para>是否关键帧</para>
+    /// <para>mpeg-ps/ts packer output callback function.</para>
+    /// </param>
+    /// <param name="user_data">User data pointer set during callback.</param>
+    /// <param name="muxer">Object.</param>
+    /// <param name="frame">Frame data.</param>
+    /// <param name="size">Frame data length.</param>
+    /// <param name="timestamp">Timestamp.</param>
+    /// <param name="key_pos">Whether it is a key frame.</param>
+    /// <remarks>[AUTO-TRANSLATED:14c103a2]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkMpegMuxerFrame(IntPtr user_data, IntPtr muxer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string frame, ulong size, ulong timestamp, int key_pos);
 
@@ -2114,7 +2537,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -2170,7 +2593,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -2226,7 +2649,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -2320,14 +2743,28 @@ namespace ZLMediaKit
         }
 
         /// <summary>创建frame对象，并返回其引用</summary>
-        /// <param name="codec_id">编解码类型，请参考MKCodecXXX定义</param>
-        /// <param name="dts">解码时间戳，单位毫秒</param>
-        /// <param name="pts">显示时间戳，单位毫秒</param>
-        /// <param name="data">单帧数据</param>
-        /// <param name="size">单帧数据长度</param>
-        /// <param name="cb">data指针free释放回调, 如果为空，内部会拷贝数据</param>
+        /// <param name="cb">data pointer free release callback, if empty, the data will be copied internally.</param>
+        /// <param name="size">Single frame data length.</param>
+        /// <param name="data">Single frame data.</param>
+        /// <param name="pts">Display timestamp, in milliseconds.</param>
+        /// <param name="dts">Decoding timestamp, in milliseconds.</param>
+        /// <param name="codec_id">Encoding and decoding type, please refer to MKCodecXXX definition.</param>
+        /// <param name="user_data">data pointer free release callback user pointer.</param>
         /// <param name="user_data">data指针free释放回调用户指针</param>
-        /// <returns>frame对象引用</returns>
+        /// <param name="size">单帧数据长度</param>
+        /// <param name="data">单帧数据</param>
+        /// <param name="pts">显示时间戳，单位毫秒</param>
+        /// <param name="dts">解码时间戳，单位毫秒</param>
+        /// <param name="codec_id">编解码类型，请参考MKCodecXXX定义</param>
+        /// <param name="cb">data指针free释放回调, 如果为空，内部会拷贝数据</param>
+        /// <returns>
+        /// <para>frame对象引用</para>
+        /// <para>Create a frame object and return its reference.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>frame object reference.</para>
+        /// <para>[AUTO-TRANSLATED:0481221b]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFrameT MkFrameCreate(int codec_id, ulong dts, ulong pts, string data, ulong size, global::ZLMediaKit.OnMkFrameDataRelease cb, IntPtr user_data)
         {
             var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
@@ -2346,7 +2783,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>减引用frame对象</summary>
-        /// <param name="frame">帧对象引用</param>
+        /// <param name="frame">
+        /// <para>帧对象引用</para>
+        /// <para>Decrement the reference of the frame object.</para>
+        /// </param>
+        /// <param name="frame">Frame object reference.</param>
+        /// <remarks>[AUTO-TRANSLATED:53b5a750]</remarks>
         public static void MkFrameUnref(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2355,7 +2797,15 @@ namespace ZLMediaKit
 
         /// <summary>引用frame对象</summary>
         /// <param name="frame">被引用的frame对象</param>
-        /// <returns>新的对象引用</returns>
+        /// <param name="frame">The referenced frame object.</param>
+        /// <returns>
+        /// <para>新的对象引用</para>
+        /// <para>Reference the frame object.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>New object reference.</para>
+        /// <para>[AUTO-TRANSLATED:f772813d]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFrameT MkFrameRef(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2364,7 +2814,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>获取frame 编码codec类型，请参考MKCodecXXX定义</summary>
+        /// <summary>
+        /// <para>获取frame 编码codec类型，请参考MKCodecXXX定义</para>
+        /// <para>Get the frame encoding codec type, please refer to MKCodecXXX definition.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:b3a34bb8]</remarks>
         public static int MkFrameCodecId(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2372,7 +2826,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取帧编码codec名称</summary>
+        /// <summary>
+        /// <para>获取帧编码codec名称</para>
+        /// <para>Get the frame encoding codec name.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:6c3129d7]</remarks>
         public static string MkFrameCodecName(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2380,7 +2838,11 @@ namespace ZLMediaKit
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        /// <summary>帧是否为视频</summary>
+        /// <summary>
+        /// <para>帧是否为视频</para>
+        /// <para>Whether the frame is video.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:c43dbd4e]</remarks>
         public static int MkFrameIsVideo(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2388,7 +2850,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取帧数据指针</summary>
+        /// <summary>
+        /// <para>获取帧数据指针</para>
+        /// <para>Get the frame data pointer.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:bf454f3b]</remarks>
         public static string MkFrameGetData(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2396,7 +2862,11 @@ namespace ZLMediaKit
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        /// <summary>获取帧数据指针长度</summary>
+        /// <summary>
+        /// <para>获取帧数据指针长度</para>
+        /// <para>Get the length of the frame data pointer.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:8a76acf2]</remarks>
         public static ulong MkFrameGetDataSize(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2404,7 +2874,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>返回帧数据前缀长度，譬如H264/H265前缀一般是0x00 00 00 01,那么本函数返回4</summary>
+        /// <summary>
+        /// <para>返回帧数据前缀长度，譬如H264/H265前缀一般是0x00 00 00 01,那么本函数返回4</para>
+        /// <para>Return the length of the frame data prefix, for example, the H264/H265 prefix is generally 0x00 00 00 01, then this function returns 4.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:352c7cfc]</remarks>
         public static ulong MkFrameGetDataPrefixSize(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2412,7 +2886,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取解码时间戳，单位毫秒</summary>
+        /// <summary>
+        /// <para>获取解码时间戳，单位毫秒</para>
+        /// <para>Get the decoding timestamp, in milliseconds.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:049f1339]</remarks>
         public static ulong MkFrameGetDts(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2420,7 +2898,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取显示时间戳，单位毫秒</summary>
+        /// <summary>
+        /// <para>获取显示时间戳，单位毫秒</para>
+        /// <para>Get the display timestamp, in milliseconds.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:4ab081a7]</remarks>
         public static ulong MkFrameGetPts(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2428,7 +2910,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取帧flag，请参考 MK_FRAME_FLAG</summary>
+        /// <summary>
+        /// <para>获取帧flag，请参考 MK_FRAME_FLAG</para>
+        /// <para>Get the frame flag, please refer to MK_FRAME_FLAG.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:6fdf971c]</remarks>
         public static uint MkFrameGetFlags(global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -2438,7 +2924,15 @@ namespace ZLMediaKit
 
         /// <summary>创建帧合并器</summary>
         /// <param name="type">起始头类型，0: none, 1: h264_prefix/AnnexB(0x 00 00 00 01), 2: mp4_nal_size(avcC)</param>
-        /// <returns>帧合并器</returns>
+        /// <param name="type">Starting header type, 0: none, 1: h264_prefix/AnnexB(0x 00 00 00 01), 2: mp4_nal_size(avcC)</param>
+        /// <returns>
+        /// <para>帧合并器</para>
+        /// <para>Create a frame merger.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Frame merger.</para>
+        /// <para>[AUTO-TRANSLATED:385eedd7]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFrameMergerT MkFrameMergerCreate(int type)
         {
             var __ret = __Internal.MkFrameMergerCreate(type);
@@ -2447,7 +2941,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁帧合并器</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Destroy the frame merger.</para>
+        /// </param>
+        /// <param name="ctx">Object pointer.</param>
+        /// <remarks>[AUTO-TRANSLATED:0c9aad7b]</remarks>
         public static void MkFrameMergerRelease(global::ZLMediaKit.MkFrameMergerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2455,7 +2954,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>清空merger对象缓冲，方便复用</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Clear the merger object buffer for reuse.</para>
+        /// </param>
+        /// <param name="ctx">Object pointer.</param>
+        /// <remarks>[AUTO-TRANSLATED:6b1d2209]</remarks>
         public static void MkFrameMergerClear(global::ZLMediaKit.MkFrameMergerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2466,7 +2970,15 @@ namespace ZLMediaKit
         /// <param name="ctx">对象指针</param>
         /// <param name="frame">帧数据</param>
         /// <param name="cb">帧合并回调函数</param>
-        /// <param name="user_data">帧合并回调函数用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>帧合并回调函数用户数据指针</para>
+        /// <para>Input frame to the merger object and merge.</para>
+        /// </param>
+        /// <param name="ctx">Object pointer.</param>
+        /// <param name="frame">Frame data.</param>
+        /// <param name="cb">Frame merging callback function.</param>
+        /// <param name="user_data">Frame merging callback function user data pointer.</param>
+        /// <remarks>[AUTO-TRANSLATED:83aa1436]</remarks>
         public static void MkFrameMergerInput(global::ZLMediaKit.MkFrameMergerT ctx, global::ZLMediaKit.MkFrameT frame, global::ZLMediaKit.OnMkFrameMerger cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2476,7 +2988,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>强制flush merger对象缓冲，调用此api前需要确保先调用mk_frame_merger_input函数并且回调参数有效</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Force flush the merger object buffer. Before calling this API, make sure to call the mk_frame_merger_input function first and the callback parameters are valid.</para>
+        /// </param>
+        /// <param name="ctx">Object pointer.</param>
+        /// <remarks>[AUTO-TRANSLATED:42bb104c]</remarks>
         public static void MkFrameMergerFlush(global::ZLMediaKit.MkFrameMergerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2487,7 +3004,17 @@ namespace ZLMediaKit
         /// <param name="cb">打包回调函数</param>
         /// <param name="user_data">回调用户数据指针</param>
         /// <param name="is_ps">是否是ps</param>
-        /// <returns>打包器对象</returns>
+        /// <param name="cb">Packing callback function.</param>
+        /// <param name="user_data">Callback user data pointer.</param>
+        /// <param name="is_ps">Whether it is ps.</param>
+        /// <returns>
+        /// <para>打包器对象</para>
+        /// <para>mpeg-ps/ts packer.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Packer object.</para>
+        /// <para>[AUTO-TRANSLATED:6526b871]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkMpegMuxerT MkMpegMuxerCreate(global::ZLMediaKit.OnMkMpegMuxerFrame cb, IntPtr user_data, int is_ps)
         {
             var __arg0 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
@@ -2497,7 +3024,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>删除mpeg-ps/ts 打包器</summary>
-        /// <param name="ctx">打包器</param>
+        /// <param name="ctx">
+        /// <para>打包器</para>
+        /// <para>Delete the mpeg-ps/ts packer.</para>
+        /// </param>
+        /// <param name="ctx">Packer.</param>
+        /// <remarks>[AUTO-TRANSLATED:0b533391]</remarks>
         public static void MkMpegMuxerRelease(global::ZLMediaKit.MkMpegMuxerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2506,7 +3038,13 @@ namespace ZLMediaKit
 
         /// <summary>添加音视频track</summary>
         /// <param name="ctx">mk_mpeg_muxer对象</param>
-        /// <param name="track">mk_track对象，音视频轨道</param>
+        /// <param name="track">
+        /// <para>mk_track对象，音视频轨道</para>
+        /// <para>Add audio/video track.</para>
+        /// </param>
+        /// <param name="ctx">mk_mpeg_muxer object.</param>
+        /// <param name="track">mk_track object, audio/video track.</param>
+        /// <remarks>[AUTO-TRANSLATED:f2082619]</remarks>
         public static void MkMpegMuxerInitTrack(global::ZLMediaKit.MkMpegMuxerT ctx, IntPtr track)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2518,7 +3056,14 @@ namespace ZLMediaKit
         /// <para>在单track(只有音频或视频)时，因为ZLMediaKit不知道后续是否还要添加track，所以会多等待3秒钟</para>
         /// <para>如果产生的流是单Track类型，请调用此函数以便加快流生成速度，当然不调用该函数，影响也不大(会多等待3秒)</para>
         /// </summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Call this function after the track is initialized.</para>
+        /// <para>In the case of a single track (only audio or video), because ZLMediaKit does not know whether to add more tracks later, it will wait for an additional 3 seconds.</para>
+        /// <para>If the generated stream is a single Track type, please call this function to speed up the stream generation. Of course, if you don't call this function, the impact is not big (it will wait for an additional 3 seconds).</para>
+        /// </param>
+        /// <param name="ctx">Object pointer.</param>
+        /// <remarks>[AUTO-TRANSLATED:f40d41cb]</remarks>
         public static void MkMpegMuxerInitComplete(global::ZLMediaKit.MkMpegMuxerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2528,7 +3073,17 @@ namespace ZLMediaKit
         /// <summary>输入frame对象</summary>
         /// <param name="ctx">mk_mpeg_muxer对象</param>
         /// <param name="frame">帧对象</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">mk_mpeg_muxer object.</param>
+        /// <param name="frame">Frame object.</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input frame object.</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 means success, 0 means failure.</para>
+        /// <para></para>
+        /// <para>[AUTO-TRANSLATED:46523906]</para>
+        /// </returns>
         public static int MkMpegMuxerInputFrame(global::ZLMediaKit.MkMpegMuxerT ctx, global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -2677,7 +3232,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -2755,7 +3310,7 @@ namespace ZLMediaKit
             private static void* __CopyValue(__Internal native)
             {
                 var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-                *(__Internal*)ret = native;
+                *(__Internal*) ret = native;
                 return ret.ToPointer();
             }
 
@@ -2785,17 +3340,17 @@ namespace ZLMediaKit
                 __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Video.__Internal));
                 __ownsNativeInstance = true;
                 NativeToManagedMap[__Instance] = this;
-                *((global::ZLMediaKit.CodecArgs.Video.__Internal*)__Instance) = *((global::ZLMediaKit.CodecArgs.Video.__Internal*)__0.__Instance);
+                *((global::ZLMediaKit.CodecArgs.Video.__Internal*) __Instance) = *((global::ZLMediaKit.CodecArgs.Video.__Internal*) __0.__Instance);
             }
 
             public void Dispose()
             {
-                Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+                Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
             }
 
             partial void DisposePartial(bool disposing);
 
-            internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+            internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
             {
                 if (__Instance == IntPtr.Zero)
                     return;
@@ -2889,7 +3444,7 @@ namespace ZLMediaKit
             private static void* __CopyValue(__Internal native)
             {
                 var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-                *(__Internal*)ret = native;
+                *(__Internal*) ret = native;
                 return ret.ToPointer();
             }
 
@@ -2919,17 +3474,17 @@ namespace ZLMediaKit
                 __Instance = Marshal.AllocHGlobal(sizeof(global::ZLMediaKit.CodecArgs.Audio.__Internal));
                 __ownsNativeInstance = true;
                 NativeToManagedMap[__Instance] = this;
-                *((global::ZLMediaKit.CodecArgs.Audio.__Internal*)__Instance) = *((global::ZLMediaKit.CodecArgs.Audio.__Internal*)__0.__Instance);
+                *((global::ZLMediaKit.CodecArgs.Audio.__Internal*) __Instance) = *((global::ZLMediaKit.CodecArgs.Audio.__Internal*) __0.__Instance);
             }
 
             public void Dispose()
             {
-                Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+                Dispose(disposing: true, callNativeDtor : __ownsNativeInstance );
             }
 
             partial void DisposePartial(bool disposing);
 
-            internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
+            internal protected virtual void Dispose(bool disposing, bool callNativeDtor )
             {
                 if (__Instance == IntPtr.Zero)
                     return;
@@ -2988,7 +3543,7 @@ namespace ZLMediaKit
 
         private CodecArgs(void* native, bool skipVTables = false) : this()
         {
-            __instance = *(global::ZLMediaKit.CodecArgs.__Internal*)native;
+            __instance = *(global::ZLMediaKit.CodecArgs.__Internal*) native;
         }
 
         public CodecArgs(global::ZLMediaKit.CodecArgs __0)
@@ -3013,7 +3568,7 @@ namespace ZLMediaKit
             {
                 if (ReferenceEquals(value, null))
                     throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-                __instance.video = *(global::ZLMediaKit.CodecArgs.Video.__Internal*)value.__Instance;
+                __instance.video = *(global::ZLMediaKit.CodecArgs.Video.__Internal*) value.__Instance;
             }
         }
 
@@ -3028,7 +3583,7 @@ namespace ZLMediaKit
             {
                 if (ReferenceEquals(value, null))
                     throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-                __instance.audio = *(global::ZLMediaKit.CodecArgs.Audio.__Internal*)value.__Instance;
+                __instance.audio = *(global::ZLMediaKit.CodecArgs.Audio.__Internal*) value.__Instance;
             }
         }
     }
@@ -3055,6 +3610,15 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_bit_rate", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkTrackBitRate(IntPtr track);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_ready", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkTrackReady(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_frames", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkTrackFrames(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_duration", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkTrackDuration(IntPtr track);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_add_delegate", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkTrackAddDelegate(IntPtr track, IntPtr cb, IntPtr user_data);
 
@@ -3079,6 +3643,15 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_video_fps", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkTrackVideoFps(IntPtr track);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_video_key_frames", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkTrackVideoKeyFrames(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_video_gop_size", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkTrackVideoGopSize(IntPtr track);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_video_gop_interval_ms", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkTrackVideoGopIntervalMs(IntPtr track);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_track_audio_sample_rate", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkTrackAudioSampleRate(IntPtr track);
 
@@ -3092,7 +3665,16 @@ namespace ZLMediaKit
         /// <summary>创建track对象引用</summary>
         /// <param name="codec_id">请参考MKCodecXXX 常量定义</param>
         /// <param name="args">视频或音频参数</param>
-        /// <returns>track对象引用</returns>
+        /// <param name="codec_id">Please refer to the MKCodecXXX constant definition</param>
+        /// <param name="args">Video or audio parameters</param>
+        /// <returns>
+        /// <para>track对象引用</para>
+        /// <para>Create a track object reference</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Track object reference</para>
+        /// <para>[AUTO-TRANSLATED:d53f3578]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkTrackT MkTrackCreate(int codec_id, global::ZLMediaKit.CodecArgs args)
         {
             var ____arg1 = args.__Instance;
@@ -3103,7 +3685,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>减引用track对象</summary>
-        /// <param name="track">track对象</param>
+        /// <param name="track">
+        /// <para>track对象</para>
+        /// <para>Decrement the reference count of the track object</para>
+        /// </param>
+        /// <param name="track">Track object</param>
+        /// <remarks>[AUTO-TRANSLATED:50d6180e]</remarks>
         public static void MkTrackUnref(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3112,7 +3699,15 @@ namespace ZLMediaKit
 
         /// <summary>引用track对象</summary>
         /// <param name="track">track对象</param>
-        /// <returns>新的track引用对象</returns>
+        /// <param name="track">Track object</param>
+        /// <returns>
+        /// <para>新的track引用对象</para>
+        /// <para>Increment the reference count of the track object</para>
+        /// </returns>
+        /// <returns>
+        /// <para>New track reference object</para>
+        /// <para>[AUTO-TRANSLATED:6492cbb1]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkTrackT MkTrackRef(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3121,7 +3716,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>获取track 编码codec类型，请参考MKCodecXXX定义</summary>
+        /// <summary>
+        /// <para>获取track 编码codec类型，请参考MKCodecXXX定义</para>
+        /// <para>Get the track encoding codec type, please refer to the MKCodecXXX definition</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:f90ed835]</remarks>
         public static int MkTrackCodecId(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3129,7 +3728,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取编码codec名称</summary>
+        /// <summary>
+        /// <para>获取编码codec名称</para>
+        /// <para>Get the encoding codec name</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:f46d430e]</remarks>
         public static string MkTrackCodecName(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3137,7 +3740,11 @@ namespace ZLMediaKit
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        /// <summary>获取比特率信息</summary>
+        /// <summary>
+        /// <para>获取比特率信息</para>
+        /// <para>Get the bitrate information</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:de8b48fe]</remarks>
         public static int MkTrackBitRate(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3145,10 +3752,53 @@ namespace ZLMediaKit
             return __ret;
         }
 
+        /// <summary>
+        /// <para>获取轨道是否已就绪，1: 已就绪，0：未就绪</para>
+        /// <para>Get whether the track is ready, 1: ready, 0: not ready</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:926d1a1a]</remarks>
+        public static int MkTrackReady(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackReady(__arg0);
+            return __ret;
+        }
+
+        /// <summary>
+        /// <para>获取累计帧数</para>
+        /// <para>Get the cumulative frame count</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:c30a45c6]</remarks>
+        public static ulong MkTrackFrames(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackFrames(__arg0);
+            return __ret;
+        }
+
+        /// <summary>
+        /// <para>获取时间，单位毫秒</para>
+        /// <para>Get the time, in milliseconds</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:37b0e1f9]</remarks>
+        public static ulong MkTrackDuration(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackDuration(__arg0);
+            return __ret;
+        }
+
         /// <summary>监听frame输出事件</summary>
         /// <param name="track">track对象</param>
         /// <param name="cb">frame输出回调</param>
-        /// <param name="user_data">frame输出回调用户指针参数</param>
+        /// <param name="user_data">
+        /// <para>frame输出回调用户指针参数</para>
+        /// <para>Listen for frame output events</para>
+        /// </param>
+        /// <param name="track">Track object</param>
+        /// <param name="cb">Frame output callback</param>
+        /// <param name="user_data">Frame output callback user pointer parameter</param>
+        /// <remarks>[AUTO-TRANSLATED:5cbd8347]</remarks>
         public static IntPtr MkTrackAddDelegate(global::ZLMediaKit.MkTrackT track, global::ZLMediaKit.OnMkFrameOut cb, IntPtr user_data)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3168,14 +3818,24 @@ namespace ZLMediaKit
 
         /// <summary>取消frame输出事件监听</summary>
         /// <param name="track">track对象</param>
-        /// <param name="tag">mk_track_add_delegate返回值</param>
+        /// <param name="tag">
+        /// <para>mk_track_add_delegate返回值</para>
+        /// <para>Cancel the frame output event listener</para>
+        /// </param>
+        /// <param name="track">Track object</param>
+        /// <param name="tag">Return value of mk_track_add_delegate</param>
+        /// <remarks>[AUTO-TRANSLATED:83a9fd9f]</remarks>
         public static void MkTrackDelDelegate(global::ZLMediaKit.MkTrackT track, IntPtr tag)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
             __Internal.MkTrackDelDelegate(__arg0, tag);
         }
 
-        /// <summary>输入frame到track，通常你不需要调用此api</summary>
+        /// <summary>
+        /// <para>输入frame到track，通常你不需要调用此api</para>
+        /// <para>Input frame to track, you usually don't need to call this api</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:ca3b03e8]</remarks>
         public static void MkTrackInputFrame(global::ZLMediaKit.MkTrackT track, global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3183,7 +3843,11 @@ namespace ZLMediaKit
             __Internal.MkTrackInputFrame(__arg0, __arg1);
         }
 
-        /// <summary>track是否为视频</summary>
+        /// <summary>
+        /// <para>track是否为视频</para>
+        /// <para>Whether the track is video</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:22573187]</remarks>
         public static int MkTrackIsVideo(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3191,7 +3855,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取视频宽度</summary>
+        /// <summary>
+        /// <para>获取视频宽度</para>
+        /// <para>Get the video width</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:06a849c6]</remarks>
         public static int MkTrackVideoWidth(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3199,7 +3867,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取视频高度</summary>
+        /// <summary>
+        /// <para>获取视频高度</para>
+        /// <para>Get the video height</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:27b5ed6e]</remarks>
         public static int MkTrackVideoHeight(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3207,7 +3879,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取视频帧率</summary>
+        /// <summary>
+        /// <para>获取视频帧率</para>
+        /// <para>Get the video frame rate</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:3c19a388]</remarks>
         public static int MkTrackVideoFps(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3215,7 +3891,47 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取音频采样率</summary>
+        /// <summary>
+        /// <para>获取视频累计关键帧数</para>
+        /// <para>Get the cumulative number of video keyframes</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:0e70e666]</remarks>
+        public static ulong MkTrackVideoKeyFrames(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackVideoKeyFrames(__arg0);
+            return __ret;
+        }
+
+        /// <summary>
+        /// <para>获取视频GOP关键帧间隔</para>
+        /// <para>Get the video GOP keyframe interval</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:ea8d3729]</remarks>
+        public static int MkTrackVideoGopSize(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackVideoGopSize(__arg0);
+            return __ret;
+        }
+
+        /// <summary>
+        /// <para>获取视频累计关键帧间隔(毫秒)</para>
+        /// <para>Get the cumulative video keyframe interval (milliseconds)</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:194b1e80]</remarks>
+        public static int MkTrackVideoGopIntervalMs(global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkTrackVideoGopIntervalMs(__arg0);
+            return __ret;
+        }
+
+        /// <summary>
+        /// <para>获取音频采样率</para>
+        /// <para>Get the audio sample rate</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:bf0e046b]</remarks>
         public static int MkTrackAudioSampleRate(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3223,7 +3939,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取音频通道数</summary>
+        /// <summary>
+        /// <para>获取音频通道数</para>
+        /// <para>Get the number of audio channels</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:ccb5d776]</remarks>
         public static int MkTrackAudioChannel(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3231,7 +3951,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取音频位数，一般为16bit</summary>
+        /// <summary>
+        /// <para>获取音频位数，一般为16bit</para>
+        /// <para>Get the audio bit depth, usually 16bit</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:11e36409]</remarks>
         public static int MkTrackAudioSampleBit(global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -3240,7 +3964,10 @@ namespace ZLMediaKit
         }
     }
 
-    /// <summary>mk ini</summary>
+    /// <summary>////////////////////////////////////////mk ini/////////////////////////////////////////////</summary>
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkGetStatisticCb(IntPtr user_data, IntPtr ini);
+
     public unsafe partial class MkIniT
     {
         public partial struct __Internal
@@ -3278,7 +4005,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3352,18 +4079,32 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_ini_dump_file", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkIniDumpFile(IntPtr ini, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_get_statistic", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkGetStatistic(IntPtr cb, IntPtr user_data, IntPtr free_cb);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_log_printf", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkLogPrintf(int level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string function, int line, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string fmt);
         }
 
-        /// <summary>释放mk api内部malloc的资源</summary>
+        /// <summary>
+        /// <para>释放mk api内部malloc的资源</para>
+        /// <para>Release resources allocated by mk api internally</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:92ecfef5]</remarks>
         public static void MkFree(IntPtr ptr)
         {
             __Internal.MkFree(ptr);
         }
 
         /// <summary>获取本程序可执行文件路径</summary>
-        /// <returns>文件路径，使用完后需要自己mk_free</returns>
+        /// <returns>
+        /// <para>文件路径，使用完后需要自己mk_free</para>
+        /// <para>Get the path of the executable file of this program</para>
+        /// </returns>
+        /// <returns>
+        /// <para>File path, need to be mk_free after use</para>
+        /// <para>[AUTO-TRANSLATED:5f1fae7f]</para>
+        /// </returns>
         public static sbyte* MkUtilGetExePath()
         {
             var __ret = __Internal.MkUtilGetExePath();
@@ -3372,7 +4113,15 @@ namespace ZLMediaKit
 
         /// <summary>获取本程序可执行文件相同目录下文件的绝对路径</summary>
         /// <param name="relative_path">同目录下文件的路径相对,可以为null</param>
-        /// <returns>文件路径，使用完后需要自己mk_free</returns>
+        /// <param name="relative_path">The path of the file in the same directory, can be null</param>
+        /// <returns>
+        /// <para>文件路径，使用完后需要自己mk_free</para>
+        /// <para>Get the absolute path of the file in the same directory as the executable file of this program</para>
+        /// </returns>
+        /// <returns>
+        /// <para>File path, need to be mk_free after use</para>
+        /// <para>[AUTO-TRANSLATED:80442e8e]</para>
+        /// </returns>
         public static sbyte* MkUtilGetExeDir(string relative_path)
         {
             var __ret = __Internal.MkUtilGetExeDir(relative_path);
@@ -3380,7 +4129,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>获取unix标准的系统时间戳</summary>
-        /// <returns>当前系统时间戳</returns>
+        /// <returns>
+        /// <para>当前系统时间戳</para>
+        /// <para>Get the Unix standard system timestamp</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Current system timestamp</para>
+        /// <para>[AUTO-TRANSLATED:feddaa5b]</para>
+        /// </returns>
         public static ulong MkUtilGetCurrentMillisecond()
         {
             var __ret = __Internal.MkUtilGetCurrentMillisecond();
@@ -3389,7 +4145,15 @@ namespace ZLMediaKit
 
         /// <summary>获取时间字符串</summary>
         /// <param name="fmt">时间格式，譬如%Y-%m-%d %H:%M:%S</param>
-        /// <returns>时间字符串，使用完后需要自己mk_free</returns>
+        /// <param name="fmt">Time format, such as %Y-%m-%d %H:%M:%S</param>
+        /// <returns>
+        /// <para>时间字符串，使用完后需要自己mk_free</para>
+        /// <para>Get the time string</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Time string, need to be mk_free after use</para>
+        /// <para>[AUTO-TRANSLATED:c5a6c984]</para>
+        /// </returns>
         public static sbyte* MkUtilGetCurrentTimeString(string fmt)
         {
             var __ret = __Internal.MkUtilGetCurrentTimeString(fmt);
@@ -3399,14 +4163,27 @@ namespace ZLMediaKit
         /// <summary>打印二进制为字符串</summary>
         /// <param name="buf">二进制数据</param>
         /// <param name="len">数据长度</param>
-        /// <returns>可打印的调试信息，使用完后需要自己mk_free</returns>
+        /// <param name="buf">Binary data</param>
+        /// <param name="len">Data length</param>
+        /// <returns>
+        /// <para>可打印的调试信息，使用完后需要自己mk_free</para>
+        /// <para>Print binary data as string</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Printable debug information, need to be mk_free after use</para>
+        /// <para>[AUTO-TRANSLATED:5b76b3a5]</para>
+        /// </returns>
         public static sbyte* MkUtilHexDump(IntPtr buf, int len)
         {
             var __ret = __Internal.MkUtilHexDump(buf, len);
             return __ret;
         }
 
-        /// <summary>创建ini配置对象</summary>
+        /// <summary>
+        /// <para>创建ini配置对象</para>
+        /// <para>Create ini configuration object</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:b8ce40cc]</remarks>
         public static global::ZLMediaKit.MkIniT MkIniCreate()
         {
             var __ret = __Internal.MkIniCreate();
@@ -3415,7 +4192,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>返回全局默认ini配置</summary>
-        /// <returns>全局默认ini配置，请勿用mk_ini_release释放它</returns>
+        /// <returns>
+        /// <para>全局默认ini配置，请勿用mk_ini_release释放它</para>
+        /// <para>Return the global default ini configuration</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Global default ini configuration, do not use mk_ini_release to release it</para>
+        /// <para>[AUTO-TRANSLATED:057ea031]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkIniT MkIniDefault()
         {
             var __ret = __Internal.MkIniDefault();
@@ -3425,7 +4209,13 @@ namespace ZLMediaKit
 
         /// <summary>加载ini配置文件内容</summary>
         /// <param name="ini">ini对象</param>
-        /// <param name="str">配置文件内容</param>
+        /// <param name="str">
+        /// <para>配置文件内容</para>
+        /// <para>Load ini configuration file content</para>
+        /// </param>
+        /// <param name="ini">Ini object</param>
+        /// <param name="str">Configuration file content</param>
+        /// <remarks>[AUTO-TRANSLATED:b9366be5]</remarks>
         public static void MkIniLoadString(global::ZLMediaKit.MkIniT ini, string str)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3434,14 +4224,24 @@ namespace ZLMediaKit
 
         /// <summary>加载ini配置文件</summary>
         /// <param name="ini">ini对象</param>
-        /// <param name="file">配置文件路径</param>
+        /// <param name="file">
+        /// <para>配置文件路径</para>
+        /// <para>Load ini configuration file</para>
+        /// </param>
+        /// <param name="ini">Ini object</param>
+        /// <param name="file">Configuration file path</param>
+        /// <remarks>[AUTO-TRANSLATED:688e0471]</remarks>
         public static void MkIniLoadFile(global::ZLMediaKit.MkIniT ini, string file)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
             __Internal.MkIniLoadFile(__arg0, file);
         }
 
-        /// <summary>销毁ini配置对象</summary>
+        /// <summary>
+        /// <para>销毁ini配置对象</para>
+        /// <para>Destroy ini configuration object</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:b6286ab8]</remarks>
         public static void MkIniRelease(global::ZLMediaKit.MkIniT ini)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3451,7 +4251,14 @@ namespace ZLMediaKit
         /// <summary>添加或覆盖配置项</summary>
         /// <param name="ini">配置对象</param>
         /// <param name="key">配置名，两段式，如：field.key</param>
-        /// <param name="value">配置值</param>
+        /// <param name="value">
+        /// <para>配置值</para>
+        /// <para>Add or overwrite configuration item</para>
+        /// </param>
+        /// <param name="ini">Configuration object</param>
+        /// <param name="key">Configuration name, two-part, such as: field.key</param>
+        /// <param name="value">Configuration value</param>
+        /// <remarks>[AUTO-TRANSLATED:1b2c8bfa]</remarks>
         public static void MkIniSetOption(global::ZLMediaKit.MkIniT ini, string key, string value)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3467,7 +4274,16 @@ namespace ZLMediaKit
         /// <summary>获取配置项</summary>
         /// <param name="ini">配置对象</param>
         /// <param name="key">配置名，两段式，如：field.key</param>
-        /// <returns>配置不存在返回NULL，否则返回配置值</returns>
+        /// <param name="ini">Configuration object</param>
+        /// <param name="key">Configuration name, two-part, such as: field.key</param>
+        /// <returns>
+        /// <para>配置不存在返回NULL，否则返回配置值</para>
+        /// <para>Get configuration item</para>
+        /// </returns>
+        /// <returns>
+        /// <para>NULL if the configuration does not exist, otherwise return the configuration value</para>
+        /// <para>[AUTO-TRANSLATED:4df4bc65]</para>
+        /// </returns>
         public static string MkIniGetOption(global::ZLMediaKit.MkIniT ini, string key)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3478,7 +4294,16 @@ namespace ZLMediaKit
         /// <summary>删除配置项</summary>
         /// <param name="ini">配置对象</param>
         /// <param name="key">配置名，两段式，如：field.key</param>
-        /// <returns>1: 成功，0: 该配置不存在</returns>
+        /// <param name="ini">Configuration object</param>
+        /// <param name="key">Configuration name, two-part, such as: field.key</param>
+        /// <returns>
+        /// <para>1: 成功，0: 该配置不存在</para>
+        /// <para>Delete configuration item</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1: Success, 0: The configuration does not exist</para>
+        /// <para>[AUTO-TRANSLATED:dbbbdca3]</para>
+        /// </returns>
         public static int MkIniDelOption(global::ZLMediaKit.MkIniT ini, string key)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3488,7 +4313,15 @@ namespace ZLMediaKit
 
         /// <summary>导出为配置文件内容</summary>
         /// <param name="ini">配置对象</param>
-        /// <returns>配置文件内容字符串，用完后需要自行mk_free</returns>
+        /// <param name="ini">Configuration object</param>
+        /// <returns>
+        /// <para>配置文件内容字符串，用完后需要自行mk_free</para>
+        /// <para>Export to configuration file content</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Configuration file content string, need to be mk_free after use</para>
+        /// <para>[AUTO-TRANSLATED:94620b68]</para>
+        /// </returns>
         public static sbyte* MkIniDumpString(global::ZLMediaKit.MkIniT ini)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
@@ -3498,11 +4331,31 @@ namespace ZLMediaKit
 
         /// <summary>导出配置文件到文件</summary>
         /// <param name="ini">配置对象</param>
-        /// <param name="file">配置文件路径</param>
+        /// <param name="file">
+        /// <para>配置文件路径</para>
+        /// <para>Export configuration file to file</para>
+        /// </param>
+        /// <param name="ini">Configuration object</param>
+        /// <param name="file">Configuration file path</param>
+        /// <remarks>[AUTO-TRANSLATED:8fac58af]</remarks>
         public static void MkIniDumpFile(global::ZLMediaKit.MkIniT ini, string file)
         {
             var __arg0 = ini is null ? IntPtr.Zero : ini.__Instance;
             __Internal.MkIniDumpFile(__arg0, file);
+        }
+
+        /// <summary>获取内存数据统计</summary>
+        /// <param name="ini">
+        /// <para>存放统计结果</para>
+        /// <para>Get memory data statistics</para>
+        /// </param>
+        /// <param name="ini">Store statistical results</param>
+        /// <remarks>[AUTO-TRANSLATED:48d8035c]</remarks>
+        public static void MkGetStatistic(global::ZLMediaKit.OnMkGetStatisticCb cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree free_cb)
+        {
+            var __arg0 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg2 = free_cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(free_cb);
+            __Internal.MkGetStatistic(__arg0, user_data, __arg2);
         }
 
         /// <summary>打印日志</summary>
@@ -3511,33 +4364,50 @@ namespace ZLMediaKit
         /// <param name="function">__FUNCTION__</param>
         /// <param name="line">__LINE__</param>
         /// <param name="fmt">printf类型的格式控制字符串</param>
-        /// <param name="...">不定长参数</param>
+        /// <param name="...">
+        /// <para>不定长参数</para>
+        /// <para>Print log</para>
+        /// </param>
+        /// <param name="level">Log level, support 0~4</param>
+        /// <param name="file">__FILE__</param>
+        /// <param name="function">__FUNCTION__</param>
+        /// <param name="line">__LINE__</param>
+        /// <param name="fmt">printf type format control string</param>
+        /// <param name="...">Variable length parameters</param>
+        /// <remarks>[AUTO-TRANSLATED:f19956e7]</remarks>
         public static void MkLogPrintf(int level, string file, string function, int line, string fmt)
         {
             __Internal.MkLogPrintf(level, file, function, line, fmt);
         }
     }
 
-    /// <summary>MP4Info</summary>
-    /// <summary>Parser</summary>
-    /// <summary>MediaInfo</summary>
-    /// <summary>MediaSource</summary>
+    /// <summary>////////////////////////////////////////RecordInfo/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////Parser/////////////////////////////////////////////</summary>
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkParserHeaderCb(IntPtr user_data, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string key, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string val);
+
+    /// <summary>////////////////////////////////////////MediaInfo/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////MediaSource/////////////////////////////////////////////</summary>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkMediaSourceFindCb(IntPtr user_data, IntPtr ctx);
 
-    /// <summary>rtp推流成功与否的回调(第一次成功后，后面将一直重试)</summary>
+    /// <summary>
+    /// <para>rtp推流成功与否的回调(第一次成功后，后面将一直重试)</para>
+    /// <para>Callback for whether rtp push stream is successful or not (after the first success, it will keep retrying)</para>
+    /// </summary>
+    /// <remarks>[AUTO-TRANSLATED:7e00f7fb]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkMediaSourceSendRtpResult(IntPtr user_data, ushort local_port, int err, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string msg);
 
-    /// <summary>HttpBody</summary>
-    /// <summary>HttpResponseInvoker</summary>
-    /// <summary>HttpAccessPathInvoker</summary>
-    /// <summary>RtspSession::onGetRealm</summary>
-    /// <summary>RtspSession::onAuth</summary>
-    /// <summary>Broadcast::PublishAuthInvoker</summary>
-    /// <summary>Broadcast::AuthInvoker</summary>
-    /// <summary>WebRtcTransport</summary>
-    public unsafe partial class MkMp4InfoT
+    /// <summary>////////////////////////////////////////HttpBody/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////HttpResponseInvoker/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////HttpAccessPathInvoker/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////RtspSession::onGetRealm/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////RtspSession::onAuth/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////Broadcast::PublishAuthInvoker/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////Broadcast::AuthInvoker/////////////////////////////////////////////</summary>
+    /// <summary>////////////////////////////////////////WebRtcTransport/////////////////////////////////////////////</summary>
+    public unsafe partial class MkRecordInfoT
     {
         public partial struct __Internal
         {
@@ -3545,47 +4415,47 @@ namespace ZLMediaKit
 
         public IntPtr __Instance { get; protected set; }
 
-        internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.MkMp4InfoT> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.MkMp4InfoT>();
+        internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.MkRecordInfoT> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::ZLMediaKit.MkRecordInfoT>();
 
         protected bool __ownsNativeInstance;
 
-        internal static MkMp4InfoT __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static MkRecordInfoT __CreateInstance(IntPtr native, bool skipVTables = false)
         {
-            return new MkMp4InfoT(native.ToPointer(), skipVTables);
+            return new MkRecordInfoT(native.ToPointer(), skipVTables);
         }
 
-        internal static MkMp4InfoT __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static MkRecordInfoT __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
-                return (MkMp4InfoT)managed;
+                return (MkRecordInfoT)managed;
             var result = __CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static MkMp4InfoT __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static MkRecordInfoT __CreateInstance(__Internal native, bool skipVTables = false)
         {
-            return new MkMp4InfoT(native, skipVTables);
+            return new MkRecordInfoT(native, skipVTables);
         }
 
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
-        private MkMp4InfoT(__Internal native, bool skipVTables = false)
+        private MkRecordInfoT(__Internal native, bool skipVTables = false)
             : this(__CopyValue(native), skipVTables)
         {
             __ownsNativeInstance = true;
             NativeToManagedMap[__Instance] = this;
         }
 
-        protected MkMp4InfoT(void* native, bool skipVTables = false)
+        protected MkRecordInfoT(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
@@ -3630,7 +4500,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3686,7 +4556,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3742,7 +4612,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3798,7 +4668,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3854,7 +4724,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3910,7 +4780,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -3966,7 +4836,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -4022,7 +4892,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -4078,7 +4948,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -4134,7 +5004,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -4190,7 +5060,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -4213,35 +5083,35 @@ namespace ZLMediaKit
     {
         public partial struct __Internal
         {
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_start_time", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern ulong MkMp4InfoGetStartTime(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_start_time", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkRecordInfoGetStartTime(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_time_len", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern float MkMp4InfoGetTimeLen(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_time_len", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern float MkRecordInfoGetTimeLen(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_file_size", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern ulong MkMp4InfoGetFileSize(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_file_size", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkRecordInfoGetFileSize(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_file_path", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetFilePath(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_file_path", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetFilePath(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_file_name", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetFileName(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_file_name", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetFileName(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_folder", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetFolder(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_folder", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetFolder(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_url", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetUrl(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_url", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetUrl(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_vhost", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetVhost(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_vhost", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetVhost(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_app", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetApp(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_app", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetApp(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_mp4_info_get_stream", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern IntPtr MkMp4InfoGetStream(IntPtr ctx);
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_record_info_get_stream", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRecordInfoGetStream(IntPtr ctx);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_parser_get_method", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkParserGetMethod(IntPtr ctx);
@@ -4263,6 +5133,9 @@ namespace ZLMediaKit
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_parser_get_content", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkParserGetContent(IntPtr ctx, ulong* length);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_parser_headers_for_each", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkParserHeadersForEach(IntPtr ctx, IntPtr cb, IntPtr user_data);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_info_get_params", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkMediaInfoGetParams(IntPtr ctx);
@@ -4309,8 +5182,32 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_track", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkMediaSourceGetTrack(IntPtr ctx, int index);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_track_loss", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern float MkMediaSourceGetTrackLoss(IntPtr ctx, IntPtr track);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_broadcast_msg", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkMediaSourceBroadcastMsg(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string msg, ulong len);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_origin_url", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkMediaSourceGetOriginUrl(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_origin_type", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkMediaSourceGetOriginType(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_origin_type_str", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkMediaSourceGetOriginTypeStr(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_create_stamp", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkMediaSourceGetCreateStamp(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_is_recording", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkMediaSourceIsRecording(IntPtr ctx, int type);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_bytes_speed", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkMediaSourceGetBytesSpeed(IntPtr ctx);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_get_alive_second", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern ulong MkMediaSourceGetAliveSecond(IntPtr ctx);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_close", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkMediaSourceClose(IntPtr ctx, int force);
@@ -4318,11 +5215,20 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_seek_to", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkMediaSourceSeekTo(IntPtr ctx, uint stamp);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_set_speed", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkMediaSourceSetSpeed(IntPtr ctx, float speed);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_start_send_rtp", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkMediaSourceStartSendRtp(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int is_udp, IntPtr cb, IntPtr user_data);
+            internal static extern void MkMediaSourceStartSendRtp(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr cb, IntPtr user_data);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_start_send_rtp2", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkMediaSourceStartSendRtp2(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int is_udp, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+            internal static extern void MkMediaSourceStartSendRtp2(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_start_send_rtp3", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkMediaSourceStartSendRtp3(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr options, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_start_send_rtp4", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkMediaSourceStartSendRtp4(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr options, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_source_stop_send_rtp", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkMediaSourceStopSendRtp(IntPtr ctx);
@@ -4414,77 +5320,77 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_auth_invoker_clone_release", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkAuthInvokerCloneRelease(IntPtr ctx);
 
-            [SuppressUnmanagedCodeSecurity, DllImport("ZLMediaKit", EntryPoint = "mk_rtc_send_datachannel", CallingConvention = CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtc_send_datachannel", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkRtcSendDatachannel(IntPtr ctx, ushort streamId, uint ppid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string msg, ulong len);
         }
 
-        public static ulong MkMp4InfoGetStartTime(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static ulong MkRecordInfoGetStartTime(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetStartTime(__arg0);
+            var __ret = __Internal.MkRecordInfoGetStartTime(__arg0);
             return __ret;
         }
 
-        public static float MkMp4InfoGetTimeLen(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static float MkRecordInfoGetTimeLen(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetTimeLen(__arg0);
+            var __ret = __Internal.MkRecordInfoGetTimeLen(__arg0);
             return __ret;
         }
 
-        public static ulong MkMp4InfoGetFileSize(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static ulong MkRecordInfoGetFileSize(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetFileSize(__arg0);
+            var __ret = __Internal.MkRecordInfoGetFileSize(__arg0);
             return __ret;
         }
 
-        public static string MkMp4InfoGetFilePath(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetFilePath(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetFilePath(__arg0);
+            var __ret = __Internal.MkRecordInfoGetFilePath(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetFileName(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetFileName(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetFileName(__arg0);
+            var __ret = __Internal.MkRecordInfoGetFileName(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetFolder(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetFolder(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetFolder(__arg0);
+            var __ret = __Internal.MkRecordInfoGetFolder(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetUrl(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetUrl(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetUrl(__arg0);
+            var __ret = __Internal.MkRecordInfoGetUrl(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetVhost(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetVhost(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetVhost(__arg0);
+            var __ret = __Internal.MkRecordInfoGetVhost(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetApp(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetApp(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetApp(__arg0);
+            var __ret = __Internal.MkRecordInfoGetApp(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
-        public static string MkMp4InfoGetStream(global::ZLMediaKit.MkMp4InfoT ctx)
+        public static string MkRecordInfoGetStream(global::ZLMediaKit.MkRecordInfoT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
-            var __ret = __Internal.MkMp4InfoGetStream(__arg0);
+            var __ret = __Internal.MkRecordInfoGetStream(__arg0);
             return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
         }
 
@@ -4539,6 +5445,13 @@ namespace ZLMediaKit
                 var __ret = __Internal.MkParserGetContent(__arg0, __arg1);
                 return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
             }
+        }
+
+        public static void MkParserHeadersForEach(global::ZLMediaKit.MkParserT ctx, global::ZLMediaKit.OnMkParserHeaderCb cb, IntPtr user_data)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkParserHeadersForEach(__arg0, __arg1, user_data);
         }
 
         public static string MkMediaInfoGetParams(global::ZLMediaKit.MkMediaInfoT ctx)
@@ -4647,10 +5560,67 @@ namespace ZLMediaKit
             return __result0;
         }
 
+        public static float MkMediaSourceGetTrackLoss(global::ZLMediaKit.MkMediaSourceT ctx, global::ZLMediaKit.MkTrackT track)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg1 = track is null ? IntPtr.Zero : track.__Instance;
+            var __ret = __Internal.MkMediaSourceGetTrackLoss(__arg0, __arg1);
+            return __ret;
+        }
+
         public static int MkMediaSourceBroadcastMsg(global::ZLMediaKit.MkMediaSourceT ctx, string msg, ulong len)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __ret = __Internal.MkMediaSourceBroadcastMsg(__arg0, msg, len);
+            return __ret;
+        }
+
+        public static string MkMediaSourceGetOriginUrl(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetOriginUrl(__arg0);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        public static int MkMediaSourceGetOriginType(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetOriginType(__arg0);
+            return __ret;
+        }
+
+        public static string MkMediaSourceGetOriginTypeStr(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetOriginTypeStr(__arg0);
+            return CppSharp.Runtime.MarshalUtil.GetString(global::System.Text.Encoding.UTF8, __ret);
+        }
+
+        public static ulong MkMediaSourceGetCreateStamp(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetCreateStamp(__arg0);
+            return __ret;
+        }
+
+        public static int MkMediaSourceIsRecording(global::ZLMediaKit.MkMediaSourceT ctx, int type)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceIsRecording(__arg0, type);
+            return __ret;
+        }
+
+        public static int MkMediaSourceGetBytesSpeed(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetBytesSpeed(__arg0);
+            return __ret;
+        }
+
+        public static ulong MkMediaSourceGetAliveSecond(global::ZLMediaKit.MkMediaSourceT ctx)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __ret = __Internal.MkMediaSourceGetAliveSecond(__arg0);
             return __ret;
         }
 
@@ -4667,7 +5637,24 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="ctx">对象</param>
         /// <param name="force">是否强制关闭，如果强制关闭，在有人观看的情况下也会关闭</param>
-        /// <returns>0代表失败，1代表成功</returns>
+        /// <param name="ctx">object</param>
+        /// <param name="force">Whether to force closure, if forced closure, it will be closed even if someone is watching</param>
+        /// <returns>
+        /// <para>0代表失败，1代表成功</para>
+        /// <para>Live sources are called MediaSource in ZLMediaKit,</para>
+        /// <para>Currently, there are 3 types, namely RtmpMediaSource, RtspMediaSource, HlsMediaSource</para>
+        /// <para>The source is generated in both passive and active ways:</para>
+        /// <para>Passive ways are rtsp/rtmp/rtp push stream, mp4 on-demand</para>
+        /// <para>Active ways include objects created by mk_media_create (DevChannel), objects created by mk_proxy_player_create (PlayerProxy)</para>
+        /// <para>You don't need to do anything for passive ways, ZLMediaKit has already adapted the MediaSource::close() event by default, which will close the live stream</para>
+        /// <para>For active ways, you need to set the callback of this event, you need to choose to delete the object yourself</para>
+        /// <para>You can set the callback through the mk_proxy_player_set_on_close and mk_media_set_on_close functions,</para>
+        /// <para>Please delete the object in the callback to complete the media closure, otherwise why call the mk_media_source_close function?</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0 means failure, 1 means success</para>
+        /// <para>[AUTO-TRANSLATED:9415a405]</para>
+        /// </returns>
         public static int MkMediaSourceClose(global::ZLMediaKit.MkMediaSourceT ctx, int force)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4682,19 +5669,42 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        public static void MkMediaSourceStartSendRtp(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int is_udp, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
+        public static void MkMediaSourceSetSpeed(global::ZLMediaKit.MkMediaSourceT ctx, float speed)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            __Internal.MkMediaSourceSetSpeed(__arg0, speed);
+        }
+
+        public static void MkMediaSourceStartSendRtp(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
-            __Internal.MkMediaSourceStartSendRtp(__arg0, dst_url, dst_port, ssrc, is_udp, __arg5, user_data);
+            __Internal.MkMediaSourceStartSendRtp(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, user_data);
         }
 
-        public static void MkMediaSourceStartSendRtp2(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int is_udp, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        public static void MkMediaSourceStartSendRtp2(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             var __arg7 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
-            __Internal.MkMediaSourceStartSendRtp2(__arg0, dst_url, dst_port, ssrc, is_udp, __arg5, user_data, __arg7);
+            __Internal.MkMediaSourceStartSendRtp2(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, user_data, __arg7);
+        }
+
+        public static void MkMediaSourceStartSendRtp3(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.MkIniT options, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg5 = options is null ? IntPtr.Zero : options.__Instance;
+            var __arg6 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkMediaSourceStartSendRtp3(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, __arg6, user_data);
+        }
+
+        public static void MkMediaSourceStartSendRtp4(global::ZLMediaKit.MkMediaSourceT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.MkIniT options, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg5 = options is null ? IntPtr.Zero : options.__Instance;
+            var __arg6 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg8 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            __Internal.MkMediaSourceStartSendRtp4(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, __arg6, user_data, __arg8);
         }
 
         public static int MkMediaSourceStopSendRtp(global::ZLMediaKit.MkMediaSourceT ctx)
@@ -4725,7 +5735,13 @@ namespace ZLMediaKit
 
         /// <summary>生成HttpStringBody</summary>
         /// <param name="str">字符串指针</param>
-        /// <param name="len">字符串长度，为0则用strlen获取</param>
+        /// <param name="len">
+        /// <para>字符串长度，为0则用strlen获取</para>
+        /// <para>Generate HttpStringBody</para>
+        /// </param>
+        /// <param name="str">String pointer</param>
+        /// <param name="len">String length, if it is 0, use strlen to get it</param>
+        /// <remarks>[AUTO-TRANSLATED:7f828392]</remarks>
         public static global::ZLMediaKit.MkHttpBodyT MkHttpBodyFromString(string str, ulong len)
         {
             var __ret = __Internal.MkHttpBodyFromString(str, len);
@@ -4734,7 +5750,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>生成HttpBufferBody</summary>
-        /// <param name="buffer">mk_buffer对象</param>
+        /// <param name="buffer">
+        /// <para>mk_buffer对象</para>
+        /// <para>Generate HttpBufferBody</para>
+        /// </param>
+        /// <param name="buffer">mk_buffer object</param>
+        /// <remarks>[AUTO-TRANSLATED:2d31a2e4]</remarks>
         public static global::ZLMediaKit.MkHttpBodyT MkHttpBodyFromBuffer(global::ZLMediaKit.MkBufferT buffer)
         {
             var __arg0 = buffer is null ? IntPtr.Zero : buffer.__Instance;
@@ -4744,7 +5765,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>生成HttpFileBody</summary>
-        /// <param name="file_path">文件完整路径</param>
+        /// <param name="file_path">
+        /// <para>文件完整路径</para>
+        /// <para>Generate HttpFileBody</para>
+        /// </param>
+        /// <param name="file_path">File full path</param>
+        /// <remarks>[AUTO-TRANSLATED:4823ab7f]</remarks>
         public static global::ZLMediaKit.MkHttpBodyT MkHttpBodyFromFile(string file_path)
         {
             var __ret = __Internal.MkHttpBodyFromFile(file_path);
@@ -4754,7 +5780,13 @@ namespace ZLMediaKit
 
         /// <summary>生成HttpMultiFormBody</summary>
         /// <param name="key_val">参数key-value</param>
-        /// <param name="file_path">文件完整路径</param>
+        /// <param name="file_path">
+        /// <para>文件完整路径</para>
+        /// <para>Generate HttpMultiFormBody</para>
+        /// </param>
+        /// <param name="key_val">Parameter key-value</param>
+        /// <param name="file_path">File full path</param>
+        /// <remarks>[AUTO-TRANSLATED:17976911]</remarks>
         public static global::ZLMediaKit.MkHttpBodyT MkHttpBodyFromMultiForm(string[] key_val, string file_path)
         {
             var __ret = __Internal.MkHttpBodyFromMultiForm(key_val, file_path);
@@ -4762,7 +5794,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁HttpBody</summary>
+        /// <summary>
+        /// <para>销毁HttpBody</para>
+        /// <para>Destroy HttpBody</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:a1169b76]</remarks>
         public static void MkHttpBodyRelease(global::ZLMediaKit.MkHttpBodyT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4772,7 +5808,14 @@ namespace ZLMediaKit
         /// <summary>HttpSession::HttpResponseInvoker(const string&amp;codeOut, const StrCaseMap&amp;headerOut, const HttpBody::Ptr&amp;body);</summary>
         /// <param name="response_code">譬如200</param>
         /// <param name="response_header">返回的http头，譬如 {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} 必须以NULL结尾</param>
-        /// <param name="response_body">body对象</param>
+        /// <param name="response_body">
+        /// <para>body对象</para>
+        /// <para>HttpSession::HttpResponseInvoker(const string&amp;codeOut, const StrCaseMap&amp;headerOut, const HttpBody::Ptr&amp;body);</para>
+        /// </param>
+        /// <param name="response_code">For example 200</param>
+        /// <param name="response_header">The returned http header, for example {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} must end with NULL</param>
+        /// <param name="response_body">Body object</param>
+        /// <remarks>[AUTO-TRANSLATED:e006685a]</remarks>
         public static void MkHttpResponseInvokerDo(global::ZLMediaKit.MkHttpResponseInvokerT ctx, int response_code, sbyte** response_header, global::ZLMediaKit.MkHttpBodyT response_body)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4783,7 +5826,14 @@ namespace ZLMediaKit
         /// <summary>HttpSession::HttpResponseInvoker(const string&amp;codeOut, const StrCaseMap&amp;headerOut, const string&amp;body);</summary>
         /// <param name="response_code">譬如200</param>
         /// <param name="response_header">返回的http头，譬如 {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} 必须以NULL结尾</param>
-        /// <param name="response_content">返回的content部分，譬如一个网页内容</param>
+        /// <param name="response_content">
+        /// <para>返回的content部分，譬如一个网页内容</para>
+        /// <para>HttpSession::HttpResponseInvoker(const string&amp;codeOut, const StrCaseMap&amp;headerOut, const string&amp;body);</para>
+        /// </param>
+        /// <param name="response_code">For example 200</param>
+        /// <param name="response_header">The returned http header, for example {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} must end with NULL</param>
+        /// <param name="response_content">The returned content part, for example a web page content</param>
+        /// <remarks>[AUTO-TRANSLATED:0c3cf577]</remarks>
         public static void MkHttpResponseInvokerDoString(global::ZLMediaKit.MkHttpResponseInvokerT ctx, int response_code, sbyte** response_header, string response_content)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4793,7 +5843,14 @@ namespace ZLMediaKit
         /// <summary>HttpSession::HttpResponseInvoker(const StrCaseMap&amp;requestHeader,const StrCaseMap&amp;responseHeader,const string&amp;filePath);</summary>
         /// <param name="request_parser">请求事件中的mk_parser对象，用于提取其中http头中的Range字段，通过该字段先fseek然后再发送文件部分片段</param>
         /// <param name="response_header">返回的http头，譬如 {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} 必须以NULL结尾</param>
-        /// <param name="response_file_path">返回的content部分，譬如/path/to/html/file</param>
+        /// <param name="response_file_path">
+        /// <para>返回的content部分，譬如/path/to/html/file</para>
+        /// <para>HttpSession::HttpResponseInvoker(const StrCaseMap&amp;requestHeader,const StrCaseMap&amp;responseHeader,const string&amp;filePath);</para>
+        /// </param>
+        /// <param name="request_parser">The mk_parser object in the request event, used to extract the Range field in the http header, use this field to fseek first and then send the file part fragment</param>
+        /// <param name="response_header">The returned http header, for example {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} must end with NULL</param>
+        /// <param name="response_file_path">The returned content part, for example /path/to/html/file</param>
+        /// <remarks>[AUTO-TRANSLATED:8ed9ed9e]</remarks>
         public static void MkHttpResponseInvokerDoFile(global::ZLMediaKit.MkHttpResponseInvokerT ctx, global::ZLMediaKit.MkParserT request_parser, string[] response_header, string response_file_path)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4804,7 +5861,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_http_response_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_http_response_invoker_do</para>
         /// <para>如果是同步执行mk_http_response_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_http_response_invoker object, by cloning the object to a heap object, you can achieve cross-thread asynchronous execution of mk_http_response_invoker_do</para>
+        /// <para>If you execute mk_http_response_invoker_do synchronously, then there is no need to clone the object</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:54c98395]</remarks>
         public static global::ZLMediaKit.MkHttpResponseInvokerT MkHttpResponseInvokerClone(global::ZLMediaKit.MkHttpResponseInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4813,7 +5873,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkHttpResponseInvokerCloneRelease(global::ZLMediaKit.MkHttpResponseInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4823,7 +5887,14 @@ namespace ZLMediaKit
         /// <summary>HttpSession::HttpAccessPathInvoker(const string&amp;errMsg,const string&amp;accessPath, int cookieLifeSecond);</summary>
         /// <param name="err_msg">如果为空，则代表鉴权通过，否则为错误提示,可以为null</param>
         /// <param name="access_path">运行或禁止访问的根目录,可以为null</param>
-        /// <param name="cookie_life_second">鉴权cookie有效期</param>
+        /// <param name="cookie_life_second">
+        /// <para>鉴权cookie有效期</para>
+        /// <para>HttpSession::HttpAccessPathInvoker(const string&amp;errMsg,const string&amp;accessPath, int cookieLifeSecond);</para>
+        /// </param>
+        /// <param name="err_msg">If it is empty, it means that the authentication is passed, otherwise it is an error prompt, it can be null</param>
+        /// <param name="access_path">The root directory to run or prohibit access, it can be null</param>
+        /// <param name="cookie_life_second">Authentication cookie validity period</param>
+        /// <remarks>[AUTO-TRANSLATED:105c76c4]</remarks>
         public static void MkHttpAccessPathInvokerDo(global::ZLMediaKit.MkHttpAccessPathInvokerT ctx, string err_msg, string access_path, int cookie_life_second)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4833,7 +5904,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_http_access_path_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_http_access_path_invoker_do</para>
         /// <para>如果是同步执行mk_http_access_path_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_http_access_path_invoker object, by cloning the object to a heap object, you can achieve cross-thread asynchronous execution of mk_http_access_path_invoker_do</para>
+        /// <para>If you execute mk_http_access_path_invoker_do synchronously, then there is no need to clone the object</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:ad2a71e4]</remarks>
         public static global::ZLMediaKit.MkHttpAccessPathInvokerT MkHttpAccessPathInvokerClone(global::ZLMediaKit.MkHttpAccessPathInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4842,7 +5916,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkHttpAccessPathInvokerCloneRelease(global::ZLMediaKit.MkHttpAccessPathInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4850,7 +5928,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>执行RtspSession::onGetRealm</summary>
-        /// <param name="realm">该rtsp流是否需要开启rtsp专属鉴权，至null或空字符串则不鉴权</param>
+        /// <param name="realm">
+        /// <para>该rtsp流是否需要开启rtsp专属鉴权，至null或空字符串则不鉴权</para>
+        /// <para>Execute RtspSession::onGetRealm</para>
+        /// </param>
+        /// <param name="realm">Whether this rtsp stream needs to enable rtsp exclusive authentication, to null or empty string does not authenticate</param>
+        /// <remarks>[AUTO-TRANSLATED:ed88a88b]</remarks>
         public static void MkRtspGetRealmInvokerDo(global::ZLMediaKit.MkRtspGetRealmInvokerT ctx, string realm)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4860,7 +5943,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_rtsp_get_realm_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_rtsp_get_realm_invoker_do</para>
         /// <para>如果是同步执行mk_rtsp_get_realm_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_rtsp_get_realm_invoker object, by cloning the object to a heap object, you can achieve cross-thread asynchronous execution of mk_rtsp_get_realm_invoker_do</para>
+        /// <para>If you execute mk_rtsp_get_realm_invoker_do synchronously, then there is no need to clone the object</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:15fa6e77]</remarks>
         public static global::ZLMediaKit.MkRtspGetRealmInvokerT MkRtspGetRealmInvokerClone(global::ZLMediaKit.MkRtspGetRealmInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4869,7 +5955,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkRtspGetRealmInvokerCloneRelease(global::ZLMediaKit.MkRtspGetRealmInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4878,7 +5968,13 @@ namespace ZLMediaKit
 
         /// <summary>执行RtspSession::onAuth</summary>
         /// <param name="encrypted">为true是则表明是md5加密的密码，否则是明文密码, 在请求明文密码时如果提供md5密码者则会导致认证失败</param>
-        /// <param name="pwd_or_md5">明文密码或者md5加密的密码</param>
+        /// <param name="pwd_or_md5">
+        /// <para>明文密码或者md5加密的密码</para>
+        /// <para>Execute RtspSession::onAuth</para>
+        /// </param>
+        /// <param name="encrypted">If true, it means that the password is md5 encrypted, otherwise it is plain text password, if you provide md5 password when requesting plain text password, it will cause authentication failure</param>
+        /// <param name="pwd_or_md5">Plain text password or md5 encrypted password</param>
+        /// <remarks>[AUTO-TRANSLATED:f7152252]</remarks>
         public static void MkRtspAuthInvokerDo(global::ZLMediaKit.MkRtspAuthInvokerT ctx, int encrypted, string pwd_or_md5)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4888,7 +5984,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_rtsp_auth_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_rtsp_auth_invoker_do</para>
         /// <para>如果是同步执行mk_rtsp_auth_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_rtsp_auth_invoker object, by cloning the object to a heap object, you can achieve cross-thread asynchronous execution of mk_rtsp_auth_invoker_do</para>
+        /// <para>If you execute mk_rtsp_auth_invoker_do synchronously, then there is no need to clone the object</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:505859bd]</remarks>
         public static global::ZLMediaKit.MkRtspAuthInvokerT MkRtspAuthInvokerClone(global::ZLMediaKit.MkRtspAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4897,7 +5996,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkRtspAuthInvokerCloneRelease(global::ZLMediaKit.MkRtspAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4907,7 +6010,14 @@ namespace ZLMediaKit
         /// <summary>执行Broadcast::PublishAuthInvoker</summary>
         /// <param name="err_msg">为空或null则代表鉴权成功</param>
         /// <param name="enable_hls">是否允许转换hls</param>
-        /// <param name="enable_mp4">是否运行MP4录制</param>
+        /// <param name="enable_mp4">
+        /// <para>是否运行MP4录制</para>
+        /// <para>Execute Broadcast::PublishAuthInvoker</para>
+        /// </param>
+        /// <param name="err_msg">Empty or null means authentication success</param>
+        /// <param name="enable_hls">Whether to allow hls conversion</param>
+        /// <param name="enable_mp4">Whether to allow MP4 recording</param>
+        /// <remarks>[AUTO-TRANSLATED:ee8fb2b4]</remarks>
         public static void MkPublishAuthInvokerDo(global::ZLMediaKit.MkPublishAuthInvokerT ctx, string err_msg, int enable_hls, int enable_mp4)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4924,7 +6034,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_publish_auth_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_publish_auth_invoker_do</para>
         /// <para>如果是同步执行mk_publish_auth_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_publish_auth_invoker object, by cloning the object to a heap object, you can achieve cross-thread asynchronous execution of mk_publish_auth_invoker_do</para>
+        /// <para>If you execute mk_publish_auth_invoker_do synchronously, then there is no need to clone the object</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:03357111]</remarks>
         public static global::ZLMediaKit.MkPublishAuthInvokerT MkPublishAuthInvokerClone(global::ZLMediaKit.MkPublishAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4933,7 +6046,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkPublishAuthInvokerCloneRelease(global::ZLMediaKit.MkPublishAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4941,7 +6058,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>执行Broadcast::AuthInvoker</summary>
-        /// <param name="err_msg">为空或null则代表鉴权成功</param>
+        /// <param name="err_msg">
+        /// <para>为空或null则代表鉴权成功</para>
+        /// <para>Execute Broadcast::AuthInvoker</para>
+        /// </param>
+        /// <param name="err_msg">Empty or null means authentication success</param>
+        /// <remarks>[AUTO-TRANSLATED:7215fd9a]</remarks>
         public static void MkAuthInvokerDo(global::ZLMediaKit.MkAuthInvokerT ctx, string err_msg)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4951,7 +6073,10 @@ namespace ZLMediaKit
         /// <summary>
         /// <para>克隆mk_auth_invoker对象，通过克隆对象为堆对象，可以实现跨线程异步执行mk_auth_invoker_do</para>
         /// <para>如果是同步执行mk_auth_invoker_do，那么没必要克隆对象</para>
+        /// <para>Clone the mk_auth_invoker object. By cloning the object to a heap object, we can achieve asynchronous execution of mk_auth_invoker_do across threads.</para>
+        /// <para>If mk_auth_invoker_do is executed synchronously, there is no need to clone the object.</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:2430560d]</remarks>
         public static global::ZLMediaKit.MkAuthInvokerT MkAuthInvokerClone(global::ZLMediaKit.MkAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4960,7 +6085,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁堆上的克隆对象</summary>
+        /// <summary>
+        /// <para>销毁堆上的克隆对象</para>
+        /// <para>Destroy the cloned object on the heap.</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:16c6a29b]</remarks>
         public static void MkAuthInvokerCloneRelease(global::ZLMediaKit.MkAuthInvokerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4972,7 +6101,16 @@ namespace ZLMediaKit
         /// <param name="streamId">流id</param>
         /// <param name="ppid">协议id</param>
         /// <param name="msg">数据</param>
-        /// <param name="len">数据长度</param>
+        /// <param name="len">
+        /// <para>数据长度</para>
+        /// <para>Send rtc data channel</para>
+        /// </param>
+        /// <param name="ctx">Data channel object</param>
+        /// <param name="streamId">Stream id</param>
+        /// <param name="ppid">Protocol id</param>
+        /// <param name="msg">Data</param>
+        /// <param name="len">Data length</param>
+        /// <remarks>[AUTO-TRANSLATED:a0ce3c9e]</remarks>
         public static void MkRtcSendDatachannel(global::ZLMediaKit.MkRtcTransportT ctx, ushort streamId, uint ppid, string msg, ulong len)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -4984,7 +6122,15 @@ namespace ZLMediaKit
     /// <param name="user_data">设置回调时的用户数据指针</param>
     /// <param name="splitter">对象</param>
     /// <param name="frame">帧数据</param>
-    /// <param name="size">帧数据长度</param>
+    /// <param name="size">
+    /// <para>帧数据长度</para>
+    /// <para>h264 frame splitter output callback function</para>
+    /// </param>
+    /// <param name="user_data">user data pointer set when setting the callback</param>
+    /// <param name="splitter">object</param>
+    /// <param name="frame">frame data</param>
+    /// <param name="size">frame data length</param>
+    /// <remarks>[AUTO-TRANSLATED:3e4e4dfa]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkH264SplitterFrame(IntPtr user_data, IntPtr splitter, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string frame, int size);
 
@@ -5025,7 +6171,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -5065,7 +6211,17 @@ namespace ZLMediaKit
         /// <param name="cb">分帧回调函数</param>
         /// <param name="user_data">回调用户数据指针</param>
         /// <param name="is_h265">是否是265</param>
-        /// <returns>分帧器对象</returns>
+        /// <param name="cb">frame splitting callback function</param>
+        /// <param name="user_data">callback user data pointer</param>
+        /// <param name="is_h265">whether it is 265</param>
+        /// <returns>
+        /// <para>分帧器对象</para>
+        /// <para>Create h264 frame splitter</para>
+        /// </returns>
+        /// <returns>
+        /// <para>frame splitter object</para>
+        /// <para>[AUTO-TRANSLATED:6e06f68d]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkH264SplitterT MkH264SplitterCreate(global::ZLMediaKit.OnMkH264SplitterFrame cb, IntPtr user_data, int is_h265)
         {
             var __arg0 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
@@ -5084,7 +6240,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>删除h264分帧器</summary>
-        /// <param name="ctx">分帧器</param>
+        /// <param name="ctx">
+        /// <para>分帧器</para>
+        /// <para>Delete h264 frame splitter</para>
+        /// </param>
+        /// <param name="ctx">frame splitter</param>
+        /// <remarks>[AUTO-TRANSLATED:e69bb6dd]</remarks>
         public static void MkH264SplitterRelease(global::ZLMediaKit.MkH264SplitterT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5094,7 +6255,14 @@ namespace ZLMediaKit
         /// <summary>输入数据并分帧</summary>
         /// <param name="ctx">分帧器</param>
         /// <param name="data">h264/h265数据</param>
-        /// <param name="size">数据长度</param>
+        /// <param name="size">
+        /// <para>数据长度</para>
+        /// <para>Input data and split frames</para>
+        /// </param>
+        /// <param name="ctx">frame splitter</param>
+        /// <param name="data">h264/h265 data</param>
+        /// <param name="size">data length</param>
+        /// <remarks>[AUTO-TRANSLATED:c6b93aed]</remarks>
         public static void MkH264SplitterInputData(global::ZLMediaKit.MkH264SplitterT ctx, string data, int size)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5102,15 +6270,20 @@ namespace ZLMediaKit
         }
     }
 
-    /// <summary>HttpDownloader</summary>
+    /// <summary>////////////////////////////////////////HttpDownloader/////////////////////////////////////////////</summary>
     /// <param name="user_data">用户数据指针</param>
     /// <param name="code">错误代码，0代表成功</param>
     /// <param name="err_msg">错误提示</param>
     /// <param name="file_path">文件保存路径</param>
+    /// <param name="user_data">User data pointer</param>
+    /// <param name="code">Error code, 0 represents success</param>
+    /// <param name="err_msg">Error message</param>
+    /// <param name="file_path">File save path</param>
+    /// <remarks>[AUTO-TRANSLATED:8f8ed7ef]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkDownloadComplete(IntPtr user_data, int code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file_path);
 
-    /// <summary>HttpRequester</summary>
+    /// <summary>////////////////////////////////////////HttpRequester/////////////////////////////////////////////</summary>
     /// <summary>
     /// <para>http请求结果回调</para>
     /// <para>在code == 0时代表本次http会话是完整的（收到了http回复）</para>
@@ -5121,7 +6294,19 @@ namespace ZLMediaKit
     /// </summary>
     /// <param name="user_data">用户数据指针</param>
     /// <param name="code">错误代码，0代表成功</param>
-    /// <param name="err_msg">错误提示</param>
+    /// <param name="err_msg">
+    /// <para>错误提示</para>
+    /// <para>Http request result callback</para>
+    /// <para>When code == 0, it means that the current http session is complete (http response has been received)</para>
+    /// <para>Users should get the mk_http_requester object through user_data</para>
+    /// <para>Then get the relevant response data through functions such as mk_http_requester_get_response</para>
+    /// <para>At the end of the callback, the object should be destroyed by calling the mk_http_requester_release function</para>
+    /// <para>Or reuse the object after calling the mk_http_requester_clear function</para>
+    /// </param>
+    /// <param name="user_data">User data pointer</param>
+    /// <param name="code">Error code, 0 represents success</param>
+    /// <param name="err_msg">Error message</param>
+    /// <remarks>[AUTO-TRANSLATED:d24408ce]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkHttpRequesterComplete(IntPtr user_data, int code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg);
 
@@ -5162,7 +6347,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -5218,7 +6403,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -5297,7 +6482,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>创建http[s]下载器</summary>
-        /// <returns>下载器指针</returns>
+        /// <returns>
+        /// <para>下载器指针</para>
+        /// <para>Create http[s] downloader</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Downloader pointer</para>
+        /// <para>[AUTO-TRANSLATED:93112194]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkHttpDownloaderT MkHttpDownloaderCreate()
         {
             var __ret = __Internal.MkHttpDownloaderCreate();
@@ -5306,7 +6498,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁http[s]下载器</summary>
-        /// <param name="ctx">下载器指针</param>
+        /// <param name="ctx">
+        /// <para>下载器指针</para>
+        /// <para>Destroy http[s] downloader</para>
+        /// </param>
+        /// <param name="ctx">Downloader pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:8378a5a7]</remarks>
         public static void MkHttpDownloaderRelease(global::ZLMediaKit.MkHttpDownloaderT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5318,7 +6515,16 @@ namespace ZLMediaKit
         /// <param name="url">http[s]下载url</param>
         /// <param name="file">文件保存路径</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Start http[s] download</para>
+        /// </param>
+        /// <param name="ctx">Downloader pointer</param>
+        /// <param name="url">http[s] download url</param>
+        /// <param name="file">File save path</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:8a2acf02]</remarks>
         public static void MkHttpDownloaderStart(global::ZLMediaKit.MkHttpDownloaderT ctx, string url, string file, global::ZLMediaKit.OnMkDownloadComplete cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5334,7 +6540,11 @@ namespace ZLMediaKit
             __Internal.MkHttpDownloaderStart2(__arg0, url, file, __arg3, user_data, __arg5);
         }
 
-        /// <summary>创建HttpRequester</summary>
+        /// <summary>
+        /// <para>创建HttpRequester</para>
+        /// <para>Create HttpRequester</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:fa182fbc]</remarks>
         public static global::ZLMediaKit.MkHttpRequesterT MkHttpRequesterCreate()
         {
             var __ret = __Internal.MkHttpRequesterCreate();
@@ -5342,7 +6552,11 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>在复用mk_http_requester对象时才需要用到此方法</summary>
+        /// <summary>
+        /// <para>在复用mk_http_requester对象时才需要用到此方法</para>
+        /// <para>This method is only needed when reusing the mk_http_requester object</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:6854d97f]</remarks>
         public static void MkHttpRequesterClear(global::ZLMediaKit.MkHttpRequesterT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5353,14 +6567,22 @@ namespace ZLMediaKit
         /// <para>销毁HttpRequester</para>
         /// <para>如果调用了mk_http_requester_start函数且正在等待http回复，</para>
         /// <para>也可以调用mk_http_requester_release方法取消本次http请求</para>
+        /// <para>Destroy HttpRequester</para>
+        /// <para>If the mk_http_requester_start function is called and is waiting for the http response,</para>
+        /// <para>You can also call the mk_http_requester_release method to cancel the current http request</para>
         /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:5f533e28]</remarks>
         public static void MkHttpRequesterRelease(global::ZLMediaKit.MkHttpRequesterT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             __Internal.MkHttpRequesterRelease(__arg0);
         }
 
-        /// <summary>设置HTTP方法，譬如GET/POST</summary>
+        /// <summary>
+        /// <para>设置HTTP方法，譬如GET/POST</para>
+        /// <para>Set HTTP method, such as GET/POST</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:d4b641f1]</remarks>
         public static void MkHttpRequesterSetMethod(global::ZLMediaKit.MkHttpRequesterT ctx, string method)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5368,7 +6590,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>批量设置设置HTTP头</summary>
-        /// <param name="header">譬如 {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} 必须以NULL结尾</param>
+        /// <param name="header">
+        /// <para>譬如 {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} 必须以NULL结尾</para>
+        /// <para>Batch set HTTP headers</para>
+        /// </param>
+        /// <param name="header">For example, {&quot;Content-Type&quot;,&quot;text/html&quot;,NULL} must end with NULL</param>
+        /// <remarks>[AUTO-TRANSLATED:65124347]</remarks>
         public static void MkHttpRequesterSetHeader(global::ZLMediaKit.MkHttpRequesterT ctx, string[] header)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5378,7 +6605,14 @@ namespace ZLMediaKit
         /// <summary>添加HTTP头</summary>
         /// <param name="key">譬如Content-Type</param>
         /// <param name="value">譬如 text/html</param>
-        /// <param name="force">如果已经存在该key，是否强制替换</param>
+        /// <param name="force">
+        /// <para>如果已经存在该key，是否强制替换</para>
+        /// <para>Add HTTP header</para>
+        /// </param>
+        /// <param name="key">For example, Content-Type</param>
+        /// <param name="value">For example, text/html</param>
+        /// <param name="force">If the key already exists, whether to force replacement</param>
+        /// <remarks>[AUTO-TRANSLATED:79d32682]</remarks>
         public static void MkHttpRequesterAddHeader(global::ZLMediaKit.MkHttpRequesterT ctx, string key, string value, int force)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5386,7 +6620,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>设置消息体，</summary>
-        /// <param name="body">mk_http_body对象，通过mk_http_body_from_string等函数生成，使用完毕后请调用mk_http_body_release释放之</param>
+        /// <param name="body">
+        /// <para>mk_http_body对象，通过mk_http_body_from_string等函数生成，使用完毕后请调用mk_http_body_release释放之</para>
+        /// <para>Set message body,</para>
+        /// </param>
+        /// <param name="body">mk_http_body object, generated by functions such as mk_http_body_from_string, please call mk_http_body_release to release it after use</param>
+        /// <remarks>[AUTO-TRANSLATED:85d0f139]</remarks>
         public static void MkHttpRequesterSetBody(global::ZLMediaKit.MkHttpRequesterT ctx, global::ZLMediaKit.MkHttpBodyT body)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5395,7 +6634,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>在收到HTTP回复后可调用该方法获取状态码</summary>
-        /// <returns>譬如 200 OK</returns>
+        /// <returns>
+        /// <para>譬如 200 OK</para>
+        /// <para>You can call this method to get the status code after receiving the HTTP response</para>
+        /// </returns>
+        /// <returns>
+        /// <para>For example, 200 OK</para>
+        /// <para>[AUTO-TRANSLATED:7757b21a]</para>
+        /// </returns>
         public static string MkHttpRequesterGetResponseStatus(global::ZLMediaKit.MkHttpRequesterT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5405,7 +6651,15 @@ namespace ZLMediaKit
 
         /// <summary>在收到HTTP回复后可调用该方法获取响应HTTP头</summary>
         /// <param name="key">HTTP头键名</param>
-        /// <returns>HTTP头键值</returns>
+        /// <param name="key">HTTP header key name</param>
+        /// <returns>
+        /// <para>HTTP头键值</para>
+        /// <para>You can call this method to get the response HTTP header after receiving the HTTP response</para>
+        /// </returns>
+        /// <returns>
+        /// <para>HTTP header key value</para>
+        /// <para>[AUTO-TRANSLATED:10f8ae74]</para>
+        /// </returns>
         public static string MkHttpRequesterGetResponseHeader(global::ZLMediaKit.MkHttpRequesterT ctx, string key)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5415,7 +6669,15 @@ namespace ZLMediaKit
 
         /// <summary>在收到HTTP回复后可调用该方法获取响应HTTP body</summary>
         /// <param name="length">返回body长度,可以为null</param>
-        /// <returns>body指针</returns>
+        /// <param name="length">Return body length, can be null</param>
+        /// <returns>
+        /// <para>body指针</para>
+        /// <para>You can call this method to get the response HTTP body after receiving the HTTP response</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Body pointer</para>
+        /// <para>[AUTO-TRANSLATED:764dbb38]</para>
+        /// </returns>
         public static string MkHttpRequesterGetResponseBody(global::ZLMediaKit.MkHttpRequesterT ctx, ref ulong length)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5428,7 +6690,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>在收到HTTP回复后可调用该方法获取响应</summary>
-        /// <returns>响应对象</returns>
+        /// <returns>
+        /// <para>响应对象</para>
+        /// <para>You can call this method to get the response after receiving the HTTP response</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Response object</para>
+        /// <para>[AUTO-TRANSLATED:3800b175]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkParserT MkHttpRequesterGetResponse(global::ZLMediaKit.MkHttpRequesterT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5439,7 +6708,13 @@ namespace ZLMediaKit
 
         /// <summary>设置回调函数</summary>
         /// <param name="cb">回调函数，不能为空</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set callback function</para>
+        /// </param>
+        /// <param name="cb">Callback function, cannot be empty</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:f04412b8]</remarks>
         public static void MkHttpRequesterSetCb(global::ZLMediaKit.MkHttpRequesterT ctx, global::ZLMediaKit.OnMkHttpRequesterComplete cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5457,7 +6732,13 @@ namespace ZLMediaKit
 
         /// <summary>开始url请求</summary>
         /// <param name="url">请求url，支持http/https</param>
-        /// <param name="timeout_second">最大超时时间</param>
+        /// <param name="timeout_second">
+        /// <para>最大超时时间</para>
+        /// <para>Start url request</para>
+        /// </param>
+        /// <param name="url">Request url, supports http/https</param>
+        /// <param name="timeout_second">Maximum timeout time</param>
+        /// <remarks>[AUTO-TRANSLATED:36986fec]</remarks>
         public static void MkHttpRequesterStart(global::ZLMediaKit.MkHttpRequesterT ctx, string url, float timeout_second)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5471,37 +6752,77 @@ namespace ZLMediaKit
     /// <para>你应该通过该事件调用mk_media_release函数并且释放其他资源</para>
     /// <para>如果你不调用mk_media_release函数，那么MediaSource.close()操作将无效</para>
     /// </summary>
-    /// <param name="user_data">用户数据指针，通过mk_media_set_on_close函数设置</param>
+    /// <param name="user_data">
+    /// <para>用户数据指针，通过mk_media_set_on_close函数设置</para>
+    /// <para>MediaSource.close() callback event</para>
+    /// <para>When you choose to close an associated MediaSource, it will eventually trigger this callback</para>
+    /// <para>You should call mk_media_release function and release other resources through this event</para>
+    /// <para>If you do not call mk_media_release function, then the MediaSource.close() operation will be invalid</para>
+    /// </param>
+    /// <param name="user_data">User data pointer, set by mk_media_set_on_close function</param>
+    /// <remarks>[AUTO-TRANSLATED:20191b2d]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkMediaClose(IntPtr user_data);
 
     /// <summary>收到客户端的seek请求时触发该回调</summary>
     /// <param name="user_data">用户数据指针,通过mk_media_set_on_seek设置</param>
     /// <param name="stamp_ms">seek至的时间轴位置，单位毫秒</param>
-    /// <returns>1代表将处理seek请求，0代表忽略该请求</returns>
+    /// <param name="user_data">User data pointer, set by mk_media_set_on_seek</param>
+    /// <param name="stamp_ms">Seek to the timeline position, unit milliseconds</param>
+    /// <returns>
+    /// <para>1代表将处理seek请求，0代表忽略该请求</para>
+    /// <para>Triggered when the client receives a seek request</para>
+    /// </returns>
+    /// <returns>
+    /// <para>1 means the seek request will be processed, 0 means the request will be ignored</para>
+    /// <para>[AUTO-TRANSLATED:c3301852]</para>
+    /// </returns>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate int OnMkMediaSeek(IntPtr user_data, uint stamp_ms);
 
     /// <summary>收到客户端的pause或resume请求时触发该回调</summary>
     /// <param name="user_data">用户数据指针,通过mk_media_set_on_pause设置</param>
-    /// <param name="pause">1:暂停, 0: 恢复</param>
+    /// <param name="pause">
+    /// <para>1:暂停, 0: 恢复</para>
+    /// <para>Triggered when the client receives a pause or resume request</para>
+    /// </param>
+    /// <param name="user_data">User data pointer, set by mk_media_set_on_pause</param>
+    /// <param name="pause">1: pause, 0: resume</param>
+    /// <remarks>[AUTO-TRANSLATED:4f8aa828]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate int OnMkMediaPause(IntPtr user_data, int pause);
 
     /// <summary>收到客户端的speed请求时触发该回调</summary>
     /// <param name="user_data">用户数据指针,通过mk_media_set_on_pause设置</param>
+    /// <param name="speed">
+    /// <para>0.5 1.0 2.0</para>
+    /// <para>Triggered when the client receives a speed request</para>
+    /// </param>
+    /// <param name="user_data">User data pointer, set by mk_media_set_on_pause</param>
     /// <param name="speed">0.5 1.0 2.0</param>
+    /// <remarks>[AUTO-TRANSLATED:51bd090d]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate int OnMkMediaSpeed(IntPtr user_data, float speed);
 
     /// <summary>生成的MediaSource注册或注销事件</summary>
     /// <param name="user_data">设置回调时的用户数据指针</param>
     /// <param name="sender">生成的MediaSource对象</param>
-    /// <param name="regist">1为注册事件，0为注销事件</param>
+    /// <param name="regist">
+    /// <para>1为注册事件，0为注销事件</para>
+    /// <para>MediaSource registration or deregistration event</para>
+    /// </param>
+    /// <param name="user_data">User data pointer set when setting the callback</param>
+    /// <param name="sender">Generated MediaSource object</param>
+    /// <param name="regist">1 for registration event, 0 for deregistration event</param>
+    /// <remarks>[AUTO-TRANSLATED:4585bbef]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkMediaSourceRegist(IntPtr user_data, IntPtr sender, int regist);
 
-    /// <summary>rtp推流成功与否的回调(第一次成功后，后面将一直重试)</summary>
+    /// <summary>
+    /// <para>rtp推流成功与否的回调(第一次成功后，后面将一直重试)</para>
+    /// <para>Callback for whether rtp streaming is successful or not (after the first success, it will retry continuously)</para>
+    /// </summary>
+    /// <remarks>[AUTO-TRANSLATED:7e00f7fb]</remarks>
     public unsafe partial class MkMediaT
     {
         public partial struct __Internal
@@ -5539,7 +6860,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -5638,10 +6959,16 @@ namespace ZLMediaKit
             internal static extern void MkMediaSetOnRegist2(IntPtr ctx, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_start_send_rtp", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkMediaStartSendRtp(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int is_udp, IntPtr cb, IntPtr user_data);
+            internal static extern void MkMediaStartSendRtp(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr cb, IntPtr user_data);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_start_send_rtp2", CallingConvention = CallingConvention.Cdecl)]
-            internal static extern void MkMediaStartSendRtp2(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int is_udp, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+            internal static extern void MkMediaStartSendRtp2(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_start_send_rtp3", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkMediaStartSendRtp3(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr options, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_start_send_rtp4", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkMediaStartSendRtp4(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc, int con_type, IntPtr options, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_media_stop_send_rtp", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkMediaStopSendRtp(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string ssrc);
@@ -5657,7 +6984,20 @@ namespace ZLMediaKit
         /// <param name="duration">时长(单位秒)，直播则为0</param>
         /// <param name="hls_enabled">是否生成hls</param>
         /// <param name="mp4_enabled">是否生成mp4</param>
-        /// <returns>对象指针</returns>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="app">Application name, recommended as live</param>
+        /// <param name="stream">Stream id, such as camera</param>
+        /// <param name="duration">Duration (in seconds), 0 for live broadcast</param>
+        /// <param name="hls_enabled">Whether to generate hls</param>
+        /// <param name="mp4_enabled">Whether to generate mp4</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a media source</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:b5124a1e]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkMediaT MkMediaCreate(string vhost, string app, string stream, float duration, int hls_enabled, int mp4_enabled)
         {
             var __ret = __Internal.MkMediaCreate(vhost, app, stream, duration, hls_enabled, mp4_enabled);
@@ -5671,7 +7011,19 @@ namespace ZLMediaKit
         /// <param name="stream">流id，例如camera</param>
         /// <param name="duration">时长(单位秒)，直播则为0</param>
         /// <param name="option">ProtocolOption相关配置</param>
-        /// <returns>对象指针</returns>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="app">Application name, recommended as live</param>
+        /// <param name="stream">Stream id, such as camera</param>
+        /// <param name="duration">Duration (in seconds), 0 for live broadcast</param>
+        /// <param name="option">ProtocolOption related configuration</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a media source</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:870d86b0]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkMediaT MkMediaCreate2(string vhost, string app, string stream, float duration, global::ZLMediaKit.MkIniT option)
         {
             var __arg4 = option is null ? IntPtr.Zero : option.__Instance;
@@ -5681,7 +7033,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁媒体源</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Destroy the media source</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:a63ad166]</remarks>
         public static void MkMediaRelease(global::ZLMediaKit.MkMediaT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5690,7 +7047,13 @@ namespace ZLMediaKit
 
         /// <summary>添加音视频track</summary>
         /// <param name="ctx">mk_media对象</param>
-        /// <param name="track">mk_track对象，音视频轨道</param>
+        /// <param name="track">
+        /// <para>mk_track对象，音视频轨道</para>
+        /// <para>Add audio and video tracks</para>
+        /// </param>
+        /// <param name="ctx">mk_media object</param>
+        /// <param name="track">mk_track object, audio and video track</param>
+        /// <remarks>[AUTO-TRANSLATED:0e4ebe8d]</remarks>
         public static void MkMediaInitTrack(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.MkTrackT track)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5699,16 +7062,32 @@ namespace ZLMediaKit
         }
 
         /// <summary>添加视频轨道，请改用mk_media_init_track方法</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="height">Video height</param>
+        /// <param name="width">Video width</param>
+        /// <param name="bit_rate">Video bitrate, unit bps; Valid only during encoding</param>
+        /// <param name="fps">Video fps; Valid only during encoding</param>
+        /// <param name="height">Video height; Valid only during encoding</param>
+        /// <param name="width">Video width; Valid only during encoding</param>
         /// <param name="codec_id">0:CodecH264/1:CodecH265</param>
-        /// <param name="width">视频宽度; 在编码时才有效</param>
-        /// <param name="height">视频高度; 在编码时才有效</param>
-        /// <param name="fps">视频fps; 在编码时才有效</param>
-        /// <param name="bit_rate">视频比特率,单位bps; 在编码时才有效</param>
-        /// <param name="width">视频宽度</param>
-        /// <param name="height">视频高度</param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="fps">Video fps</param>
         /// <param name="fps">视频fps</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="width">视频宽度</param>
+        /// <param name="bit_rate">视频比特率,单位bps; 在编码时才有效</param>
+        /// <param name="fps">视频fps; 在编码时才有效</param>
+        /// <param name="height">视频高度; 在编码时才有效</param>
+        /// <param name="width">视频宽度; 在编码时才有效</param>
+        /// <param name="codec_id">0:CodecH264/1:CodecH265</param>
+        /// <param name="ctx">对象指针</param>
+        /// <param name="height">视频高度</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Add video track, please use mk_media_init_track method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:c6944851]</para>
+        /// </returns>
         public static int MkMediaInitVideo(global::ZLMediaKit.MkMediaT ctx, int codec_id, int width, int height, float fps, int bit_rate)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5722,7 +7101,19 @@ namespace ZLMediaKit
         /// <param name="channel">通道数</param>
         /// <param name="sample_bit">采样位数，只支持16</param>
         /// <param name="sample_rate">采样率</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="codec_id">2:CodecAAC/3:CodecG711A/4:CodecG711U/5:OPUS</param>
+        /// <param name="channel">Number of channels</param>
+        /// <param name="sample_bit">Sampling bit, only supports 16</param>
+        /// <param name="sample_rate">Sampling rate</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Add audio track, please use mk_media_init_track method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:5c5c7c7a]</para>
+        /// </returns>
         public static int MkMediaInitAudio(global::ZLMediaKit.MkMediaT ctx, int codec_id, int sample_rate, int channels, int sample_bit)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5735,7 +7126,14 @@ namespace ZLMediaKit
         /// <para>在单track(只有音频或视频)时，因为ZLMediaKit不知道后续是否还要添加track，所以会多等待3秒钟</para>
         /// <para>如果产生的流是单Track类型，请调用此函数以便加快流生成速度，当然不调用该函数，影响也不大(会多等待3秒)</para>
         /// </summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Call this function after h264/h265/aac initialization,</para>
+        /// <para>In single track (only audio or video), because ZLMediaKit does not know whether to add more tracks later, it will wait for 3 seconds.</para>
+        /// <para>If the generated stream is a single Track type, please call this function to speed up the stream generation speed. Of course, if you do not call this function, the impact is not big (it will wait for 3 seconds).</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:cd2bee12]</remarks>
         public static void MkMediaInitComplete(global::ZLMediaKit.MkMediaT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5745,7 +7143,16 @@ namespace ZLMediaKit
         /// <summary>输入frame对象</summary>
         /// <param name="ctx">mk_media对象</param>
         /// <param name="frame">帧对象</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">mk_media object</param>
+        /// <param name="frame">Frame object</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input frame object</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:9f6ca231]</para>
+        /// </returns>
         public static int MkMediaInputFrame(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.MkFrameT frame)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5760,7 +7167,19 @@ namespace ZLMediaKit
         /// <param name="len">单帧H264数据字节数</param>
         /// <param name="dts">解码时间戳，单位毫秒</param>
         /// <param name="pts">播放时间戳，单位毫秒</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="data">Single frame H264 data</param>
+        /// <param name="len">Number of bytes of single frame H264 data</param>
+        /// <param name="dts">Decode timestamp, unit milliseconds</param>
+        /// <param name="pts">Play timestamp, unit milliseconds</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input single frame H264 video, the starting byte of the frame can be 00 00 01, 00 00 00 01, please use mk_media_input_frame method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:3b96ace8]</para>
+        /// </returns>
         public static int MkMediaInputH264(global::ZLMediaKit.MkMediaT ctx, IntPtr data, int len, ulong dts, ulong pts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5774,7 +7193,19 @@ namespace ZLMediaKit
         /// <param name="len">单帧H265数据字节数</param>
         /// <param name="dts">解码时间戳，单位毫秒</param>
         /// <param name="pts">播放时间戳，单位毫秒</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="data">Single frame H265 data</param>
+        /// <param name="len">Number of bytes of single frame H265 data</param>
+        /// <param name="dts">Decode timestamp, unit milliseconds</param>
+        /// <param name="pts">Play timestamp, unit milliseconds</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input single frame H265 video, the starting byte of the frame can be 00 00 01, 00 00 00 01, please use mk_media_input_frame method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:884739ba]</para>
+        /// </returns>
         public static int MkMediaInputH265(global::ZLMediaKit.MkMediaT ctx, IntPtr data, int len, ulong dts, ulong pts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5786,7 +7217,15 @@ namespace ZLMediaKit
         /// <param name="ctx">对象指针</param>
         /// <param name="yuv">yuv420p数据</param>
         /// <param name="linesize">yuv420p linesize</param>
-        /// <param name="cts">视频采集时间戳，单位毫秒</param>
+        /// <param name="cts">
+        /// <para>视频采集时间戳，单位毫秒</para>
+        /// <para>Input YUV video data</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="yuv">yuv420p data</param>
+        /// <param name="linesize">yuv420p linesize</param>
+        /// <param name="cts">Video capture timestamp, unit milliseconds</param>
+        /// <remarks>[AUTO-TRANSLATED:9c97805c]</remarks>
         public static void MkMediaInputYuv(global::ZLMediaKit.MkMediaT ctx, string[] yuv, int[] linesize, ulong cts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5803,7 +7242,19 @@ namespace ZLMediaKit
         /// <param name="len">单帧AAC数据字节数</param>
         /// <param name="dts">时间戳，毫秒</param>
         /// <param name="adts">adts头，可以为null</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="data">Single frame AAC data without adts header, adts header 7 bytes</param>
+        /// <param name="len">Number of bytes of single frame AAC data</param>
+        /// <param name="dts">Timestamp, milliseconds</param>
+        /// <param name="adts">adts header, can be null</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input single frame AAC audio (specify adts header separately), please use mk_media_input_frame method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:11e0503d]</para>
+        /// </returns>
         public static int MkMediaInputAac(global::ZLMediaKit.MkMediaT ctx, IntPtr data, int len, ulong dts, IntPtr adts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5816,7 +7267,18 @@ namespace ZLMediaKit
         /// <param name="data">单帧PCM数据</param>
         /// <param name="len">单帧PCM数据字节数</param>
         /// <param name="dts">时间戳，毫秒</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="data">Single frame PCM data</param>
+        /// <param name="len">Number of bytes of single frame PCM data</param>
+        /// <param name="dts">Timestamp, milliseconds</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input single frame PCM audio, this function is valid only when ENABLE_FAAC is compiled</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:70f7488b]</para>
+        /// </returns>
         public static int MkMediaInputPcm(global::ZLMediaKit.MkMediaT ctx, IntPtr data, int len, ulong pts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5829,7 +7291,18 @@ namespace ZLMediaKit
         /// <param name="data">单帧音频数据</param>
         /// <param name="len">单帧音频数据字节数</param>
         /// <param name="dts">时间戳，毫秒</param>
-        /// <returns>1代表成功，0失败</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="data">Single frame audio data</param>
+        /// <param name="len">Number of bytes of single frame audio data</param>
+        /// <param name="dts">Timestamp, milliseconds</param>
+        /// <returns>
+        /// <para>1代表成功，0失败</para>
+        /// <para>Input single frame OPUS/G711 audio frame, please use mk_media_input_frame method</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 for success, 0 for failure</para>
+        /// <para>[AUTO-TRANSLATED:4ffeabd6]</para>
+        /// </returns>
         public static int MkMediaInputAudio(global::ZLMediaKit.MkMediaT ctx, IntPtr data, int len, ulong dts)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5844,7 +7317,16 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Listen to MediaSource.close() event</para>
+        /// <para>When you choose to close an associated MediaSource, it will eventually trigger this callback</para>
+        /// <para>You should call mk_media_release function and release other resources through this event</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:35d9db20]</remarks>
         public static void MkMediaSetOnClose(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.OnMkMediaClose cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5863,7 +7345,14 @@ namespace ZLMediaKit
         /// <summary>监听播放器seek请求事件</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Listen to player seek request event</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:50c723d0]</remarks>
         public static void MkMediaSetOnSeek(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.OnMkMediaSeek cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5882,7 +7371,14 @@ namespace ZLMediaKit
         /// <summary>监听播放器pause请求事件</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Listen to player pause request event</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:bd6e9068]</remarks>
         public static void MkMediaSetOnPause(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.OnMkMediaPause cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5901,7 +7397,14 @@ namespace ZLMediaKit
         /// <summary>监听播放器pause请求事件</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Listen to player pause request event</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:bd6e9068]</remarks>
         public static void MkMediaSetOnSpeed(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.OnMkMediaSpeed cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5919,7 +7422,15 @@ namespace ZLMediaKit
 
         /// <summary>获取总的观看人数</summary>
         /// <param name="ctx">对象指针</param>
-        /// <returns>观看人数</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <returns>
+        /// <para>观看人数</para>
+        /// <para>Get the total number of viewers</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Number of viewers</para>
+        /// <para>[AUTO-TRANSLATED:56635caf]</para>
+        /// </returns>
         public static int MkMediaTotalReaderCount(global::ZLMediaKit.MkMediaT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5930,7 +7441,14 @@ namespace ZLMediaKit
         /// <summary>设置MediaSource注册或注销事件回调函数</summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set MediaSource registration or deregistration event callback function</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:1c3b45be]</remarks>
         public static void MkMediaSetOnRegist(global::ZLMediaKit.MkMediaT ctx, global::ZLMediaKit.OnMkMediaSourceRegist cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5947,31 +7465,67 @@ namespace ZLMediaKit
         }
 
         /// <summary>开始发送一路ps-rtp流(通过ssrc区分多路)，此api线程安全</summary>
-        /// <param name="ctx">对象指针</param>
-        /// <param name="dst_url">目标ip或域名</param>
-        /// <param name="dst_port">目标端口</param>
+        /// <param name="cb">Start success or failure callback</param>
+        /// <param name="options">Options</param>
+        /// <param name="con_type">0: tcp active, 1: udp active, 2: tcp passive, 3: udp passive</param>
+        /// <param name="ssrc">rtp's ssrc, 10-base string print</param>
+        /// <param name="dst_port">Target port</param>
+        /// <param name="dst_url">Target ip or domain name</param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="user_data">Callback user pointer</param>
+        /// <param name="user_data">
+        /// <para>回调用户指针</para>
+        /// <para>Start sending a ps-rtp stream (distinguished by ssrc), this api is thread-safe</para>
+        /// </param>
+        /// <param name="options">选项</param>
+        /// <param name="con_type">0: tcp主动，1：udp主动，2：tcp被动，3：udp被动</param>
         /// <param name="ssrc">rtp的ssrc，10进制的字符串打印</param>
-        /// <param name="is_udp">是否为udp</param>
+        /// <param name="dst_port">目标端口</param>
+        /// <param name="dst_url">目标ip或域名</param>
+        /// <param name="ctx">对象指针</param>
         /// <param name="cb">启动成功或失败回调</param>
-        /// <param name="user_data">回调用户指针</param>
-        public static void MkMediaStartSendRtp(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int is_udp, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
+        /// <remarks>[AUTO-TRANSLATED:dbf694a0]</remarks>
+        public static void MkMediaStartSendRtp(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
-            __Internal.MkMediaStartSendRtp(__arg0, dst_url, dst_port, ssrc, is_udp, __arg5, user_data);
+            __Internal.MkMediaStartSendRtp(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, user_data);
         }
 
-        public static void MkMediaStartSendRtp2(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int is_udp, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        public static void MkMediaStartSendRtp2(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg5 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             var __arg7 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
-            __Internal.MkMediaStartSendRtp2(__arg0, dst_url, dst_port, ssrc, is_udp, __arg5, user_data, __arg7);
+            __Internal.MkMediaStartSendRtp2(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, user_data, __arg7);
+        }
+
+        public static void MkMediaStartSendRtp3(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.MkIniT options, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg5 = options is null ? IntPtr.Zero : options.__Instance;
+            var __arg6 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkMediaStartSendRtp3(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, __arg6, user_data);
+        }
+
+        public static void MkMediaStartSendRtp4(global::ZLMediaKit.MkMediaT ctx, string dst_url, ushort dst_port, string ssrc, int con_type, global::ZLMediaKit.MkIniT options, global::ZLMediaKit.OnMkMediaSourceSendRtpResult cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg5 = options is null ? IntPtr.Zero : options.__Instance;
+            var __arg6 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg8 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            __Internal.MkMediaStartSendRtp4(__arg0, dst_url, dst_port, ssrc, con_type, __arg5, __arg6, user_data, __arg8);
         }
 
         /// <summary>停止某路或全部ps-rtp发送，此api线程安全</summary>
         /// <param name="ctx">对象指针</param>
-        /// <param name="ssrc">rtp的ssrc，10进制的字符串打印，如果为null或空字符串，则停止所有rtp推流</param>
+        /// <param name="ssrc">
+        /// <para>rtp的ssrc，10进制的字符串打印，如果为null或空字符串，则停止所有rtp推流</para>
+        /// <para>Stop a certain route or all ps-rtp sending, this api is thread-safe</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="ssrc">rtp's ssrc, 10-base string print, if it is null or empty string, stop all rtp streaming</param>
+        /// <remarks>[AUTO-TRANSLATED:6fb2b1df]</remarks>
         public static void MkMediaStopSendRtp(global::ZLMediaKit.MkMediaT ctx, string ssrc)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5979,7 +7533,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>获取所属线程</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Get the belonging thread</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:85a157e8]</remarks>
         public static global::ZLMediaKit.MkThreadT MkMediaGetOwnerThread(global::ZLMediaKit.MkMediaT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -5989,18 +7548,21 @@ namespace ZLMediaKit
         }
     }
 
-    /// <summary>事件线程</summary>
-    /// <summary>线程切换</summary>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkAsync(IntPtr user_data);
 
-    /// <summary>定时器</summary>
     /// <summary>定时器触发事件</summary>
-    /// <returns>下一次触发延时(单位毫秒)，返回0则不再重复</returns>
+    /// <returns>
+    /// <para>下一次触发延时(单位毫秒)，返回0则不再重复</para>
+    /// <para>Timer trigger event</para>
+    /// </returns>
+    /// <returns>
+    /// <para>Next trigger delay (in milliseconds), return 0 to stop repeating</para>
+    /// <para>[AUTO-TRANSLATED:f8846f56]</para>
+    /// </returns>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate ulong OnMkTimer(IntPtr user_data);
 
-    /// <summary>信号量</summary>
     public unsafe partial class MkThreadT
     {
         public partial struct __Internal
@@ -6038,7 +7600,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6094,7 +7656,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6150,7 +7712,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6206,7 +7768,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6289,7 +7851,15 @@ namespace ZLMediaKit
 
         /// <summary>获取tcp会话对象所在事件线程</summary>
         /// <param name="ctx">tcp会话对象</param>
-        /// <returns>对象所在事件线程</returns>
+        /// <param name="ctx">tcp session object</param>
+        /// <returns>
+        /// <para>对象所在事件线程</para>
+        /// <para>Get the event thread where the tcp session object is located</para>
+        /// </returns>
+        /// <returns>
+        /// <para>The event thread where the object is located</para>
+        /// <para>[AUTO-TRANSLATED:17da57ec]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadT MkThreadFromTcpSession(global::ZLMediaKit.MkTcpSessionT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6300,7 +7870,15 @@ namespace ZLMediaKit
 
         /// <summary>获取tcp客户端对象所在事件线程</summary>
         /// <param name="ctx">tcp客户端</param>
-        /// <returns>对象所在事件线程</returns>
+        /// <param name="ctx">tcp client</param>
+        /// <returns>
+        /// <para>对象所在事件线程</para>
+        /// <para>Get the event thread where the tcp client object is located</para>
+        /// </returns>
+        /// <returns>
+        /// <para>The event thread where the object is located</para>
+        /// <para>[AUTO-TRANSLATED:15d4174b]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadT MkThreadFromTcpClient(global::ZLMediaKit.MkTcpClientT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6314,7 +7892,16 @@ namespace ZLMediaKit
         /// <para>如果在事件线程内执行此函数将返回本事件线程</para>
         /// <para>事件线程指的是定时器、网络io事件线程</para>
         /// </summary>
-        /// <returns>事件线程</returns>
+        /// <returns>
+        /// <para>事件线程</para>
+        /// <para>Get an event thread randomly from the event thread pool according to the load balancing algorithm</para>
+        /// <para>If this function is executed within the event thread, it will return the current event thread</para>
+        /// <para>Event thread refers to timer, network io event thread</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Event thread</para>
+        /// <para>[AUTO-TRANSLATED:5da37e1f]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadT MkThreadFromPool()
         {
             var __ret = __Internal.MkThreadFromPool();
@@ -6327,7 +7914,16 @@ namespace ZLMediaKit
         /// <para>后台线程本质与事件线程相同，只是优先级更低，同时可以执行短时间的阻塞任务</para>
         /// <para>ZLMediaKit中后台线程用于dns解析、mp4点播时的文件解复用</para>
         /// </summary>
-        /// <returns>后台线程</returns>
+        /// <returns>
+        /// <para>后台线程</para>
+        /// <para>Get a thread randomly from the background thread pool according to the load balancing algorithm</para>
+        /// <para>Background threads are essentially the same as event threads, but they have lower priority and can execute short-term blocking tasks</para>
+        /// <para>Background threads in ZLMediaKit are used for dns resolution, file demultiplexing during mp4 on-demand</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Background thread</para>
+        /// <para>[AUTO-TRANSLATED:3b552537]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadT MkThreadFromPoolWork()
         {
             var __ret = __Internal.MkThreadFromPoolWork();
@@ -6339,7 +7935,17 @@ namespace ZLMediaKit
         /// <param name="name">线程池名称，方便调试</param>
         /// <param name="n_thread">线程个数，0时为cpu个数</param>
         /// <param name="priority">线程优先级，分为PRIORITY_LOWEST = 0,PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_HIGH, PRIORITY_HIGHEST</param>
-        /// <returns>线程池</returns>
+        /// <param name="name">Thread pool name, for debugging</param>
+        /// <param name="n_thread">Number of threads, 0 for the number of cpus</param>
+        /// <param name="priority">Thread priority, divided into PRIORITY_LOWEST = 0,PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_HIGH, PRIORITY_HIGHEST</param>
+        /// <returns>
+        /// <para>线程池</para>
+        /// <para>Create a thread pool</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Thread pool</para>
+        /// <para>[AUTO-TRANSLATED:177acea2]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadPoolT MkThreadPoolCreate(string name, ulong n_thread, int priority)
         {
             var __ret = __Internal.MkThreadPoolCreate(name, n_thread, priority);
@@ -6349,7 +7955,15 @@ namespace ZLMediaKit
 
         /// <summary>销毁线程池</summary>
         /// <param name="pool">线程池</param>
-        /// <returns>0:成功</returns>
+        /// <param name="pool">Thread pool</param>
+        /// <returns>
+        /// <para>0:成功</para>
+        /// <para>Destroy the thread pool</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: Success</para>
+        /// <para>[AUTO-TRANSLATED:1f1b3582]</para>
+        /// </returns>
         public static int MkThreadPoolRelease(global::ZLMediaKit.MkThreadPoolT pool)
         {
             var __arg0 = pool is null ? IntPtr.Zero : pool.__Instance;
@@ -6359,7 +7973,15 @@ namespace ZLMediaKit
 
         /// <summary>从线程池获取一个线程</summary>
         /// <param name="pool">线程池</param>
-        /// <returns>线程</returns>
+        /// <param name="pool">Thread pool</param>
+        /// <returns>
+        /// <para>线程</para>
+        /// <para>Get a thread from the thread pool</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Thread</para>
+        /// <para>[AUTO-TRANSLATED:f47de48e]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkThreadT MkThreadFromThreadPool(global::ZLMediaKit.MkThreadPoolT pool)
         {
             var __arg0 = pool is null ? IntPtr.Zero : pool.__Instance;
@@ -6371,7 +7993,14 @@ namespace ZLMediaKit
         /// <summary>切换到事件线程并异步执行</summary>
         /// <param name="ctx">事件线程</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Switch to the event thread and execute asynchronously</para>
+        /// </param>
+        /// <param name="ctx">Event thread</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:55773ed5]</remarks>
         public static void MkAsyncDo(global::ZLMediaKit.MkThreadT ctx, global::ZLMediaKit.OnMkAsync cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6391,7 +8020,15 @@ namespace ZLMediaKit
         /// <param name="ctx">事件线程</param>
         /// <param name="ms">延时时间，单位毫秒</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Switch to the event thread and execute with delay</para>
+        /// </param>
+        /// <param name="ctx">Event thread</param>
+        /// <param name="ms">Delay time, in milliseconds</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:35dfdb0e]</remarks>
         public static void MkAsyncDoDelay(global::ZLMediaKit.MkThreadT ctx, ulong ms, global::ZLMediaKit.OnMkAsync cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6410,7 +8047,14 @@ namespace ZLMediaKit
         /// <summary>切换到事件线程并同步执行</summary>
         /// <param name="ctx">事件线程</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Switch to the event thread and execute synchronously</para>
+        /// </param>
+        /// <param name="ctx">Event thread</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:1326dfb2]</remarks>
         public static void MkSyncDo(global::ZLMediaKit.MkThreadT ctx, global::ZLMediaKit.OnMkAsync cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6423,7 +8067,18 @@ namespace ZLMediaKit
         /// <param name="delay_ms">执行延时，单位毫秒</param>
         /// <param name="cb">回调函数</param>
         /// <param name="user_data">用户数据指针</param>
-        /// <returns>定时器对象</returns>
+        /// <param name="ctx">Thread object</param>
+        /// <param name="delay_ms">Execution delay, in milliseconds</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <returns>
+        /// <para>定时器对象</para>
+        /// <para>Create a timer</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Timer object</para>
+        /// <para>[AUTO-TRANSLATED:2d47864a]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkTimerT MkTimerCreate(global::ZLMediaKit.MkThreadT ctx, ulong delay_ms, global::ZLMediaKit.OnMkTimer cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6444,14 +8099,23 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁和取消定时器</summary>
-        /// <param name="ctx">定时器对象</param>
+        /// <param name="ctx">
+        /// <para>定时器对象</para>
+        /// <para>Destroy and cancel the timer</para>
+        /// </param>
+        /// <param name="ctx">Timer object</param>
+        /// <remarks>[AUTO-TRANSLATED:3fdb8534]</remarks>
         public static void MkTimerRelease(global::ZLMediaKit.MkTimerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             __Internal.MkTimerRelease(__arg0);
         }
 
-        /// <summary>创建信号量</summary>
+        /// <summary>
+        /// <para>创建信号量</para>
+        /// <para>Create a semaphore</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:dcd83058]</remarks>
         public static global::ZLMediaKit.MkSemT MkSemCreate()
         {
             var __ret = __Internal.MkSemCreate();
@@ -6459,14 +8123,22 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary>销毁信号量</summary>
+        /// <summary>
+        /// <para>销毁信号量</para>
+        /// <para>Destroy the semaphore</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:b298797b]</remarks>
         public static void MkSemRelease(global::ZLMediaKit.MkSemT sem)
         {
             var __arg0 = sem is null ? IntPtr.Zero : sem.__Instance;
             __Internal.MkSemRelease(__arg0);
         }
 
-        /// <summary>信号量加n</summary>
+        /// <summary>
+        /// <para>信号量加n</para>
+        /// <para>Increase the semaphore by n</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:1f455c5d]</remarks>
         public static void MkSemPost(global::ZLMediaKit.MkSemT sem, ulong n)
         {
             var __arg0 = sem is null ? IntPtr.Zero : sem.__Instance;
@@ -6474,6 +8146,8 @@ namespace ZLMediaKit
         }
 
         /// <summary>信号量减1</summary>
+        /// <param name="sem">Decrease the semaphore by 1</param>
+        /// <param name="sem">[AUTO-TRANSLATED:626595d8]</param>
         public static void MkSemWait(global::ZLMediaKit.MkSemT sem)
         {
             var __arg0 = sem is null ? IntPtr.Zero : sem.__Instance;
@@ -6487,9 +8161,17 @@ namespace ZLMediaKit
     /// <para>你应该通过该事件调用mk_proxy_player_release函数并且释放其他资源</para>
     /// <para>如果你不调用mk_proxy_player_release函数，那么MediaSource.close()操作将无效</para>
     /// </summary>
-    /// <param name="user_data">用户数据指针，通过mk_proxy_player_set_on_close函数设置</param>
+    /// <param name="user_data">
+    /// <para>用户数据指针，通过mk_proxy_player_set_on_close函数设置</para>
+    /// <para>MediaSource.close() callback event</para>
+    /// <para>When you choose to close an associated MediaSource, it will eventually trigger this callback</para>
+    /// <para>You should call mk_proxy_player_release function through this event and release other resources</para>
+    /// <para>If you do not call mk_proxy_player_release function, then MediaSource.close() operation will be invalid</para>
+    /// </param>
+    /// <param name="user_data">User data pointer, set by mk_proxy_player_set_on_close function</param>
+    /// <remarks>[AUTO-TRANSLATED:c99b6bfd]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public unsafe delegate void OnMkProxyPlayerClose(IntPtr user_data, int err, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string what, int sys_err);
+    public unsafe delegate void OnMkProxyPlayerCb(IntPtr user_data, int err, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string what, int sys_err);
 
     public unsafe partial class MkProxyPlayerT
     {
@@ -6528,7 +8210,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6557,6 +8239,12 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_create2", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkProxyPlayerCreate2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, IntPtr option);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_create3", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkProxyPlayerCreate3([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, int hls_enabled, int mp4_enabled, int retry_count);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_create4", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkProxyPlayerCreate4([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, IntPtr option, int retry_count);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_release", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkProxyPlayerRelease(IntPtr ctx);
 
@@ -6572,6 +8260,9 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_set_on_close2", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkProxyPlayerSetOnClose2(IntPtr ctx, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_set_on_play_result", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkProxyPlayerSetOnPlayResult(IntPtr ctx, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_proxy_player_total_reader_count", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkProxyPlayerTotalReaderCount(IntPtr ctx);
         }
@@ -6583,7 +8274,20 @@ namespace ZLMediaKit
         /// <param name="rtp_type">rtsp播放方式:RTP_TCP = 0, RTP_UDP = 1, RTP_MULTICAST = 2</param>
         /// <param name="hls_enabled">是否生成hls</param>
         /// <param name="mp4_enabled">是否生成mp4</param>
-        /// <returns>对象指针</returns>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="app">Application name</param>
+        /// <param name="stream">Stream name</param>
+        /// <param name="rtp_type">rtsp playback method: RTP_TCP = 0, RTP_UDP = 1, RTP_MULTICAST = 2</param>
+        /// <param name="hls_enabled">Whether to generate hls</param>
+        /// <param name="mp4_enabled">Whether to generate mp4</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a proxy player</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:1d4f13f4]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkProxyPlayerT MkProxyPlayerCreate(string vhost, string app, string stream, int hls_enabled, int mp4_enabled)
         {
             var __ret = __Internal.MkProxyPlayerCreate(vhost, app, stream, hls_enabled, mp4_enabled);
@@ -6596,7 +8300,18 @@ namespace ZLMediaKit
         /// <param name="app">应用名</param>
         /// <param name="stream">流名</param>
         /// <param name="option">ProtocolOption相关配置</param>
-        /// <returns>对象指针</returns>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="app">Application name</param>
+        /// <param name="stream">Stream name</param>
+        /// <param name="option">ProtocolOption related configuration</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a proxy player</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:4c6208df]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkProxyPlayerT MkProxyPlayerCreate2(string vhost, string app, string stream, global::ZLMediaKit.MkIniT option)
         {
             var __arg3 = option is null ? IntPtr.Zero : option.__Instance;
@@ -6605,8 +8320,70 @@ namespace ZLMediaKit
             return __result0;
         }
 
+        /// <summary>创建一个代理播放器</summary>
+        /// <param name="mp4_enabled">Whether to generate mp4</param>
+        /// <param name="hls_enabled">Whether to generate hls</param>
+        /// <param name="rtp_type">rtsp playback method: RTP_TCP = 0, RTP_UDP = 1, RTP_MULTICAST = 2</param>
+        /// <param name="stream">Stream name</param>
+        /// <param name="app">Application name</param>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="retry_count">Retry count, when&lt;0 retry infinitely</param>
+        /// <param name="retry_count">重试次数，当&lt;0无限次重试</param>
+        /// <param name="hls_enabled">是否生成hls</param>
+        /// <param name="rtp_type">rtsp播放方式:RTP_TCP = 0, RTP_UDP = 1, RTP_MULTICAST = 2</param>
+        /// <param name="stream">流名</param>
+        /// <param name="app">应用名</param>
+        /// <param name="vhost">虚拟主机名，一般为__defaultVhost__</param>
+        /// <param name="mp4_enabled">是否生成mp4</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a proxy player</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:e25286c3]</para>
+        /// </returns>
+        public static global::ZLMediaKit.MkProxyPlayerT MkProxyPlayerCreate3(string vhost, string app, string stream, int hls_enabled, int mp4_enabled, int retry_count)
+        {
+            var __ret = __Internal.MkProxyPlayerCreate3(vhost, app, stream, hls_enabled, mp4_enabled, retry_count);
+            var __result0 = global::ZLMediaKit.MkProxyPlayerT.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
+        /// <summary>创建一个代理播放器</summary>
+        /// <param name="vhost">虚拟主机名，一般为__defaultVhost__</param>
+        /// <param name="app">应用名</param>
+        /// <param name="stream">流名</param>
+        /// <param name="option">ProtocolOption相关配置</param>
+        /// <param name="retry_count">重试次数，当&lt;0无限次重试</param>
+        /// <param name="vhost">Virtual host name, generally __defaultVhost__</param>
+        /// <param name="app">Application name</param>
+        /// <param name="stream">Stream name</param>
+        /// <param name="option">ProtocolOption related configuration</param>
+        /// <param name="retry_count">Retry count, when&lt;0 retry infinitely</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Create a proxy player</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:2cb296d1]</para>
+        /// </returns>
+        public static global::ZLMediaKit.MkProxyPlayerT MkProxyPlayerCreate4(string vhost, string app, string stream, global::ZLMediaKit.MkIniT option, int retry_count)
+        {
+            var __arg3 = option is null ? IntPtr.Zero : option.__Instance;
+            var __ret = __Internal.MkProxyPlayerCreate4(vhost, app, stream, __arg3, retry_count);
+            var __result0 = global::ZLMediaKit.MkProxyPlayerT.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
         /// <summary>销毁代理播放器</summary>
-        /// <param name="ctx">对象指针</param>
+        /// <param name="ctx">
+        /// <para>对象指针</para>
+        /// <para>Destroy the proxy player</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:fe451691]</remarks>
         public static void MkProxyPlayerRelease(global::ZLMediaKit.MkProxyPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6615,8 +8392,15 @@ namespace ZLMediaKit
 
         /// <summary>设置代理播放器配置选项</summary>
         /// <param name="ctx">代理播放器指针</param>
-        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms</param>
-        /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
+        /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/rtsp_speed</param>
+        /// <param name="val">
+        /// <para>配置项值,如果是整形，需要转换成统一转换成string</para>
+        /// <para>Set proxy player configuration options</para>
+        /// </param>
+        /// <param name="ctx">Proxy player pointer</param>
+        /// <param name="key">Configuration item key, supports net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/rtsp_speed</param>
+        /// <param name="val">Configuration item value, if it is an integer, it needs to be converted to a unified string</param>
+        /// <remarks>[AUTO-TRANSLATED:78938fba]</remarks>
         public static void MkProxyPlayerSetOption(global::ZLMediaKit.MkProxyPlayerT ctx, string key, string val)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6625,7 +8409,13 @@ namespace ZLMediaKit
 
         /// <summary>开始播放</summary>
         /// <param name="ctx">对象指针</param>
-        /// <param name="url">播放url,支持rtsp/rtmp</param>
+        /// <param name="url">
+        /// <para>播放url,支持rtsp/rtmp</para>
+        /// <para>Start playback</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="url">Playback url, supports rtsp/rtmp</param>
+        /// <remarks>[AUTO-TRANSLATED:9597bafb]</remarks>
         public static void MkProxyPlayerPlay(global::ZLMediaKit.MkProxyPlayerT ctx, string url)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6639,15 +8429,24 @@ namespace ZLMediaKit
         /// </summary>
         /// <param name="ctx">对象指针</param>
         /// <param name="cb">回调指针</param>
-        /// <param name="user_data">用户数据指针</param>
-        public static void MkProxyPlayerSetOnClose(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkProxyPlayerClose cb, IntPtr user_data)
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Listen for MediaSource.close() event</para>
+        /// <para>When you choose to close an associated MediaSource, it will eventually trigger this callback</para>
+        /// <para>You should call mk_proxy_player_release function through this event and release other resources</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:174060d4]</remarks>
+        public static void MkProxyPlayerSetOnClose(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkProxyPlayerCb cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             __Internal.MkProxyPlayerSetOnClose(__arg0, __arg1, user_data);
         }
 
-        public static void MkProxyPlayerSetOnClose2(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkProxyPlayerClose cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        public static void MkProxyPlayerSetOnClose2(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkProxyPlayerCb cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
             var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
@@ -6655,9 +8454,38 @@ namespace ZLMediaKit
             __Internal.MkProxyPlayerSetOnClose2(__arg0, __arg1, user_data, __arg3);
         }
 
+        /// <summary>设置代理第一次播放结果回调，如果第一次播放失败，可以认作是启动失败</summary>
+        /// <param name="ctx">对象指针</param>
+        /// <param name="cb">回调指针</param>
+        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data_free">
+        /// <para>用户数据释放回调</para>
+        /// <para>Set the proxy's first playback result callback. If the first playback fails, it can be considered a startup failure.</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="cb">Callback pointer</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <param name="user_data_free">User data release callback</param>
+        /// <remarks>[AUTO-TRANSLATED:1f34852a]</remarks>
+        public static void MkProxyPlayerSetOnPlayResult(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkProxyPlayerCb cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg3 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            __Internal.MkProxyPlayerSetOnPlayResult(__arg0, __arg1, user_data, __arg3);
+        }
+
         /// <summary>获取总的观看人数</summary>
         /// <param name="ctx">对象指针</param>
-        /// <returns>观看人数</returns>
+        /// <param name="ctx">Object pointer</param>
+        /// <returns>
+        /// <para>观看人数</para>
+        /// <para>Get the total number of viewers</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Number of viewers</para>
+        /// <para>[AUTO-TRANSLATED:56635caf]</para>
+        /// </returns>
         public static int MkProxyPlayerTotalReaderCount(global::ZLMediaKit.MkProxyPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6666,7 +8494,6 @@ namespace ZLMediaKit
         }
     }
 
-    /// <summary>flv录制</summary>
     public unsafe partial class MkFlvRecorderT
     {
         public partial struct __Internal
@@ -6704,7 +8531,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6744,9 +8571,20 @@ namespace ZLMediaKit
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_recorder_stop", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int MkRecorderStop(int type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_recorder_start_task", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern int MkRecorderStartTask([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string path, uint back_ms, uint forward_ms);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_load_mp4_file", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkLoadMp4File([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file_path, int file_repeat);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_load_mp4_file2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkLoadMp4File2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string file_path, int file_repeat, IntPtr ini);
         }
 
         /// <summary>创建flv录制器</summary>
+        /// <returns>Create flv recorder</returns>
+        /// <returns>[AUTO-TRANSLATED:7582cde1]</returns>
         public static global::ZLMediaKit.MkFlvRecorderT MkFlvRecorderCreate()
         {
             var __ret = __Internal.MkFlvRecorderCreate();
@@ -6755,6 +8593,8 @@ namespace ZLMediaKit
         }
 
         /// <summary>释放flv录制器</summary>
+        /// <param name="ctx">Release flv recorder</param>
+        /// <param name="ctx">[AUTO-TRANSLATED:c33c76bb]</param>
         public static void MkFlvRecorderRelease(global::ZLMediaKit.MkFlvRecorderT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6767,7 +8607,19 @@ namespace ZLMediaKit
         /// <param name="app">绑定的RtmpMediaSource的 app名</param>
         /// <param name="stream">绑定的RtmpMediaSource的 stream名</param>
         /// <param name="file_path">文件存放地址</param>
-        /// <returns>0:开始超过，-1:失败,打开文件失败或该RtmpMediaSource不存在</returns>
+        /// <param name="ctx">flv recorder</param>
+        /// <param name="vhost">virtual host</param>
+        /// <param name="app">app name of the bound RtmpMediaSource</param>
+        /// <param name="stream">stream name of the bound RtmpMediaSource</param>
+        /// <param name="file_path">file storage address</param>
+        /// <returns>
+        /// <para>0:开始超过，-1:失败,打开文件失败或该RtmpMediaSource不存在</para>
+        /// <para>Start recording flv</para>
+        /// </returns>
+        /// <returns>
+        /// <para>0: start exceeds, -1: failure, file opening fails or the RtmpMediaSource does not exist</para>
+        /// <para>[AUTO-TRANSLATED:194cf3de]</para>
+        /// </returns>
         public static int MkFlvRecorderStart(global::ZLMediaKit.MkFlvRecorderT ctx, string vhost, string app, string stream, string file_path)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6780,7 +8632,18 @@ namespace ZLMediaKit
         /// <param name="vhost">虚拟主机</param>
         /// <param name="app">应用名</param>
         /// <param name="stream">流id</param>
-        /// <returns>录制状态,0:未录制, 1:正在录制</returns>
+        /// <param name="type">0: hls, 1: MP4</param>
+        /// <param name="vhost">virtual host</param>
+        /// <param name="app">application name</param>
+        /// <param name="stream">stream id</param>
+        /// <returns>
+        /// <para>录制状态,0:未录制, 1:正在录制</para>
+        /// <para>Get recording status</para>
+        /// </returns>
+        /// <returns>
+        /// <para>recording status, 0: not recording, 1: recording</para>
+        /// <para>[AUTO-TRANSLATED:0b1d374a]</para>
+        /// </returns>
         public static int MkRecorderIsRecording(int type, string vhost, string app, string stream)
         {
             var __ret = __Internal.MkRecorderIsRecording(type, vhost, app, stream);
@@ -6794,7 +8657,20 @@ namespace ZLMediaKit
         /// <param name="stream">流id</param>
         /// <param name="customized_path">录像文件保存自定义目录，默认为空或null则自动生成</param>
         /// <param name="max_second">mp4录制最大切片时间，单位秒，置0则采用配置文件配置</param>
-        /// <returns>1代表成功，0代表失败</returns>
+        /// <param name="type">0: hls-ts, 1: MP4, 2: hls-fmp4, 3: http-fmp4, 4: http-ts</param>
+        /// <param name="vhost">virtual host</param>
+        /// <param name="app">application name</param>
+        /// <param name="stream">stream id</param>
+        /// <param name="customized_path">custom directory for saving recording files, defaults to empty or null, automatically generated</param>
+        /// <param name="max_second">maximum slice time for mp4 recording, in seconds, set to 0 to use the configuration file configuration</param>
+        /// <returns>
+        /// <para>1代表成功，0代表失败</para>
+        /// <para>Start recording</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1 represents success, 0 represents failure</para>
+        /// <para>[AUTO-TRANSLATED:0a1c8c3e]</para>
+        /// </returns>
         public static int MkRecorderStart(int type, string vhost, string app, string stream, string customized_path, ulong max_second)
         {
             var __ret = __Internal.MkRecorderStart(type, vhost, app, stream, customized_path, max_second);
@@ -6806,11 +8682,55 @@ namespace ZLMediaKit
         /// <param name="vhost">虚拟主机</param>
         /// <param name="app">应用名</param>
         /// <param name="stream">流id</param>
-        /// <returns>1:成功，0：失败</returns>
+        /// <param name="type">0: hls-ts, 1: MP4, 2: hls-fmp4, 3: http-fmp4, 4: http-ts</param>
+        /// <param name="vhost">virtual host</param>
+        /// <param name="app">application name</param>
+        /// <param name="stream">stream id</param>
+        /// <returns>
+        /// <para>1:成功，0：失败</para>
+        /// <para>Stop recording</para>
+        /// </returns>
+        /// <returns>
+        /// <para>1: success, 0: failure</para>
+        /// <para></para>
+        /// <para>[AUTO-TRANSLATED:df1638e7]</para>
+        /// </returns>
         public static int MkRecorderStop(int type, string vhost, string app, string stream)
         {
             var __ret = __Internal.MkRecorderStop(type, vhost, app, stream);
             return __ret;
+        }
+
+        /// <summary>开始事件视频录制</summary>
+        /// <param name="vhost">虚拟主机</param>
+        /// <param name="app">应用名</param>
+        /// <param name="stream">流id</param>
+        /// <param name="path">录像文件保存相对路径，包括名称</param>
+        /// <param name="back_ms">回溯录制时长</param>
+        /// <param name="forward_ms">后续录制时长</param>
+        /// <returns>1:成功，0：失败</returns>
+        public static int MkRecorderStartTask(string vhost, string app, string stream, string path, uint back_ms, uint forward_ms)
+        {
+            var __ret = __Internal.MkRecorderStartTask(vhost, app, stream, path, back_ms, forward_ms);
+            return __ret;
+        }
+
+        /// <summary>加载mp4列表</summary>
+        /// <param name="vhost">虚拟主机</param>
+        /// <param name="app">app</param>
+        /// <param name="stream">流id</param>
+        /// <param name="file_path">文件路径</param>
+        /// <param name="file_repeat">循环解复用</param>
+        /// <param name="ini">配置</param>
+        public static void MkLoadMp4File(string vhost, string app, string stream, string file_path, int file_repeat)
+        {
+            __Internal.MkLoadMp4File(vhost, app, stream, file_path, file_repeat);
+        }
+
+        public static void MkLoadMp4File2(string vhost, string app, string stream, string file_path, int file_repeat, global::ZLMediaKit.MkIniT ini)
+        {
+            var __arg5 = ini is null ? IntPtr.Zero : ini.__Instance;
+            __Internal.MkLoadMp4File2(vhost, app, stream, file_path, file_repeat, __arg5);
         }
     }
 
@@ -6819,7 +8739,16 @@ namespace ZLMediaKit
     /// <param name="err_code">错误代码，0为成功</param>
     /// <param name="err_msg">错误提示</param>
     /// <param name="tracks">track列表</param>
-    /// <param name="track_count">track个数</param>
+    /// <param name="track_count">
+    /// <para>track个数</para>
+    /// <para>Callback for playback result or playback interruption event</para>
+    /// </param>
+    /// <param name="user_data">User data pointer</param>
+    /// <param name="err_code">Error code, 0 for success</param>
+    /// <param name="err_msg">Error message</param>
+    /// <param name="tracks">Track list</param>
+    /// <param name="track_count">Number of tracks</param>
+    /// <remarks>[AUTO-TRANSLATED:38d4c546]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkPlayEvent(IntPtr user_data, int err_code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg, IntPtr[] tracks, int track_count);
 
@@ -6860,7 +8789,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -6933,7 +8862,14 @@ namespace ZLMediaKit
         }
 
         /// <summary>创建一个播放器,支持rtmp[s]/rtsp[s]</summary>
-        /// <returns>播放器指针</returns>
+        /// <returns>
+        /// <para>播放器指针</para>
+        /// <para>Create a player that supports rtmp[s]/rtsp[s]</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Player pointer</para>
+        /// <para>[AUTO-TRANSLATED:509f9a50]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkPlayerT MkPlayerCreate()
         {
             var __ret = __Internal.MkPlayerCreate();
@@ -6942,7 +8878,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁播放器</summary>
-        /// <param name="ctx">播放器指针</param>
+        /// <param name="ctx">
+        /// <para>播放器指针</para>
+        /// <para>Destroy the player</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:2448eb93]</remarks>
         public static void MkPlayerRelease(global::ZLMediaKit.MkPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6952,7 +8893,14 @@ namespace ZLMediaKit
         /// <summary>设置播放器配置选项</summary>
         /// <param name="ctx">播放器指针</param>
         /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/wait_track_ready</param>
-        /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
+        /// <param name="val">
+        /// <para>配置项值,如果是整形，需要转换成统一转换成string</para>
+        /// <para>Set player configuration options</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
+        /// <param name="key">Configuration key, supports net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms/wait_track_ready</param>
+        /// <param name="val">Configuration value, if it is an integer, it needs to be converted to a string</param>
+        /// <remarks>[AUTO-TRANSLATED:12650e9f]</remarks>
         public static void MkPlayerSetOption(global::ZLMediaKit.MkPlayerT ctx, string key, string val)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6961,7 +8909,13 @@ namespace ZLMediaKit
 
         /// <summary>开始播放url</summary>
         /// <param name="ctx">播放器指针</param>
+        /// <param name="url">
+        /// <para>rtsp[s]/rtmp[s] url</para>
+        /// <para>Start playing the url</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
         /// <param name="url">rtsp[s]/rtmp[s] url</param>
+        /// <remarks>[AUTO-TRANSLATED:dbec813f]</remarks>
         public static void MkPlayerPlay(global::ZLMediaKit.MkPlayerT ctx, string url)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6970,7 +8924,13 @@ namespace ZLMediaKit
 
         /// <summary>暂停或恢复播放，仅对点播有用</summary>
         /// <param name="ctx">播放器指针</param>
-        /// <param name="pause">1:暂停播放，0：恢复播放</param>
+        /// <param name="pause">
+        /// <para>1:暂停播放，0：恢复播放</para>
+        /// <para>Pause or resume playback, only useful for on-demand</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
+        /// <param name="pause">1: Pause playback, 0: Resume playback</param>
+        /// <remarks>[AUTO-TRANSLATED:28eee990]</remarks>
         public static void MkPlayerPause(global::ZLMediaKit.MkPlayerT ctx, int pause)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6979,7 +8939,13 @@ namespace ZLMediaKit
 
         /// <summary>倍数播放，仅对点播有用</summary>
         /// <param name="ctx">播放器指针</param>
+        /// <param name="speed">
+        /// <para>0.5 1.0 2.0</para>
+        /// <para>Playback at a multiple, only useful for on-demand</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
         /// <param name="speed">0.5 1.0 2.0</param>
+        /// <remarks>[AUTO-TRANSLATED:95249ade]</remarks>
         public static void MkPlayerSpeed(global::ZLMediaKit.MkPlayerT ctx, float speed)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6988,7 +8954,13 @@ namespace ZLMediaKit
 
         /// <summary>设置点播进度条</summary>
         /// <param name="ctx">对象指针</param>
-        /// <param name="progress">取值范围未 0.0～1.0</param>
+        /// <param name="progress">
+        /// <para>取值范围未 0.0～1.0</para>
+        /// <para>Set the on-demand progress bar</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="progress">Value range is 0.0～1.0</param>
+        /// <remarks>[AUTO-TRANSLATED:cede3a8f]</remarks>
         public static void MkPlayerSeekto(global::ZLMediaKit.MkPlayerT ctx, float progress)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -6997,7 +8969,13 @@ namespace ZLMediaKit
 
         /// <summary>设置点播进度条</summary>
         /// <param name="ctx">对象指针</param>
-        /// <param name="seek_pos">取值范围 相对于开始时间增量 单位秒</param>
+        /// <param name="seek_pos">
+        /// <para>取值范围 相对于开始时间增量 单位秒</para>
+        /// <para>Set the on-demand progress bar</para>
+        /// </param>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="seek_pos">Value range is the increment relative to the start time, unit is seconds</param>
+        /// <remarks>[AUTO-TRANSLATED:cddea627]</remarks>
         public static void MkPlayerSeektoPos(global::ZLMediaKit.MkPlayerT ctx, int seek_pos)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7007,7 +8985,14 @@ namespace ZLMediaKit
         /// <summary>设置播放器开启播放结果回调函数</summary>
         /// <param name="ctx">播放器指针</param>
         /// <param name="cb">回调函数指针,设置null立即取消回调</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set the player to enable playback result callback function</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
+        /// <param name="cb">Callback function pointer, set null to immediately cancel the callback</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:1c2daeaf]</remarks>
         public static void MkPlayerSetOnResult(global::ZLMediaKit.MkPlayerT ctx, global::ZLMediaKit.OnMkPlayEvent cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7026,7 +9011,17 @@ namespace ZLMediaKit
         /// <summary>设置播放被异常中断的回调</summary>
         /// <param name="ctx">播放器指针</param>
         /// <param name="cb">回调函数指针,设置null立即取消回调</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set the callback for playback being abnormally interrupted</para>
+        /// </param>
+        /// <param name="ctx">Player pointer</param>
+        /// <param name="cb">Callback function pointer, set null to immediately cancel the callback</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>
+        /// <para>///////////////////////////Audio and video related information interfaces are only valid after the playback success callback is triggered///////////////////////////////</para>
+        /// <para>[AUTO-TRANSLATED:18f58697]</para>
+        /// </remarks>
         public static void MkPlayerSetOnShutdown(global::ZLMediaKit.MkPlayerT ctx, global::ZLMediaKit.OnMkPlayEvent cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7042,7 +9037,11 @@ namespace ZLMediaKit
             __Internal.MkPlayerSetOnShutdown2(__arg0, __arg1, user_data, __arg3);
         }
 
-        /// <summary>获取点播节目时长，如果是直播返回0，否则返回秒数</summary>
+        /// <summary>
+        /// <para>获取点播节目时长，如果是直播返回0，否则返回秒数</para>
+        /// <para>Get the on-demand playback progress, value range is 0.0～1.0</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:522140b7]</remarks>
         public static float MkPlayerDuration(global::ZLMediaKit.MkPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7050,7 +9049,11 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取点播播放进度，取值范围 0.0～1.0</summary>
+        /// <summary>
+        /// <para>获取点播播放进度，取值范围 0.0～1.0</para>
+        /// <para>Get the on-demand playback progress position, value range is the increment relative to the start time, unit is seconds</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:921795a0]</remarks>
         public static float MkPlayerProgress(global::ZLMediaKit.MkPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7058,7 +9061,13 @@ namespace ZLMediaKit
             return __ret;
         }
 
-        /// <summary>获取点播播放进度位置，取值范围 相对于开始时间增量 单位秒</summary>
+        /// <summary>
+        /// <para>获取点播播放进度位置，取值范围 相对于开始时间增量 单位秒</para>
+        /// <para>Get the packet loss rate, valid for rtsp</para>
+        /// </summary>
+        /// <param name="ctx">Object pointer</param>
+        /// <param name="track_type">0: Video, 1: Audio</param>
+        /// <remarks>[AUTO-TRANSLATED:058e5089]</remarks>
         public static int MkPlayerProgressPos(global::ZLMediaKit.MkPlayerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7080,7 +9089,14 @@ namespace ZLMediaKit
     /// <summary>推流结果或推流中断事件的回调</summary>
     /// <param name="user_data">用户数据指针</param>
     /// <param name="err_code">错误代码，0为成功</param>
-    /// <param name="err_msg">错误提示</param>
+    /// <param name="err_msg">
+    /// <para>错误提示</para>
+    /// <para>Callback for streaming result or streaming interruption event</para>
+    /// </param>
+    /// <param name="user_data">User data pointer</param>
+    /// <param name="err_code">Error code, 0 for success</param>
+    /// <param name="err_msg">Error message</param>
+    /// <remarks>[AUTO-TRANSLATED:6e7d5c79]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkPushEvent(IntPtr user_data, int err_code, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err_msg);
 
@@ -7121,7 +9137,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7181,7 +9197,20 @@ namespace ZLMediaKit
         /// <param name="vhost">绑定的MediaSource对象的虚拟主机，一般为__defaultVhost__</param>
         /// <param name="app">绑定的MediaSource对象的应用名，一般为live</param>
         /// <param name="stream">绑定的MediaSource对象的流id</param>
-        /// <returns>对象指针</returns>
+        /// <param name="schema">Protocol to which the bound MediaSource object belongs, supporting rtsp/rtmp</param>
+        /// <param name="vhost">Virtual host of the bound MediaSource object, generally __defaultVhost__</param>
+        /// <param name="app">Application name of the bound MediaSource object, generally live</param>
+        /// <param name="stream">Stream id of the bound MediaSource object</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Bind the MediaSource object and create an rtmp[s]/rtsp[s] pusher</para>
+        /// <para>MediaSource is generated by mk_media_create or mk_proxy_player_create or streaming</para>
+        /// <para>The MediaSource object must be registered</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:9366fdbc]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkPusherT MkPusherCreate(string schema, string vhost, string app, string stream)
         {
             var __ret = __Internal.MkPusherCreate(schema, vhost, app, stream);
@@ -7195,7 +9224,17 @@ namespace ZLMediaKit
         /// <para>该MediaSource对象必须已注册</para>
         /// </summary>
         /// <param name="src">MediaSource对象</param>
-        /// <returns>对象指针</returns>
+        /// <param name="src">MediaSource object</param>
+        /// <returns>
+        /// <para>对象指针</para>
+        /// <para>Bind the MediaSource object and create an rtmp[s]/rtsp[s] pusher</para>
+        /// <para>MediaSource is generated by mk_media_create or mk_proxy_player_create or streaming</para>
+        /// <para>The MediaSource object must be registered</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Object pointer</para>
+        /// <para>[AUTO-TRANSLATED:34ca024a]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkPusherT MkPusherCreateSrc(global::ZLMediaKit.MkMediaSourceT src)
         {
             var __arg0 = src is null ? IntPtr.Zero : src.__Instance;
@@ -7205,7 +9244,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>释放推流器</summary>
-        /// <param name="ctx">推流器指针</param>
+        /// <param name="ctx">
+        /// <para>推流器指针</para>
+        /// <para>Release the pusher</para>
+        /// </param>
+        /// <param name="ctx">Pusher pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:55fd6b8b]</remarks>
         public static void MkPusherRelease(global::ZLMediaKit.MkPusherT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7215,7 +9259,14 @@ namespace ZLMediaKit
         /// <summary>设置推流器配置选项</summary>
         /// <param name="ctx">推流器指针</param>
         /// <param name="key">配置项键,支持 net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms</param>
-        /// <param name="val">配置项值,如果是整形，需要转换成统一转换成string</param>
+        /// <param name="val">
+        /// <para>配置项值,如果是整形，需要转换成统一转换成string</para>
+        /// <para>Set the pusher configuration options</para>
+        /// </param>
+        /// <param name="ctx">Pusher pointer</param>
+        /// <param name="key">Configuration item key, supports net_adapter/rtp_type/rtsp_user/rtsp_pwd/protocol_timeout_ms/media_timeout_ms/beat_interval_ms</param>
+        /// <param name="val">Configuration item value, if it is an integer, it needs to be converted to a unified string</param>
+        /// <remarks>[AUTO-TRANSLATED:0e3ce06d]</remarks>
         public static void MkPusherSetOption(global::ZLMediaKit.MkPusherT ctx, string key, string val)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7224,7 +9275,13 @@ namespace ZLMediaKit
 
         /// <summary>开始推流</summary>
         /// <param name="ctx">推流器指针</param>
-        /// <param name="url">推流地址，支持rtsp[s]/rtmp[s]</param>
+        /// <param name="url">
+        /// <para>推流地址，支持rtsp[s]/rtmp[s]</para>
+        /// <para>Start streaming</para>
+        /// </param>
+        /// <param name="ctx">Pusher pointer</param>
+        /// <param name="url">Streaming address, supports rtsp[s]/rtmp[s]</param>
+        /// <remarks>[AUTO-TRANSLATED:45c0a836]</remarks>
         public static void MkPusherPublish(global::ZLMediaKit.MkPusherT ctx, string url)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7234,7 +9291,14 @@ namespace ZLMediaKit
         /// <summary>设置推流器推流结果回调函数</summary>
         /// <param name="ctx">推流器指针</param>
         /// <param name="cb">回调函数指针,不得为null</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set the pusher streaming result callback function</para>
+        /// </param>
+        /// <param name="ctx">Pusher pointer</param>
+        /// <param name="cb">Callback function pointer, must not be null</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:a45fb6e4]</remarks>
         public static void MkPusherSetOnResult(global::ZLMediaKit.MkPusherT ctx, global::ZLMediaKit.OnMkPushEvent cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7253,7 +9317,14 @@ namespace ZLMediaKit
         /// <summary>设置推流被异常中断的回调</summary>
         /// <param name="ctx">推流器指针</param>
         /// <param name="cb">回调函数指针,不得为null</param>
-        /// <param name="user_data">用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>用户数据指针</para>
+        /// <para>Set the callback for the streaming being abnormally interrupted</para>
+        /// </param>
+        /// <param name="ctx">Pusher pointer</param>
+        /// <param name="cb">Callback function pointer, must not be null</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:9e11a215]</remarks>
         public static void MkPusherSetOnShutdown(global::ZLMediaKit.MkPusherT ctx, global::ZLMediaKit.OnMkPushEvent cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7270,14 +9341,33 @@ namespace ZLMediaKit
         }
     }
 
-    /// <summary>TCP 主动模式时连接到服务器是否成功的回调</summary>
+    /// <summary>
+    /// <para>TCP 主动模式时连接到服务器是否成功的回调</para>
+    /// <para>Callback for whether the connection to the server is successful in TCP active mode</para>
+    /// </summary>
+    /// <remarks>[AUTO-TRANSLATED:752e915a]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkRtpServerConnected(IntPtr user_data, int err, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string what, int sys_err);
 
     /// <summary>GB28181 RTP 服务器接收流超时时触发</summary>
-    /// <param name="user_data">用户数据指针</param>
+    /// <param name="user_data">
+    /// <para>用户数据指针</para>
+    /// <para>Triggered when the GB28181 RTP server receives a stream timeout</para>
+    /// </param>
+    /// <param name="user_data">User data pointer</param>
+    /// <remarks>[AUTO-TRANSLATED:04d56f24]</remarks>
     [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public unsafe delegate void OnMkRtpServerDetach(IntPtr user_data);
+
+    /// <summary>rtp信息获取回调</summary>
+    /// <param name="exist">存在rtp信息 0: 不存在 1: 存在</param>
+    /// <param name="peer_ip">连接ip</param>
+    /// <param name="peer_port">连接端口</param>
+    /// <param name="local_ip">本地ip</param>
+    /// <param name="local_port">本地端口</param>
+    /// <param name="identifier">身份信息</param>
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkRtpGetInfo(int exist, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string peer_ip, ushort peer_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string local_ip, ushort local_port, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string identifier);
 
     public unsafe partial class MkRtpServerT
     {
@@ -7316,7 +9406,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7342,6 +9432,12 @@ namespace ZLMediaKit
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_create", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr MkRtpServerCreate(ushort port, int tcp_mode, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream_id);
 
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_create2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRtpServerCreate2(ushort port, int tcp_mode, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream_id);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_create3", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr MkRtpServerCreate3(ushort port, int tcp_mode, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string vhost, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream_id, int multiplex);
+
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_connect", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkRtpServerConnect(IntPtr ctx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string dst_url, ushort dst_port, IntPtr cb, IntPtr user_data);
 
@@ -7359,15 +9455,47 @@ namespace ZLMediaKit
 
             [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_set_on_detach2", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void MkRtpServerSetOnDetach2(IntPtr ctx, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_server_update_ssrc", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkRtpServerUpdateSsrc(IntPtr ctx, uint ssrc);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_get_info", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkRtpGetInfo([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream, IntPtr cb);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_pause_check", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkRtpPauseCheck([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_rtp_resume_check", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkRtpResumeCheck([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string app, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string stream);
         }
 
         /// <summary>创建GB28181 RTP 服务器</summary>
         /// <param name="port">监听端口，0则为随机</param>
         /// <param name="tcp_mode">tcp模式(0: 不监听端口 1: 监听端口 2: 主动连接到服务端)</param>
         /// <param name="stream_id">该端口绑定的流id</param>
+        /// <param name="multiple">多路复用RTP服务器 1: 开启 0: 不开启</param>
+        /// <param name="port">Listening port, 0 for random</param>
+        /// <param name="tcp_mode">tcp mode (0: not listening to port 1: listening to port 2: actively connect to the server)</param>
+        /// <param name="stream_id">Stream id bound to this port</param>
+        /// <returns>Create GB28181 RTP server</returns>
+        /// <returns>[AUTO-TRANSLATED:0c5fd548]</returns>
         public static global::ZLMediaKit.MkRtpServerT MkRtpServerCreate(ushort port, int tcp_mode, string stream_id)
         {
             var __ret = __Internal.MkRtpServerCreate(port, tcp_mode, stream_id);
+            var __result0 = global::ZLMediaKit.MkRtpServerT.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
+        public static global::ZLMediaKit.MkRtpServerT MkRtpServerCreate2(ushort port, int tcp_mode, string vhost, string app, string stream_id)
+        {
+            var __ret = __Internal.MkRtpServerCreate2(port, tcp_mode, vhost, app, stream_id);
+            var __result0 = global::ZLMediaKit.MkRtpServerT.__GetOrCreateInstance(__ret, false);
+            return __result0;
+        }
+
+        public static global::ZLMediaKit.MkRtpServerT MkRtpServerCreate3(ushort port, int tcp_mode, string vhost, string app, string stream_id, int multiplex)
+        {
+            var __ret = __Internal.MkRtpServerCreate3(port, tcp_mode, vhost, app, stream_id, multiplex);
             var __result0 = global::ZLMediaKit.MkRtpServerT.__GetOrCreateInstance(__ret, false);
             return __result0;
         }
@@ -7378,6 +9506,13 @@ namespace ZLMediaKit
         /// <param name="dst_port">服务端端口</param>
         /// <param name="cb">连接到服务器是否成功的回调</param>
         /// <param name="user_data">用户数据指针</param>
+        /// <param name="ctx">Server object</param>
+        /// <param name="dst_url">Server address</param>
+        /// <param name="dst_port">Server port</param>
+        /// <param name="cb">Callback for whether the connection to the server is successful</param>
+        /// <param name="user_data">User data pointer</param>
+        /// <returns>Connect to the server in TCP active mode</returns>
+        /// <returns>[AUTO-TRANSLATED:e827d45a]</returns>
         public static void MkRtpServerConnect(global::ZLMediaKit.MkRtpServerT ctx, string dst_url, ushort dst_port, global::ZLMediaKit.OnMkRtpServerConnected cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7394,7 +9529,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>销毁GB28181 RTP 服务器</summary>
-        /// <param name="ctx">服务器对象</param>
+        /// <param name="ctx">
+        /// <para>服务器对象</para>
+        /// <para>Destroy GB28181 RTP server</para>
+        /// </param>
+        /// <param name="ctx">Server object</param>
+        /// <remarks>[AUTO-TRANSLATED:828e02f0]</remarks>
         public static void MkRtpServerRelease(global::ZLMediaKit.MkRtpServerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7403,7 +9543,15 @@ namespace ZLMediaKit
 
         /// <summary>获取本地监听的端口号</summary>
         /// <param name="ctx">服务器对象</param>
-        /// <returns>端口号</returns>
+        /// <param name="ctx">Server object</param>
+        /// <returns>
+        /// <para>端口号</para>
+        /// <para>Get the local listening port number</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Port number</para>
+        /// <para>[AUTO-TRANSLATED:90fe5d22]</para>
+        /// </returns>
         public static ushort MkRtpServerPort(global::ZLMediaKit.MkRtpServerT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7414,7 +9562,14 @@ namespace ZLMediaKit
         /// <summary>监听B28181 RTP 服务器接收流超时事件</summary>
         /// <param name="ctx">服务器对象</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">回调函数用户数据指针</param>
+        /// <param name="user_data">
+        /// <para>回调函数用户数据指针</para>
+        /// <para>Listen for B28181 RTP server receiving stream timeout events</para>
+        /// </param>
+        /// <param name="ctx">Server object</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">Callback function user data pointer</param>
+        /// <remarks>[AUTO-TRANSLATED:a88c239f]</remarks>
         public static void MkRtpServerSetOnDetach(global::ZLMediaKit.MkRtpServerT ctx, global::ZLMediaKit.OnMkRtpServerDetach cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7428,6 +9583,41 @@ namespace ZLMediaKit
             var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
             var __arg3 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
             __Internal.MkRtpServerSetOnDetach2(__arg0, __arg1, user_data, __arg3);
+        }
+
+        /// <summary>更新RTP服务器过滤SSRC</summary>
+        /// <param name="ctx">服务器对象</param>
+        /// <param name="ssrc">十进制ssrc</param>
+        public static void MkRtpServerUpdateSsrc(global::ZLMediaKit.MkRtpServerT ctx, uint ssrc)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            __Internal.MkRtpServerUpdateSsrc(__arg0, ssrc);
+        }
+
+        /// <summary>获取rtp推流信息</summary>
+        /// <param name="app">应用名</param>
+        /// <param name="stream">流id</param>
+        /// <param name="cb">rtp信息获取回调</param>
+        public static void MkRtpGetInfo(string app, string stream, global::ZLMediaKit.OnMkRtpGetInfo cb)
+        {
+            var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkRtpGetInfo(app, stream, __arg2);
+        }
+
+        /// <summary>暂停RTP超时检查</summary>
+        /// <param name="app">应用名</param>
+        /// <param name="stream">流id</param>
+        public static void MkRtpPauseCheck(string app, string stream)
+        {
+            __Internal.MkRtpPauseCheck(app, stream);
+        }
+
+        /// <summary>恢复RTP超时检查</summary>
+        /// <param name="app">应用名</param>
+        /// <param name="stream">流id</param>
+        public static void MkRtpResumeCheck(string app, string stream)
+        {
+            __Internal.MkRtpResumeCheck(app, stream);
         }
     }
 
@@ -7471,7 +9661,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7527,7 +9717,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7583,7 +9773,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7639,7 +9829,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7695,7 +9885,7 @@ namespace ZLMediaKit
         private static void* __CopyValue(__Internal native)
         {
             var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            *(__Internal*) ret = native;
             return ret.ToPointer();
         }
 
@@ -7815,7 +10005,16 @@ namespace ZLMediaKit
         /// <summary>创建解码器</summary>
         /// <param name="track">track对象</param>
         /// <param name="thread_num">解码线程数，0时为自动</param>
-        /// <returns>返回解码器对象，NULL代表失败</returns>
+        /// <param name="track">track object</param>
+        /// <param name="thread_num">Number of decoding threads, 0 for automatic</param>
+        /// <returns>
+        /// <para>返回解码器对象，NULL代表失败</para>
+        /// <para>Create decoder</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Returns the decoder object, NULL indicates failure</para>
+        /// <para>[AUTO-TRANSLATED:d01b3192]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkDecoderT MkDecoderCreate(global::ZLMediaKit.MkTrackT track, int thread_num)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -7831,7 +10030,20 @@ namespace ZLMediaKit
         /// <para>偏好的ffmpeg codec name列表，以NULL结尾，譬如：{&quot;libopenh264&quot;, &quot;h264_nvdec&quot;, NULL};</para>
         /// <para>在数组中越前，优先级越高;如果指定的codec不存在，或跟mk_track_codec_id类型不匹配时，则使用内部默认codec列表</para>
         /// </param>
-        /// <returns>返回解码器对象，NULL代表失败</returns>
+        /// <param name="track">track object</param>
+        /// <param name="thread_num">Number of decoding threads, 0 for automatic</param>
+        /// <param name="codec_name_list">
+        /// <para>Preferred ffmpeg codec name list, ending with NULL, for example: {&quot;libopenh264&quot;, &quot;h264_nvdec&quot;, NULL};</para>
+        /// <para>The higher the priority in the array, the higher the priority; if the specified codec does not exist, or does not match the mk_track_codec_id type, the internal default codec list will be used</para>
+        /// </param>
+        /// <returns>
+        /// <para>返回解码器对象，NULL代表失败</para>
+        /// <para>Create decoder</para>
+        /// </returns>
+        /// <returns>
+        /// <para>Returns the decoder object, NULL indicates failure</para>
+        /// <para>[AUTO-TRANSLATED:078aba31]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkDecoderT MkDecoderCreate2(global::ZLMediaKit.MkTrackT track, int thread_num, string[] codec_name_list)
         {
             var __arg0 = track is null ? IntPtr.Zero : track.__Instance;
@@ -7842,7 +10054,13 @@ namespace ZLMediaKit
 
         /// <summary>销毁解码器</summary>
         /// <param name="ctx">解码器对象</param>
-        /// <param name="flush_frame">是否等待所有帧解码成功</param>
+        /// <param name="flush_frame">
+        /// <para>是否等待所有帧解码成功</para>
+        /// <para>Destroy decoder</para>
+        /// </param>
+        /// <param name="ctx">Decoder object</param>
+        /// <param name="flush_frame">Whether to wait for all frames to be decoded successfully</param>
+        /// <remarks>[AUTO-TRANSLATED:1a4d9663]</remarks>
         public static void MkDecoderRelease(global::ZLMediaKit.MkDecoderT ctx, int flush_frame)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7853,7 +10071,15 @@ namespace ZLMediaKit
         /// <param name="ctx">解码器</param>
         /// <param name="frame">帧对象</param>
         /// <param name="async">是否异步解码</param>
-        /// <param name="enable_merge">是否合并帧解码，有些情况下，需要把时间戳相同的slice合并输入到解码器才能解码</param>
+        /// <param name="enable_merge">
+        /// <para>是否合并帧解码，有些情况下，需要把时间戳相同的slice合并输入到解码器才能解码</para>
+        /// <para>Decode audio and video frames</para>
+        /// </param>
+        /// <param name="ctx">Decoder</param>
+        /// <param name="frame">Frame object</param>
+        /// <param name="async">Whether to decode asynchronously</param>
+        /// <param name="enable_merge">Whether to merge frame decoding, in some cases, it is necessary to merge slices with the same timestamp into the decoder before decoding</param>
+        /// <remarks>[AUTO-TRANSLATED:87df4c4d]</remarks>
         public static void MkDecoderDecode(global::ZLMediaKit.MkDecoderT ctx, global::ZLMediaKit.MkFrameT frame, int async, int enable_merge)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7861,7 +10087,11 @@ namespace ZLMediaKit
             __Internal.MkDecoderDecode(__arg0, __arg1, async, enable_merge);
         }
 
-        /// <summary>设置异步解码最大帧缓存积压数限制</summary>
+        /// <summary>
+        /// <para>设置异步解码最大帧缓存积压数限制</para>
+        /// <para>Set the maximum frame cache backlog limit for asynchronous decoding</para>
+        /// </summary>
+        /// <remarks>[AUTO-TRANSLATED:1e3e413d]</remarks>
         public static void MkDecoderSetMaxAsyncFrameSize(global::ZLMediaKit.MkDecoderT ctx, ulong size)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7871,7 +10101,14 @@ namespace ZLMediaKit
         /// <summary>设置解码输出回调</summary>
         /// <param name="ctx">解码器</param>
         /// <param name="cb">回调函数</param>
-        /// <param name="user_data">回调函数用户指针参数</param>
+        /// <param name="user_data">
+        /// <para>回调函数用户指针参数</para>
+        /// <para>Set decode output callback</para>
+        /// </param>
+        /// <param name="ctx">Decoder</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="user_data">User pointer parameter of the callback function</param>
+        /// <remarks>[AUTO-TRANSLATED:a90f8764]</remarks>
         public static void MkDecoderSetCb(global::ZLMediaKit.MkDecoderT ctx, global::ZLMediaKit.OnMkDecode cb, IntPtr user_data)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7888,7 +10125,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>获取FFmpeg原始AVCodecContext对象</summary>
-        /// <param name="ctx">解码器</param>
+        /// <param name="ctx">
+        /// <para>解码器</para>
+        /// <para>Get the FFmpeg original AVCodecContext object</para>
+        /// </param>
+        /// <param name="ctx">Decoder</param>
+        /// <remarks>[AUTO-TRANSLATED:73ed5496]</remarks>
         public static global::ZLMediaKit.AVCodecContext MkDecoderGetContext(global::ZLMediaKit.MkDecoderT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7899,7 +10141,15 @@ namespace ZLMediaKit
 
         /// <summary>创建解码帧mk_frame_pix新引用</summary>
         /// <param name="frame">原始引用</param>
-        /// <returns>新引用</returns>
+        /// <param name="frame">Original reference</param>
+        /// <returns>
+        /// <para>新引用</para>
+        /// <para>Create a new reference to the mk_frame_pix decoding frame</para>
+        /// </returns>
+        /// <returns>
+        /// <para>New reference</para>
+        /// <para>[AUTO-TRANSLATED:ca58ab5d]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFramePixT MkFramePixRef(global::ZLMediaKit.MkFramePixT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -7909,7 +10159,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>解码帧mk_frame_pix减引用</summary>
-        /// <param name="frame">原始引用</param>
+        /// <param name="frame">
+        /// <para>原始引用</para>
+        /// <para>Decrease the reference of the decoding frame mk_frame_pix</para>
+        /// </param>
+        /// <param name="frame">Original reference</param>
+        /// <remarks>[AUTO-TRANSLATED:1581d0a9]</remarks>
         public static void MkFramePixUnref(global::ZLMediaKit.MkFramePixT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -7918,7 +10173,15 @@ namespace ZLMediaKit
 
         /// <summary>从FFmpeg AVFrame转换为mk_frame_pix</summary>
         /// <param name="frame">FFmpeg AVFrame</param>
-        /// <returns>mk_frame_pix对象</returns>
+        /// <param name="frame">FFmpeg AVFrame</param>
+        /// <returns>
+        /// <para>mk_frame_pix对象</para>
+        /// <para>Convert from FFmpeg AVFrame to mk_frame_pix</para>
+        /// </returns>
+        /// <returns>
+        /// <para>mk_frame_pix object</para>
+        /// <para>[AUTO-TRANSLATED:adfb43d5]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFramePixT MkFramePixFromAvFrame(global::ZLMediaKit.AVFrame frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -7931,7 +10194,17 @@ namespace ZLMediaKit
         /// <param name="plane_data">多个平面数据, 通过mk_buffer_get_data获取其数据指针</param>
         /// <param name="line_size">平面数据line size</param>
         /// <param name="plane">数据平面个数</param>
-        /// <returns>mk_frame_pix对象</returns>
+        /// <param name="plane_data">Multiple plane data, get its data pointer through mk_buffer_get_data</param>
+        /// <param name="line_size">Plane data line size</param>
+        /// <param name="plane">Number of data planes</param>
+        /// <returns>
+        /// <para>mk_frame_pix对象</para>
+        /// <para>Create a mk_frame_pix object without memory copy</para>
+        /// </returns>
+        /// <returns>
+        /// <para>mk_frame_pix object</para>
+        /// <para>[AUTO-TRANSLATED:b720d2e2]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFramePixT MkFramePixFromBuffer(global::ZLMediaKit.MkBufferT[] plane_data, int[] line_size, int plane)
         {
             IntPtr[] __plane_data;
@@ -7954,7 +10227,15 @@ namespace ZLMediaKit
 
         /// <summary>获取FFmpeg AVFrame对象</summary>
         /// <param name="frame">解码帧mk_frame_pix</param>
-        /// <returns>FFmpeg AVFrame对象</returns>
+        /// <param name="frame">Decoded frame mk_frame_pix</param>
+        /// <returns>
+        /// <para>FFmpeg AVFrame对象</para>
+        /// <para>Get the FFmpeg AVFrame object</para>
+        /// </returns>
+        /// <returns>
+        /// <para>FFmpeg AVFrame object</para>
+        /// <para>[AUTO-TRANSLATED:03142bdc]</para>
+        /// </returns>
         public static global::ZLMediaKit.AVFrame MkFramePixGetAvFrame(global::ZLMediaKit.MkFramePixT frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -7967,7 +10248,17 @@ namespace ZLMediaKit
         /// <param name="output">AVPixelFormat类型，AV_PIX_FMT_BGR24==3</param>
         /// <param name="width">目标宽度，置0时，则与输入时一致</param>
         /// <param name="height">目标高度，置0时，则与输入时一致</param>
-        /// <returns>SwsContext wrapper 实例</returns>
+        /// <param name="output">AVPixelFormat type, AV_PIX_FMT_BGR24==3</param>
+        /// <param name="width">Target width, set to 0, then it is the same as the input</param>
+        /// <param name="height">Target height, set to 0, then it is the same as the input</param>
+        /// <returns>
+        /// <para>SwsContext wrapper 实例</para>
+        /// <para>Create an instance of the ffmpeg SwsContext wrapper</para>
+        /// </returns>
+        /// <returns>
+        /// <para>SwsContext wrapper instance</para>
+        /// <para>[AUTO-TRANSLATED:417474cb]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkSwscaleT MkSwscaleCreate(int output, int width, int height)
         {
             var __ret = __Internal.MkSwscaleCreate(output, width, height);
@@ -7976,7 +10267,12 @@ namespace ZLMediaKit
         }
 
         /// <summary>释放ffmpeg SwsContext wrapper实例</summary>
-        /// <param name="ctx">SwsContext wrapper实例</param>
+        /// <param name="ctx">
+        /// <para>SwsContext wrapper实例</para>
+        /// <para>Release the ffmpeg SwsContext wrapper instance</para>
+        /// </param>
+        /// <param name="ctx">SwsContext wrapper instance</param>
+        /// <remarks>[AUTO-TRANSLATED:8eaaea2f]</remarks>
         public static void MkSwscaleRelease(global::ZLMediaKit.MkSwscaleT ctx)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7987,7 +10283,17 @@ namespace ZLMediaKit
         /// <param name="ctx">SwsContext wrapper实例</param>
         /// <param name="frame">pix frame</param>
         /// <param name="out">转换后存放的数据指针，用户需要确保提前申请并大小足够</param>
-        /// <returns>sws_scale()返回值：the height of the output slice</returns>
+        /// <param name="ctx">SwsContext wrapper instance</param>
+        /// <param name="frame">pix frame</param>
+        /// <param name="out">Data pointer to store the converted data, the user needs to ensure that the application is applied in advance and the size is sufficient</param>
+        /// <returns>
+        /// <para>sws_scale()返回值：the height of the output slice</para>
+        /// <para>Use SwsContext to convert pix format</para>
+        /// </returns>
+        /// <returns>
+        /// <para>sws_scale() return value: the height of the output slice</para>
+        /// <para>[AUTO-TRANSLATED:3018afe4]</para>
+        /// </returns>
         public static int MkSwscaleInputFrame(global::ZLMediaKit.MkSwscaleT ctx, global::ZLMediaKit.MkFramePixT frame, byte* @out)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -7999,7 +10305,17 @@ namespace ZLMediaKit
         /// <summary>使用SwsContext转换pix format</summary>
         /// <param name="ctx">SwsContext wrapper实例</param>
         /// <param name="frame">pix frame</param>
-        /// <returns>新的pix frame对象，需要使用mk_frame_pix_unref销毁</returns>
+        /// <param name="ctx">SwsContext wrapper instance</param>
+        /// <param name="frame">pix frame</param>
+        /// <returns>
+        /// <para>新的pix frame对象，需要使用mk_frame_pix_unref销毁</para>
+        /// <para>Use SwsContext to convert pix format</para>
+        /// </returns>
+        /// <returns>
+        /// <para>New pix frame object, needs to be destroyed using mk_frame_pix_unref</para>
+        /// <para></para>
+        /// <para>[AUTO-TRANSLATED:5b4e98a3]</para>
+        /// </returns>
         public static global::ZLMediaKit.MkFramePixT MkSwscaleInputFrame2(global::ZLMediaKit.MkSwscaleT ctx, global::ZLMediaKit.MkFramePixT frame)
         {
             var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
@@ -8009,7 +10325,7 @@ namespace ZLMediaKit
             return __result0;
         }
 
-        /// <summary></summary>
+        /// <summary>//////////////////////////////////////////////////////////////////////////////////////////</summary>
         public static byte** MkGetAvFrameData(global::ZLMediaKit.AVFrame frame)
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
@@ -8099,6 +10415,142 @@ namespace ZLMediaKit
         {
             var __arg0 = frame is null ? IntPtr.Zero : frame.__Instance;
             __Internal.MkSetAvFrameFormat(__arg0, format);
+        }
+    }
+
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkWebrtcGetAnswerSdp(IntPtr user_data, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string answer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err);
+
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkWebrtcGetProxyPlayerInfoCb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string info_json, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err);
+
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkWebrtcRoomKeeperInfoCb(IntPtr user_data, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string room_key, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string err);
+
+    [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public unsafe delegate void OnMkWebrtcRoomKeeperDataCb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string data);
+
+    public unsafe partial class mk_webrtc
+    {
+        public partial struct __Internal
+        {
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_get_answer_sdp", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcGetAnswerSdp(IntPtr user_data, IntPtr cb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string offer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string url);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_get_answer_sdp2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcGetAnswerSdp2(IntPtr user_data, IntPtr user_data_free, IntPtr cb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string offer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string url);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_get_proxy_player_info", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcGetProxyPlayerInfo(IntPtr ctx, IntPtr cb);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_add_room_keeper", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcAddRoomKeeper([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string room_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string server_host, ushort server_port, int ssl, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_add_room_keeper2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcAddRoomKeeper2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string room_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string server_host, ushort server_port, int ssl, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_del_room_keeper", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcDelRoomKeeper([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string room_key, IntPtr cb, IntPtr user_data);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_del_room_keeper2", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcDelRoomKeeper2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CppSharp.Runtime.UTF8Marshaller))] string room_key, IntPtr cb, IntPtr user_data, IntPtr user_data_free);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_list_room_keeper", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcListRoomKeeper(IntPtr cb);
+
+            [SuppressUnmanagedCodeSecurity, DllImport("mk_api", EntryPoint = "mk_webrtc_list_rooms", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern void MkWebrtcListRooms(IntPtr cb);
+        }
+
+        /// <summary>webrtc交换sdp，根据offer sdp生成answer sdp</summary>
+        /// <param name="user_data">回调用户指针</param>
+        /// <param name="cb">回调函数</param>
+        /// <param name="type">webrtc插件类型，支持echo,play,push</param>
+        /// <param name="offer">webrtc offer sdp</param>
+        /// <param name="url">
+        /// <para>rtc url, 例如 rtc://__defaultVhost/app/stream?key1=val1&amp;key2=val2</para>
+        /// <para>webrtc exchange sdp, generate answer sdp based on offer sdp</para>
+        /// </param>
+        /// <param name="user_data">Callback user pointer</param>
+        /// <param name="cb">Callback function</param>
+        /// <param name="type">webrtc plugin type, supports echo, play, push</param>
+        /// <param name="offer">webrtc offer sdp</param>
+        /// <param name="url">rtc url, for example rtc://__defaultVhost/app/stream?key1=val1&amp;key2=val2</param>
+        /// <remarks>[AUTO-TRANSLATED:ea79659b]</remarks>
+        public static void MkWebrtcGetAnswerSdp(IntPtr user_data, global::ZLMediaKit.OnMkWebrtcGetAnswerSdp cb, string type, string offer, string url)
+        {
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcGetAnswerSdp(user_data, __arg1, type, offer, url);
+        }
+
+        public static void MkWebrtcGetAnswerSdp2(IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free, global::ZLMediaKit.OnMkWebrtcGetAnswerSdp cb, string type, string offer, string url)
+        {
+            var __arg1 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            var __arg2 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcGetAnswerSdp2(user_data, __arg1, __arg2, type, offer, url);
+        }
+
+        /// <summary>获取webrtc proxy player信息</summary>
+        /// <param name="mk_proxy_player">代理</param>
+        /// <param name="cb">回调函数</param>
+        public static void MkWebrtcGetProxyPlayerInfo(global::ZLMediaKit.MkProxyPlayerT ctx, global::ZLMediaKit.OnMkWebrtcGetProxyPlayerInfoCb cb)
+        {
+            var __arg0 = ctx is null ? IntPtr.Zero : ctx.__Instance;
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcGetProxyPlayerInfo(__arg0, __arg1);
+        }
+
+        /// <summary>WebRTC-注册到信令服务器</summary>
+        /// <param name="server_host">信令服务器host</param>
+        /// <param name="server_port">信令服务器port</param>
+        /// <param name="room_id">房间id</param>
+        /// <param name="ssl">是否启用ssl</param>
+        /// <param name="cb">回调函数</param>
+        /// <param name="user_data">用户数据</param>
+        public static void MkWebrtcAddRoomKeeper(string room_id, string server_host, ushort server_port, int ssl, global::ZLMediaKit.OnMkWebrtcRoomKeeperInfoCb cb, IntPtr user_data)
+        {
+            var __arg4 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcAddRoomKeeper(room_id, server_host, server_port, ssl, __arg4, user_data);
+        }
+
+        public static void MkWebrtcAddRoomKeeper2(string room_id, string server_host, ushort server_port, int ssl, global::ZLMediaKit.OnMkWebrtcRoomKeeperInfoCb cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        {
+            var __arg4 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg6 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            __Internal.MkWebrtcAddRoomKeeper2(room_id, server_host, server_port, ssl, __arg4, user_data, __arg6);
+        }
+
+        /// <summary>WebRTC-从信令服务器注销</summary>
+        /// <param name="room_key">房间key</param>
+        /// <param name="cb">回调函数</param>
+        /// <param name="user_data">用户数据</param>
+        public static void MkWebrtcDelRoomKeeper(string room_key, global::ZLMediaKit.OnMkWebrtcRoomKeeperInfoCb cb, IntPtr user_data)
+        {
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcDelRoomKeeper(room_key, __arg1, user_data);
+        }
+
+        public static void MkWebrtcDelRoomKeeper2(string room_key, global::ZLMediaKit.OnMkWebrtcRoomKeeperInfoCb cb, IntPtr user_data, global::ZLMediaKit.OnUserDataFree user_data_free)
+        {
+            var __arg1 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            var __arg3 = user_data_free == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(user_data_free);
+            __Internal.MkWebrtcDelRoomKeeper2(room_key, __arg1, user_data, __arg3);
+        }
+
+        /// <summary>WebRTC-Peer查看注册信息</summary>
+        /// <param name="cb">回调函数</param>
+        public static void MkWebrtcListRoomKeeper(global::ZLMediaKit.OnMkWebrtcRoomKeeperDataCb cb)
+        {
+            var __arg0 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcListRoomKeeper(__arg0);
+        }
+
+        /// <summary>WebRTC-信令服务器查看注册信息</summary>
+        /// <param name="cb">回调函数</param>
+        public static void MkWebrtcListRooms(global::ZLMediaKit.OnMkWebrtcRoomKeeperDataCb cb)
+        {
+            var __arg0 = cb == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(cb);
+            __Internal.MkWebrtcListRooms(__arg0);
         }
     }
 

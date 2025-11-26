@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "ZLMediaKit.Autogen/1.0.0": {
+      "ZLMediaKit.Autogen/8.0.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
@@ -15,7 +15,7 @@
     }
   },
   "libraries": {
-    "ZLMediaKit.Autogen/1.0.0": {
+    "ZLMediaKit.Autogen/8.0.0.1": {
       "type": "project",
       "path": "../ZLMediaKit.Autogen/ZLMediaKit.Autogen.csproj",
       "msbuildProject": "../ZLMediaKit.Autogen/ZLMediaKit.Autogen.csproj"
@@ -23,7 +23,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "ZLMediaKit.Autogen >= 1.0.0"
+      "ZLMediaKit.Autogen >= 8.0.0.1"
     ]
   },
   "packageFolders": {
@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
+      "projectUniqueName": "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
       "projectName": "ZLMediaKitTest",
-      "projectPath": "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
+      "projectPath": "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKitTest\\ZLMediaKitTest.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKitTest\\obj\\",
+      "outputPath": "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,14 +52,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj": {
-              "projectPath": "D:\\GitHub\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj"
+            "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj": {
+              "projectPath": "D:\\GitHub\\ZLMediaKitRelease\\20251125\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen\\ZLMediaKit.Autogen.csproj"
             }
           }
         }
@@ -68,7 +69,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "netcoreapp3.1": {
@@ -79,16 +86,23 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.32, 3.1.32]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
